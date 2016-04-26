@@ -1,0 +1,156 @@
+<Patient xmlns="http://hl7.org/fhir">
+	<meta>
+		<profile value="http://hl7.org/fhir/StructureDefinition/Patient"/>
+	</meta>
+	<!-- Simple extension. -->
+	<extension url="http://example.com/fhir/StructureDefinition/patient-do-not-call">
+		<valueBoolean value="false"/>
+	</extension>
+	<!-- Simple extension extended with a second simple extension -->
+	<extension url="http://example.com/fhir/StructureDefinition/patient-legal-case">
+		<valueBoolean value="false">
+			<extension url="http://example.com/fhir/StructureDefinition/patient-legal-case-lead-counsel">
+				<valueReference>
+					<display value="J. R. Example, ESQ." />
+				</valueReference>
+			</extension>
+		</valueBoolean>
+	</extension>
+	<!-- Extension with a codeable concept and alternate codings. -->
+	<extension url="http://hl7.org/fhir/StructureDefinition/us-core-religion">
+		<valueCodeableConcept>
+			<coding>
+				<system value="http://example.com/fhir/localsystems/religion"/>
+				<code value="CAT"/>
+				<display value="CATHOLIC:ROMAN CATHOLIC"/>
+				<primary value="true"/>
+			</coding>
+			<coding>
+				<system value="http://hl7.org/fhir/v3/ReligiousAffiliation"/>
+				<code value="1041"/>
+				<display value="Roman Catholic Church"/>
+			</coding>
+		</valueCodeableConcept>
+	</extension>
+	<!-- Complex extension. Also demonstrate re-slicing by fixed element. --> 
+	<extension url="http://example.com/fhir/StructureDefinition/patient-research-authorization">
+		<extension url="type">
+			<valueCode value="Minnesota"/>
+		</extension>
+		<extension url="flag">
+			<valueBoolean value="true"/>
+		</extension>
+		<extension url="date">
+			<valueDate value="2013-01-31"/>
+		</extension>
+	</extension>
+	<extension url="http://example.com/fhir/StructureDefinition/patient-research-authorization">
+		<extension url="type">
+			<valueCode value="LocalSite"/>
+		</extension>
+		<extension url="flag">
+			<valueBoolean value="true"/>
+		</extension>
+		<extension url="date">
+			<valueDate value="2013-01-31"/>
+		</extension>
+	</extension>
+	<extension url="http://example.com/fhir/StructureDefinition/patient-research-authorization">
+		<extension url="type">
+			<valueCode value="Grandfathered"/>
+		</extension>
+		<extension url="flag">
+			<valueBoolean value="false"/>
+		</extension>
+		<!-- Complex extension of a complex extension. In a re-slice. -->     
+		<extension url="http://example.com/fhir/StructureDefinition/algorithm">
+			<extension url="name">
+				<valueString value="MN ResAuth Grandfather Rule"/>
+			</extension>            
+			<extension url="version">
+				<valueString value="2000-v1"/>
+			</extension>            
+		</extension>
+	</extension>
+	<!-- Sliced by Identifier profile (@profile discriminator for non-reference). -->
+	<identifier>
+		<use value="official"/>
+		<system value="http://example.com/fhir/localsystems/PATIENT-ID-MDM"/>
+		<value value="09876543"/>
+	</identifier>
+	<identifier>
+		<!-- Extension to one slice. -->
+		<extension url="http://example.com/fhir/StructureDefinition/patient-identifier-issuing-site">
+			<valueCodeableConcept>
+				<coding>
+					<system value="http://example.com/fhir/localsystems/patient-id-site"/>
+					<code value="SITEA"/>
+				</coding>
+			</valueCodeableConcept>
+		</extension>
+		<use value="usual"/>
+		<system value="http://example.com/fhir/localsystems/PATIENT-ID-MRN"/>
+		<value value="13579-24680"/>
+	</identifier>
+	<!-- Single defined discriminator.  Different allowed elements by slice. -->
+	<name>
+		<use value="official"/>
+		<text value="Testing, Mrs. Annette M.D."/>
+		<family value="Testing"/>
+		<given value="Annette"/>
+		<prefix value="Mrs."/>
+		<suffix value="M.D."/>
+	</name>
+	<name>
+		<use value="maiden"/>
+		<family value="Doe"/>
+	</name>
+	<!-- Slice by 2 fixed value discriminators. Or, slice/reslice first by system and then use. -->
+	<telecom>
+		<system value="phone"/>
+		<value value="(404)999-8888"/>
+		<use value="home"/>
+	</telecom>
+	<telecom>    
+		<system value="phone"/>
+		<value value="(404)123-4445"/>
+		<use value="mobile"/>
+	</telecom>
+	<telecom>
+		<system value="email"/>
+		<value value="testing44@example.com"/>
+		<use value="home"/>
+	</telecom>
+	<telecom>
+		<system value="email"/>
+		<value value="testing.annet@example.com"/>
+		<use value="work"/>
+	</telecom>    
+	<telecom>
+		<system value="pager"/>
+		<value value="(404)345-9876"/>
+	</telecom>
+	<gender value="female"/>
+	<!-- value[x] slicing. @type or valueType? -->
+	<birthDate value="1963-12-26"/>
+	<!-- bcp 47 validation (sub-tags). -->
+	<communication>
+		<language>
+			<coding>
+				<system value="urn:ietf:bcp:47" />
+				<code value="en-US"/>
+				<display value="English (United States)"/>
+			</coding>
+		</language>
+	</communication>
+	<!-- @type slicing on a reference. Re-slice org by @profile. -->
+	<careProvider>
+		<reference value="Practitioner/test-prac-1" />
+	</careProvider>
+	<careProvider>
+		<reference value="Organization/test-org-1" />
+	</careProvider>
+	<careProvider>
+		<reference value="Organization/test-org-2" />
+	</careProvider>
+</Patient>
