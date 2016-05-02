@@ -1,0 +1,360 @@
+<StructureDefinition xmlns="http://hl7.org/fhir">
+   <url value="http://example.com/fhir/StructureDefinition/algorithm" />
+	<name value="algorithm" />
+	<fhirVersion value="0.5" />
+	<type value="extension" />
+   <abstract value="false" />
+	<base value="http://hl7.org/fhir/StructureDefinition/Extension" />
+   <snapshot>
+      
+      <element>
+      	<path value="Element" />
+         <min value="0" />
+         <max value="1" />
+         
+         <type>
+            <code value="Extension" />
+         </type>
+      </element>
+      <element>
+      	<path value="Element.id" />
+      	<representation value="xmlAttr" />
+      	<short value="xml:id (or equivalent in JSON)" />
+      	<definition value="unique id for the element within a resource (for internal references)." />
+         <min value="0" />
+         <max value="1" />
+         <type>
+            <code value="id" />
+         
+         </type>
+         <mapping>
+            <identity value="rim" />
+         	<map value="n/a" />
+         </mapping>
+      </element>
+      <element>
+      	<path value="Element.value[x]" />
+      	<short value="Value of extension" />
+      	<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
+         <min value="0" />
+         <max value="1" />
+         <type>
+            <code value="uri" />
+         
+         </type>
+         <type>
+            <code value="uri" />
+         
+         </type>
+         <type>
+            <code value="Timing" />
+         
+         </type>
+         <type>
+            <code value="time" />
+         
+         </type>
+         <type>
+            <code value="time" />
+         
+         </type>
+         <type>
+            <code value="string" />
+         
+         </type>
+         <type>
+            <code value="string" />
+         
+         </type>
+         <type>
+            <code value="Signature" />
+         
+         </type>
+         <type>
+            <code value="Signature" />
+         
+         </type>
+         <type>
+            <code value="Reference" />
+         
+         </type>
+         <type>
+            <code value="Reference" />
+         
+         </type>
+         <type>
+            <code value="Ratio" />
+         
+         </type>
+         <type>
+            <code value="Ratio" />
+         
+         </type>
+         <type>
+            <code value="Range" />
+         
+         </type>
+         <type>
+            <code value="Range" />
+         
+         </type>
+         <type>
+            <code value="Quantity" />
+         
+         </type>
+         <type>
+            <code value="Quantity" />
+         
+         </type>
+         <type>
+            <code value="Period" />
+         
+         </type>
+         <type>
+            <code value="Period" />
+         
+         </type>
+         <type>
+            <code value="integer" />
+         
+         </type>
+         <type>
+            <code value="integer" />
+         
+         </type>
+         <type>
+            <code value="instant" />
+         
+         </type>
+         <type>
+            <code value="instant" />
+         
+         </type>
+         <type>
+            <code value="Identifier" />
+         
+         </type>
+         <type>
+            <code value="Identifier" />
+         
+         </type>
+         <type>
+            <code value="HumanName" />
+         
+         </type>
+         <type>
+            <code value="decimal" />
+         
+         </type>
+         <type>
+            <code value="dateTime" />
+         
+         </type>
+         <type>
+            <code value="date" />
+         
+         </type>
+         <type>
+            <code value="boolean" />
+         
+         </type>
+         <type>
+            <code value="code" />
+         
+         </type>
+         <type>
+            <code value="base64Binary" />
+         
+         </type>
+         <type>
+            <code value="Coding" />
+         
+         </type>
+         <type>
+            <code value="CodeableConcept" />
+         
+         </type>
+         <type>
+            <code value="Attachment" />
+         
+         </type>
+         <type>
+            <code value="decimal" />
+         
+         </type>
+         <type>
+            <code value="dateTime" />
+         
+         </type>
+         <type>
+            <code value="date" />
+         
+         </type>
+         <type>
+            <code value="boolean" />
+         
+         </type>
+         <type>
+            <code value="code" />
+         
+         </type>
+         <type>
+            <code value="base64Binary" />
+         
+         </type>
+         <type>
+            <code value="Coding" />
+         
+         </type>
+         <type>
+            <code value="CodeableConcept" />
+         
+         </type>
+         <type>
+            <code value="Attachment" />
+         
+         </type>
+         <type>
+            <code value="Address" />
+         
+         </type>
+         <type>
+            <code value="ContactPoint" />
+         
+         </type>
+         <mapping>
+            <identity value="rim" />
+         	<map value="N/A" />
+         </mapping>
+      </element>
+      <element>
+      	<path value="Element.url" />
+         <min value="1" />
+         <max value="1" />
+         
+         <type>
+            <code value="uri" />
+         </type>
+         <fixedUri value="http://example.com/fhir/StructureDefinition/algorithm" />
+      </element>
+      <element>
+      	<path value="Element.extension" />
+         <min value="0" />
+         <max value="*" />
+         
+         <type>
+            <code value="Extension" />
+         </type>
+      </element>
+      <element>
+      	<path value="Element.extension" />
+      	<name value="name" />
+         <min value="1" />
+         <max value="1" />
+         
+         <type>
+            <code value="Extension" />
+         </type>
+      </element>
+      <element>
+      	<path value="Element.extension.url" />
+      	<name value="name.url" />
+         <min value="1" />
+         <max value="1" />
+         
+         <type>
+            <code value="uri" />
+         </type>
+         <fixedUri value="name" />
+      </element>
+      <element>
+      	<path value="Element.extension.value[x]" />
+      	<name value="name.value[x]" />
+         <min value="1" />
+         <max value="1" />
+         <type>
+            <code value="string" />
+         
+         </type>
+      </element>
+      <element>
+      	<path value="Element.extension" />
+      	<name value="version" />
+         <min value="0" />
+         <max value="1" />
+         
+         <type>
+            <code value="Extension" />
+         </type>
+      </element>
+      <element>
+      	<path value="Element.extension.url" />
+      	<name value="version.url" />
+         <min value="1" />
+         <max value="1" />
+         
+         <type>
+            <code value="uri" />
+         </type>
+         <fixedUri value="version" />
+      </element>
+      <element>
+      	<path value="Element.extension.value[x]" />
+      	<name value="version.value[x]" />
+         <min value="0" />
+         <max value="1" />
+         <type>
+            <code value="string" />
+         
+         </type>
+      </element>   
+   </snapshot>   
+   <differential>
+   		
+   	
+   <element>
+   	<path value="Element.url" />
+      <fixedUri value="http://example.com/fhir/StructureDefinition/algorithm" />
+   </element>
+   
+   <element>
+   	<path value="Element.extension" />
+   	<name value="name" />
+   	<min value="1" />
+   	<max value="1" />
+   </element>
+   <element>
+   	<path value="Element.extension.url" />
+   	<name value="name.url" />
+      <fixedUri value="name" />
+   </element>
+   <element>
+   	<path value="Element.extension.value[x]" />
+   	<name value="name.value[x]" />
+   	<min value="1" />
+      <type>
+         <code value="string" />
+      
+      </type>
+   </element>
+   <element>
+   	<path value="Element.extension" />
+   	<name value="version" />
+   	<max value="1" />
+   </element>
+   <element>
+   	<path value="Element.extension.url" />
+   	<name value="version.url" />
+      <fixedUri value="version" />
+   </element>
+   <element>
+   	<path value="Element.extension.value[x]" />
+   	<name value="version.value[x]" />
+      <type>
+         <code value="string" />
+      
+      </type>
+   </element>
+   		
+   </differential>
+</StructureDefinition>
