@@ -1,235 +1,211 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
-   <url value="http://example.com/fhir/SD/patient-mdm-id" />
+	<url value="http://example.com/fhir/SD/patient-mdm-id" />
 	<name value="patient-mdm-id" />
+	<publisher value="Analysts International" />
+	<date value="2016-05-02T15:00:00-06:00" />
+	<description value="An example type profile constraining the Identifier type. For use in slicing by profile examples." />
 	<fhirVersion value="1.4.0" />
 	<kind value="datatype" />
-   <abstract value="false" />
+	<abstract value="false" />
 	<baseDefinition value="http://hl7.org/fhir/StructureDefinition/Identifier" />
-
-   <snapshot>
-      
-      <element>
-      	<path value="Element" />
-      	<label value="MDM Identifier" />
-         <min value="0" />
-         <max value="*" />
-         
-         <type>
-            <code value="Identifier" />
-         </type>
-      </element>
-      <element>
-      	<path value="Element.id" />
-      	<representation value="xmlAttr" />
-      	<short value="xml:id (or equivalent in JSON)" />
-      	<definition value="unique id for the element within a resource (for internal references)." />
-         <min value="0" />
-         <max value="1" />
-         <type>
-            <code value="id" />
-         
-         
-         </type>
-         <mapping>
-            <identity value="rim" />
-         	<map value="n/a" />
-         </mapping>
-      </element>
-      <element>
-      	<path value="Element.extension" />
-         <min value="0" />
-         <max value="*" />
-         
-         <type>
-            <code value="Extension" />
-         </type>
-      </element>
-      <element>
-      	<path value="Element.extension" />
-      	<name value="issuingSite" />
-      	<short value="Site code where an identifier was issued." />
-         <min value="0" />
-         <max value="*" />
-         <type>
-            <code value="Extension" />
-         	<profile value="http://example.com/fhir/StructureDefinition/patient-identifier-issuing-site" />
-         
-         
-         </type>
-      </element>
-      <element>
-      	<path value="Element.use" />
-      	<short value="usual | official | temp | secondary (If known)" />
-      	<definition value="The purpose of this identifier." />
-      	<comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." />
-      	<requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
-         <min value="0" />
-         <max value="1" />
-         <type>
-            <code value="code" />
-         
-         
-         </type>
-      	<isModifier value="true" />
-      	<isSummary value="true" />
-         <binding>
-            <strength value="required" />
-         	<description value="Identifies the purpose for this identifier, if known ." />
-            <valueSetUri value="http://hl7.org/fhir/ValueSet/identifier-use" />
-         </binding>
-      	
-         <mapping>
-            <identity value="v2" />
-         	<map value="N/A" />
-         </mapping>
-         <mapping>
-            <identity value="rim" />
-         	<map value="Role.code or implied by context" />
-         </mapping>
-      </element>
-      <element>
-      	<path value="Element.type" />
-      	<short value="Description of identifier" />
-      	<definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
-      	<comments value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage. 
-      
+	<snapshot>
+		<element>
+			<path value="Element" />
+			<label value="MDM Identifier" />
+			<min value="0" />
+			<max value="*" />
+			<type>
+				<code value="Identifier" />
+			</type>
+		</element>
+		<element>
+			<path value="Element.id" />
+			<representation value="xmlAttr" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references)." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="id" />
+			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="Element.extension" />
+			<min value="0" />
+			<max value="*" />
+			<type>
+				<code value="Extension" />
+			</type>
+		</element>
+		<element>
+			<path value="Element.extension" />
+			<name value="issuingSite" />
+			<short value="Site code where an identifier was issued." />
+			<min value="0" />
+			<max value="*" />
+			<type>
+				<code value="Extension" />
+				<profile value="http://example.com/fhir/StructureDefinition/patient-identifier-issuing-site" />
+			</type>
+		</element>
+		<element>
+			<path value="Element.use" />
+			<short value="usual | official | temp | secondary (If known)" />
+			<definition value="The purpose of this identifier." />
+			<comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." />
+			<requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="code" />
+			</type>
+			<isModifier value="true" />
+			<isSummary value="true" />
+			<binding>
+				<strength value="required" />
+				<description value="Identifies the purpose for this identifier, if known ." />
+				<valueSetUri value="http://hl7.org/fhir/ValueSet/identifier-use" />
+			</binding>
+			<mapping>
+				<identity value="v2" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="Role.code or implied by context" />
+			</mapping>
+		</element>
+		<element>
+			<path value="Element.type" />
+			<short value="Description of identifier" />
+			<definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
+			<comments value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage. 
       Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
-      	<requirements value="Allows users to make use of identifiers when the identifier system is not known." />
-         <min value="0" />
-         <max value="1" />
-         <type>
-            <code value="CodeableConcept" />
-         
-         
-         </type>
-      	<isSummary value="true" />
-         <binding>
-            <strength value="extensible" />
-         	<description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose." />
-            <valueSetUri value="http://hl7.org/fhir/ValueSet/identifier-type" />
-         </binding>
-      	
-         <mapping>
-            <identity value="v2" />
-         	<map value="CX.5" />
-         </mapping>
-         <mapping>
-            <identity value="rim" />
-         	<map value="Role.code or implied by context" />
-         </mapping>
-      </element>
-      <element>
-      	<path value="Element.system" />
-         <min value="1" />
-         <max value="1" />
-         
-         <type>
-            <code value="uri" />
-         </type>
-         <fixedUri value="http://example.com/fhir/localsystems/PATIENT-ID-MDM" />
-      </element>
-      <element>
-      	<path value="Element.value" />
-      	<short value="The value that is unique" />
-      	<definition value="The portion of the identifier typically relevant to the user and which is unique within the context of the system." />
-      	<comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value&#39;s primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html)." />
-         <min value="0" />
-         <max value="1" />
-         <type>
-            <code value="string" />
-         
-         
-         </type>
-         <exampleString value="123456" />
-      	<isSummary value="true" />
-         <mapping>
-            <identity value="v2" />
-         	<map value="CX.1 / EI.1" />
-         </mapping>
-         <mapping>
-            <identity value="rim" />
-         	<map value="II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)" />
-         </mapping>
-         <mapping>
-            <identity value="servd" />
-         	<map value="./Value" />
-         </mapping>
-      </element>
-      <element>
-      	<path value="Element.period" />
-      	<short value="Time period when id is/was valid for use" />
-      	<definition value="Time period during which identifier is/was valid for use." />
-         <min value="0" />
-         <max value="1" />
-         <type>
-            <code value="Period" />
-         
-         
-         </type>
-      	<isSummary value="true" />
-         <mapping>
-            <identity value="v2" />
-         	<map value="CX.7 + CX.8" />
-         </mapping>
-         <mapping>
-            <identity value="rim" />
-         	<map value="Role.effectiveTime or implied by context" />
-         </mapping>
-         <mapping>
-            <identity value="servd" />
-         	<map value="./StartDate and ./EndDate" />
-         </mapping>
-      </element>
-      <element>
-      	<path value="Element.assigner" />
-      	<short value="Organization that issued id (may be just text)" />
-      	<definition value="Organization that issued/manages the identifier." />
-      	<comments value="The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization." />
-         <min value="0" />
-         <max value="1" />
-         <type>
-            <code value="Reference" />
-         	<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
-         
-         
-         </type>
-      	<isSummary value="true" />
-         <mapping>
-            <identity value="v2" />
-         	<map value="CX.4 / (CX.4,CX.9,CX.10)" />
-         </mapping>
-         <mapping>
-            <identity value="rim" />
-         	<map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
-         </mapping>
-         <mapping>
-            <identity value="servd" />
-         	<map value="./IdentifierIssuingAuthority" />
-         </mapping>
-      </element>   
-   </snapshot>   
-   <differential>
-   		
-   		<element>
-   	<path value="Element" />
-   	<label value="MDM Identifier" />
-   </element>
-   <element>
-   	<path value="Element.system" />
-   	<min value="1" />
-      <fixedUri value="http://example.com/fhir/localsystems/PATIENT-ID-MDM" />
-   </element>
-   
-   <element>
-   	<path value="Element.extension" />
-   	<name value="issuingSite" />
-      <type>
-         <code value="Extension" />
-      	<profile value="http://example.com/fhir/StructureDefinition/patient-identifier-issuing-site" />
-      
-      
-      </type>
-   </element>
-   		
-   </differential>
+			<requirements value="Allows users to make use of identifiers when the identifier system is not known." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="CodeableConcept" />
+			</type>
+			<isSummary value="true" />
+			<binding>
+				<strength value="extensible" />
+				<description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose." />
+				<valueSetUri value="http://hl7.org/fhir/ValueSet/identifier-type" />
+			</binding>
+			<mapping>
+				<identity value="v2" />
+				<map value="CX.5" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="Role.code or implied by context" />
+			</mapping>
+		</element>
+		<element>
+			<path value="Element.system" />
+			<min value="1" />
+			<max value="1" />
+			<type>
+				<code value="uri" />
+			</type>
+			<fixedUri value="http://example.com/fhir/localsystems/PATIENT-ID-MDM" />
+		</element>
+		<element>
+			<path value="Element.value" />
+			<short value="The value that is unique" />
+			<definition value="The portion of the identifier typically relevant to the user and which is unique within the context of the system." />
+			<comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value&#39;s primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html)." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="string" />
+			</type>
+			<exampleString value="123456" />
+			<isSummary value="true" />
+			<mapping>
+				<identity value="v2" />
+				<map value="CX.1 / EI.1" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)" />
+			</mapping>
+			<mapping>
+				<identity value="servd" />
+				<map value="./Value" />
+			</mapping>
+		</element>
+		<element>
+			<path value="Element.period" />
+			<short value="Time period when id is/was valid for use" />
+			<definition value="Time period during which identifier is/was valid for use." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="Period" />
+			</type>
+			<isSummary value="true" />
+			<mapping>
+				<identity value="v2" />
+				<map value="CX.7 + CX.8" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="Role.effectiveTime or implied by context" />
+			</mapping>
+			<mapping>
+				<identity value="servd" />
+				<map value="./StartDate and ./EndDate" />
+			</mapping>
+		</element>
+		<element>
+			<path value="Element.assigner" />
+			<short value="Organization that issued id (may be just text)" />
+			<definition value="Organization that issued/manages the identifier." />
+			<comments value="The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="Reference" />
+				<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
+			</type>
+			<isSummary value="true" />
+			<mapping>
+				<identity value="v2" />
+				<map value="CX.4 / (CX.4,CX.9,CX.10)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+			</mapping>
+			<mapping>
+				<identity value="servd" />
+				<map value="./IdentifierIssuingAuthority" />
+			</mapping>
+		</element>
+	</snapshot>
+	<differential>
+		<element>
+			<path value="Element" />
+			<label value="MDM Identifier" />
+		</element>
+		<element>
+			<path value="Element.system" />
+			<min value="1" />
+			<fixedUri value="http://example.com/fhir/localsystems/PATIENT-ID-MDM" />
+		</element>
+		<element>
+			<path value="Element.extension" />
+			<name value="issuingSite" />
+			<type>
+				<code value="Extension" />
+				<profile value="http://example.com/fhir/StructureDefinition/patient-identifier-issuing-site" />
+			</type>
+		</element>
+	</differential>
 </StructureDefinition>
