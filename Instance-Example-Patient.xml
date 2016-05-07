@@ -23,7 +23,7 @@
 				<system value="http://example.com/fhir/localsystems/religion"/>
 				<code value="CAT"/>
 				<display value="CATHOLIC:ROMAN CATHOLIC"/>
-				<primary value="true"/>
+				<userSelected value="true"/>
 			</coding>
 			<coding>
 				<system value="http://hl7.org/fhir/v3/ReligiousAffiliation"/>
