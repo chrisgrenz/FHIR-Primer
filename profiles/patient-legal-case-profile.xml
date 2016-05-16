@@ -1,78 +1,149 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
-	<url value="http://example.com/fhir/StructureDefinition/patient-legal-case" />
+   <url value="http://example.com/fhir/StructureDefinition/patient-legal-case" />
 	<name value="patient-legal-case" />
-	<publisher value="Analysts International" />
+	<publisher value="Analysts (analysts.com)" />
 	<date value="2016-05-02T15:00:00-06:00" />
 	<fhirVersion value="1.4.0" />
 	<kind value="datatype" />
-	<abstract value="false" />
+   <abstract value="false" />
+   
+   
+	<baseType value="Extension" />
+
 	<baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
-	<snapshot>
-		<element>
-			<path value="Element" />
-			<min value="0" />
-			<max value="*" />
-			<type>
-				<code value="Extension" />
-			</type>
-		</element>
-		<element>
-			<path value="Element.id" />
-			<representation value="xmlAttr" />
-			<short value="xml:id (or equivalent in JSON)" />
-			<definition value="unique id for the element within a resource (for internal references)." />
-			<min value="0" />
-			<max value="1" />
-			<type>
-				<code value="id" />
-			</type>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-		</element>
-		<element>
-			<path value="Element.extension" />
-			<short value="Additional Content defined by implementations" />
-			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
-			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
-			<alias value="extensions" />
-			<alias value="user content" />
-			<min value="0" />
-			<max value="*" />
-			<type>
-				<code value="Extension" />
-			</type>
-		</element>
-		<element>
-			<path value="Element.url" />
-			<min value="1" />
-			<max value="1" />
-			<type>
-				<code value="uri" />
-			</type>
-			<fixedUri value="http://example.com/fhir/StructureDefinition/patient-legal-case" />
-		</element>
-		<element>
-			<path value="Element.value[x]" />
-			<min value="1" />
-			<max value="1" />
-			<type>
-				<code value="boolean" />
-			</type>
-		</element>
-	</snapshot>
-	<differential>
-		<element>
-			<path value="Element.url" />
-			<fixedUri value="http://example.com/fhir/StructureDefinition/patient-legal-case" />
-		</element>
-		<element>
-			<path value="Element.value[x]" />
-			<min value="1" />
-			<type>
-				<code value="boolean" />
-			</type>
-		</element>
-	</differential>
+
+	<derivation value="constraint" />
+   <snapshot>
+      
+      <element id="Extension">
+      	<path value="Extension" />
+      
+      	
+      	<short value="Base for all elements" />
+      	<definition value="A flag indicating that a patient is involved in a legal dispute with the enterprise." />
+         <min value="0" />
+         <max value="*" />
+         <type>
+            <code value="Extension" />
+         </type>
+      	
+      	<condition value="ele-1" />
+         <mapping>
+            <identity value="rim" />
+         	<map value="n/a" />
+         </mapping>
+         <mapping>
+            <identity value="rim" />
+         	<map value="N/A" />
+         </mapping>
+      </element>
+      <element id="id">
+      	<path value="Extension.id" />
+      	<representation value="xmlAttr" />
+      	<short value="xml:id (or equivalent in JSON)" />
+      	<definition value="unique id for the element within a resource (for internal references)." />
+      	<comments value="RFC 4122" />
+         <min value="0" />
+         <max value="1" />
+         <type>
+            <code value="id" />
+         </type>
+      	
+      	<condition value="ele-1" />
+         <mapping>
+            <identity value="rim" />
+         	<map value="n/a" />
+         </mapping>
+         <mapping>
+            <identity value="rim" />
+         	<map value="n/a" />
+         </mapping>
+      </element>
+      <element id="extension">
+      	<path value="Extension.extension" />
+      	<short value="Additional Content defined by implementations" />
+      	<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+      	<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+            <alias value="extensions" />
+            <alias value="user content" />
+         <min value="0" />
+         <max value="*" />
+         <type>
+            <code value="Extension" />
+         </type>
+      	
+      	<condition value="ele-1" />
+         <mapping>
+            <identity value="rim" />
+         	<map value="n/a" />
+         </mapping>
+         <mapping>
+            <identity value="rim" />
+         	<map value="N/A" />
+         </mapping>
+      </element>
+      <element id="url">
+      	<path value="Extension.url" />
+      	<representation value="xmlAttr" />
+      	<short value="identifies the meaning of the extension" />
+      	<definition value="Source of the definition for the extension code - a logical name or a URL." />
+      	<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
+         <min value="1" />
+         <max value="1" />
+         <type>
+            <code value="uri" />
+         </type>
+         <fixedUri value="http://example.com/fhir/StructureDefinition/patient-legal-case" />
+      	
+      	<condition value="ele-1" />
+         <mapping>
+            <identity value="rim" />
+         	<map value="n/a" />
+         </mapping>
+         <mapping>
+            <identity value="rim" />
+         	<map value="N/A" />
+         </mapping>
+      </element>
+      <element id="value[x]">
+      	<path value="Extension.value[x]" />
+      	<short value="Value of extension" />
+      	<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
+         <min value="1" />
+         <max value="1" />
+         <type>
+            <code value="boolean" />
+         </type>
+      	
+      	<condition value="ele-1" />
+         <mapping>
+            <identity value="rim" />
+         	<map value="n/a" />
+         </mapping>
+         <mapping>
+            <identity value="rim" />
+         	<map value="N/A" />
+         </mapping>
+      </element>   
+   </snapshot>   
+   <differential>
+   		
+   		<element id="Extension">
+   	<path value="Extension" />
+   
+   	<definition value="A flag indicating that a patient is involved in a legal dispute with the enterprise." />
+   </element>
+   <element id="url">
+   	<path value="Extension.url" />
+      <fixedUri value="http://example.com/fhir/StructureDefinition/patient-legal-case" />
+   </element>
+   <element id="value[x]">
+   	<path value="Extension.value[x]" />
+   	<min value="1" />
+      <type>
+         <code value="boolean" />
+      </type>
+   </element>
+   		
+   </differential>
 </StructureDefinition>
