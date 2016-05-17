@@ -1,11 +1,14 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
 	<url value="http://example.com/fhir/StructureDefinition/patient-research-authorization" />
 	<name value="patient-research-authorization" />
+	<status value="draft" />
 	<publisher value="Analysts (analysts.com)" />
 	<date value="2016-05-02T15:00:00-06:00" />
 	<fhirVersion value="1.4.0" />
 	<kind value="datatype" />
 	<abstract value="false" />
+	<contextType value="resource" />
+	<context value="Patient" />
 	<baseType value="Extension" />
 	<baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
 	<derivation value="constraint" />
@@ -181,17 +184,117 @@
 		<element id="flag.value[x]">
 			<path value="Extension.extension.value[x]" />
 			<name value="flag.value[x]" />
-			<short value="Base for all elements" />
-			<definition value="Base definition for all elements in a resource." />
+			<short value="Value of extension" />
+			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
 			<min value="1" />
-			<max value="*" />
+			<max value="1" />
 			<type>
-				<code value="Element" />
+				<code value="boolean" />
+			</type>
+			<type>
+				<code value="integer" />
+			</type>
+			<type>
+				<code value="decimal" />
+			</type>
+			<type>
+				<code value="base64Binary" />
+			</type>
+			<type>
+				<code value="instant" />
+			</type>
+			<type>
+				<code value="string" />
+			</type>
+			<type>
+				<code value="uri" />
+			</type>
+			<type>
+				<code value="date" />
+			</type>
+			<type>
+				<code value="dateTime" />
+			</type>
+			<type>
+				<code value="time" />
+			</type>
+			<type>
+				<code value="code" />
+			</type>
+			<type>
+				<code value="oid" />
+			</type>
+			<type>
+				<code value="id" />
+			</type>
+			<type>
+				<code value="unsignedInt" />
+			</type>
+			<type>
+				<code value="positiveInt" />
+			</type>
+			<type>
+				<code value="markdown" />
+			</type>
+			<type>
+				<code value="Annotation" />
+			</type>
+			<type>
+				<code value="Attachment" />
+			</type>
+			<type>
+				<code value="Identifier" />
+			</type>
+			<type>
+				<code value="CodeableConcept" />
+			</type>
+			<type>
+				<code value="Coding" />
+			</type>
+			<type>
+				<code value="Quantity" />
+			</type>
+			<type>
+				<code value="Range" />
+			</type>
+			<type>
+				<code value="Period" />
+			</type>
+			<type>
+				<code value="Ratio" />
+			</type>
+			<type>
+				<code value="SampledData" />
+			</type>
+			<type>
+				<code value="Signature" />
+			</type>
+			<type>
+				<code value="Reference" />
+			</type>
+			<type>
+				<code value="HumanName" />
+			</type>
+			<type>
+				<code value="Address" />
+			</type>
+			<type>
+				<code value="ContactPoint" />
+			</type>
+			<type>
+				<code value="Timing" />
+			</type>
+			<type>
+				<code value="Meta" />
 			</type>
 			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
 			</mapping>
 		</element>
 		<element id="date">
@@ -241,17 +344,117 @@
 		<element id="date.value[x]">
 			<path value="Extension.extension.value[x]" />
 			<name value="date.value[x]" />
-			<short value="Base for all elements" />
-			<definition value="Base definition for all elements in a resource." />
+			<short value="Value of extension" />
+			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
 			<min value="1" />
-			<max value="*" />
+			<max value="1" />
 			<type>
-				<code value="Element" />
+				<code value="boolean" />
+			</type>
+			<type>
+				<code value="integer" />
+			</type>
+			<type>
+				<code value="decimal" />
+			</type>
+			<type>
+				<code value="base64Binary" />
+			</type>
+			<type>
+				<code value="instant" />
+			</type>
+			<type>
+				<code value="string" />
+			</type>
+			<type>
+				<code value="uri" />
+			</type>
+			<type>
+				<code value="date" />
+			</type>
+			<type>
+				<code value="dateTime" />
+			</type>
+			<type>
+				<code value="time" />
+			</type>
+			<type>
+				<code value="code" />
+			</type>
+			<type>
+				<code value="oid" />
+			</type>
+			<type>
+				<code value="id" />
+			</type>
+			<type>
+				<code value="unsignedInt" />
+			</type>
+			<type>
+				<code value="positiveInt" />
+			</type>
+			<type>
+				<code value="markdown" />
+			</type>
+			<type>
+				<code value="Annotation" />
+			</type>
+			<type>
+				<code value="Attachment" />
+			</type>
+			<type>
+				<code value="Identifier" />
+			</type>
+			<type>
+				<code value="CodeableConcept" />
+			</type>
+			<type>
+				<code value="Coding" />
+			</type>
+			<type>
+				<code value="Quantity" />
+			</type>
+			<type>
+				<code value="Range" />
+			</type>
+			<type>
+				<code value="Period" />
+			</type>
+			<type>
+				<code value="Ratio" />
+			</type>
+			<type>
+				<code value="SampledData" />
+			</type>
+			<type>
+				<code value="Signature" />
+			</type>
+			<type>
+				<code value="Reference" />
+			</type>
+			<type>
+				<code value="HumanName" />
+			</type>
+			<type>
+				<code value="Address" />
+			</type>
+			<type>
+				<code value="ContactPoint" />
+			</type>
+			<type>
+				<code value="Timing" />
+			</type>
+			<type>
+				<code value="Meta" />
 			</type>
 			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
 			</mapping>
 		</element>
 		<element id="url">

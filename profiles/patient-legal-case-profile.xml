@@ -1,11 +1,14 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
 	<url value="http://example.com/fhir/StructureDefinition/patient-legal-case" />
 	<name value="patient-legal-case" />
+	<status value="draft" />K
 	<publisher value="Analysts (analysts.com)" />
 	<date value="2016-05-02T15:00:00-06:00" />
 	<fhirVersion value="1.4.0" />
 	<kind value="datatype" />
 	<abstract value="false" />
+	<contextType value="resource" />
+	<context value="Patient" />
 	<baseType value="Extension" />
 	<baseDefinition value="http://hl7.org/fhir/StructureDefinition/Extension" />
 	<derivation value="constraint" />

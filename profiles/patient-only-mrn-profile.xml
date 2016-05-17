@@ -2,6 +2,7 @@
 	<url value="http://example.com/fhir/SD/patient-only-mrn" />
 	<name value="patient-only-mrn" />
 	<status value="draft" />
+	<description value="Only allow MRNs by limiting the type.profile." />
 	<fhirVersion value="1.4.0" />
 	<kind value="resource" />
 	<abstract value="false" />

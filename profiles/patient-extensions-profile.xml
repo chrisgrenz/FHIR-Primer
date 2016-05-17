@@ -187,8 +187,10 @@
 		<element id="doNotCall">
 			<path value="Patient.extension" />
 			<name value="doNotCall" />
-			<short value="Base for all elements" />
+			<short value="Do not call flag." />
 			<definition value="A flag indicating that a patient has requested their contact information be added to the do-not-call list." />
+			<comments value="Comments for do not call flag root element." />
+			<requirements value="Requirements for do not call flag root element." />
 			<min value="0" />
 			<max value="*" />
 			<type>

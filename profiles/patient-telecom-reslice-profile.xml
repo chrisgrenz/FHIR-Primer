@@ -184,8 +184,10 @@
 		<element id="doNotCall">
 			<path value="Patient.extension" />
 			<name value="doNotCall" />
-			<short value="Base for all elements" />
+			<short value="Do not call flag." />
 			<definition value="A flag indicating that a patient has requested their contact information be added to the do-not-call list." />
+			<comments value="Comments for do not call flag root element." />
+			<requirements value="Requirements for do not call flag root element." />
 			<min value="0" />
 			<max value="*" />
 			<type>
@@ -875,44 +877,36 @@
 		<element id="phone.system">
 			<path value="Patient.telecom.system" />
 			<name value="phone/system" />
-			<short value="Phone numbers." />
-			<definition value="A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted." />
-			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
-			<requirements value="People have (primary) ways to contact them in some way such as phone, email." />
+			<short value="phone | fax | email | pager | other" />
+			<definition value="Telecommunications form for contact point - what communications system is required to make use of the contact." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="1" />
-			<max value="*" />
+			<max value="1" />
 			<type>
-				<code value="ContactPoint" />
+				<code value="code" />
 			</type>
-			<condition value="ele-1" />
+			<condition value="cpt-2" />
 			<isSummary value="true" />
+			<binding>
+				<strength value="required" />
+				<description value="Telecommunications form for contact point" />
+				<valueSetUri value="http://hl7.org/fhir/ValueSet/contact-point-system" />
+			</binding>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
-				<map value="XTN" />
+				<map value="XTN.3" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="TEL" />
+				<map value="./scheme" />
 			</mapping>
 			<mapping>
 				<identity value="servd" />
-				<map value="ContactPoint" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="PID-13, PID-14, PID-40" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="telecom" />
-			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".telecom" />
+				<map value="./ContactPointType" />
 			</mapping>
 		</element>
 		<element id="phone/homePhone">
