@@ -74,6 +74,11 @@
 	</extension>
 	<!-- Sliced by Identifier profile (@profile discriminator for non-reference). -->
 	<identifier>
+		<use value="official"/>
+		<system value="http://example.com/fhir/localsystems/PATIENT-ID-MDM"/>
+		<value value="09876543"/>
+	</identifier>
+	<identifier>
 		<!-- Extension to one slice. -->
 		<extension url="http://example.com/fhir/StructureDefinition/patient-identifier-issuing-site">
 			<valueCodeableConcept>
@@ -83,11 +88,6 @@
 				</coding>
 			</valueCodeableConcept>
 		</extension>
-		<use value="official"/>
-		<system value="http://example.com/fhir/localsystems/PATIENT-ID-MDM"/>
-		<value value="09876543"/>
-	</identifier>
-	<identifier>
 		<use value="usual"/>
 		<system value="http://example.com/fhir/localsystems/PATIENT-ID-MRN"/>
 		<value value="13579-24680"/>
