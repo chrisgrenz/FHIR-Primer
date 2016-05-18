@@ -2,19 +2,18 @@
 	<url value="http://example.com/fhir/SD/patient-telecom-reslice" />
 	<name value="patient-telecom-reslice" />
 	<status value="draft" />
-	<fhirVersion value="1.4.0" />
-	<kind value="resource" />
+	<fhirVersion value="0.5" />
+	<type value="constraint" />
 	<abstract value="false" />
-	<baseType value="Patient" />
-	<baseDefinition value="http://example.com/fhir/SD/patient-name-slice" />
-	<derivation value="constraint" />
+	<base value="http://example.com/fhir/SD/patient-name-slice" />
 	<snapshot>
-		<element id="Patient">
+		<element>
 			<path value="Patient" />
 			<short value="Information about an individual or animal receiving health care services" />
 			<definition value="Demographics and other administrative information about an individual or animal receiving care or other health-related services." />
-			<min value="0" />
-			<max value="*" />
+			<requirements value="Tracking patient is the center of the healthcare process." />
+			<min value="1" />
+			<max value="1" />
 			<type>
 				<code value="DomainResource" />
 			</type>
@@ -30,33 +29,23 @@
 				<identity value="rim" />
 				<map value="Patient[classCode=PAT]" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="ClinicalDocument.recordTarget.patientRole" />
-			</mapping>
-			<mapping>
-				<identity value="w5" />
-				<map value="administrative.individual" />
-			</mapping>
 		</element>
-		<element id="id">
+		<element>
 			<path value="Patient.id" />
-			<short value="Logical id of this artifact" />
-			<definition value="The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes." />
+			<short value="Logical id of this artefact" />
+			<definition value="The logical id of the resource, as used in the url for the resoure. Once assigned, this value never changes." />
 			<comments value="The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID." />
 			<min value="0" />
 			<max value="1" />
 			<type>
 				<code value="id" />
 			</type>
-			<condition value="ele-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="meta">
+		<element>
 			<path value="Patient.meta" />
 			<short value="Metadata about the resource" />
 			<definition value="The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource." />
@@ -65,45 +54,41 @@
 			<type>
 				<code value="Meta" />
 			</type>
-			<condition value="ele-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="implicitRules">
+		<element>
 			<path value="Patient.implicitRules" />
 			<short value="A set of rules under which this content was created" />
 			<definition value="A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content." />
-			<comments value="Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible." />
+			<comments value="Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible." />
 			<min value="0" />
 			<max value="1" />
 			<type>
 				<code value="uri" />
 			</type>
-			<condition value="ele-1" />
 			<isModifier value="true" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="language">
+		<element>
 			<path value="Patient.language" />
 			<short value="Language of the resource content" />
 			<definition value="The base language in which the resource is written." />
-			<comments value="Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute)." />
+			<comments value="Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource
+      Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute)." />
 			<min value="0" />
 			<max value="1" />
 			<type>
 				<code value="code" />
 			</type>
-			<condition value="ele-1" />
 			<binding>
 				<strength value="required" />
-				<description value="A human language." />
+				<description value="A human language" />
 				<valueSetUri value="http://tools.ietf.org/html/bcp47" />
 			</binding>
 			<mapping>
@@ -111,7 +96,7 @@
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="text">
+		<element>
 			<path value="Patient.text" />
 			<short value="Text summary of the resource, for human interpretation" />
 			<definition value="A human-readable narrative that contains a summary of the resource, and may be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it &quot;clinically safe&quot; for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety." />
@@ -139,7 +124,7 @@
 				<map value="Act.text?" />
 			</mapping>
 		</element>
-		<element id="contained">
+		<element>
 			<path value="Patient.contained" />
 			<short value="Contained, inline Resources" />
 			<definition value="These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope." />
@@ -161,17 +146,17 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="extension">
+		<element>
 			<path value="Patient.extension" />
 			<short value="Additional Content defined by implementations" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the resource. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
 			<min value="0" />
 			<max value="*" />
 			<type>
 				<code value="Extension" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -181,20 +166,19 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="doNotCall">
+		<element>
 			<path value="Patient.extension" />
 			<name value="doNotCall" />
 			<short value="Do not call flag." />
 			<definition value="A flag indicating that a patient has requested their contact information be added to the do-not-call list." />
 			<comments value="Comments for do not call flag root element." />
 			<requirements value="Requirements for do not call flag root element." />
-			<min value="0" />
-			<max value="*" />
+			<min value="1" />
+			<max value="1" />
 			<type>
 				<code value="Extension" />
 				<profile value="http://example.com/fhir/StructureDefinition/patient-do-not-call" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -204,19 +188,19 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="legalCase">
+		<element>
 			<path value="Patient.extension" />
 			<name value="legalCase" />
 			<label value="Legal Case Flag" />
-			<short value="Base for all elements" />
+			<short value="Optional Extensions Element - found in all resources." />
 			<definition value="A flag indicating that a patient is involved in a legal dispute with the enterprise." />
-			<min value="0" />
-			<max value="*" />
+			<requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
+			<min value="1" />
+			<max value="1" />
 			<type>
 				<code value="Extension" />
 				<profile value="http://example.com/fhir/StructureDefinition/patient-legal-case" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -226,7 +210,7 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="legalCase.value[x]">
+		<element>
 			<path value="Patient.extension.value[x]" />
 			<name value="legalCase.value[x]" />
 			<short value="Value of extension" />
@@ -236,7 +220,6 @@
 			<type>
 				<code value="boolean" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -246,7 +229,7 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="legalCase.valueBoolean">
+		<element>
 			<path value="Patient.extension.valueBoolean" />
 			<name value="legalCase.valueBoolean" />
 			<short value="Value of extension" />
@@ -256,7 +239,6 @@
 			<type>
 				<code value="boolean" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -266,18 +248,18 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="legalCase.valueBoolean.extension">
+		<element>
 			<path value="Patient.extension.valueBoolean.extension" />
 			<name value="legalCase.valueBoolean.extension" />
 			<short value="Additional Content defined by implementations" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
 			<min value="0" />
 			<max value="*" />
 			<type>
 				<code value="Extension" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -287,19 +269,19 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="legalCase.valueBoolean.leadCounsel">
+		<element>
 			<path value="Patient.extension.valueBoolean.extension" />
 			<name value="legalCase.valueBoolean.leadCounsel" />
 			<label value="Lead Counsel" />
-			<short value="Base for all elements" />
+			<short value="Optional Extensions Element - found in all resources." />
 			<definition value="Identification of the the legal counsel assigned to the case in question." />
-			<min value="0" />
-			<max value="*" />
+			<requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
+			<min value="1" />
+			<max value="1" />
 			<type>
 				<code value="Extension" />
 				<profile value="http://example.com/fhir/StructureDefinition/patient-legal-case-lead-counsel" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -309,19 +291,19 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="religion">
+		<element>
 			<path value="Patient.extension" />
 			<name value="religion" />
 			<label value="Patient Religion" />
 			<short value="Patient&#39;s professed religious affiliation" />
 			<definition value="A code classifying a person&#39;s professed religion." />
+			<requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
 			<min value="0" />
 			<max value="1" />
 			<type>
 				<code value="Extension" />
 				<profile value="http://hl7.org/fhir/StructureDefinition/us-core-religion" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -331,18 +313,18 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="researchAuth">
+		<element>
 			<path value="Patient.extension" />
 			<name value="researchAuth" />
-			<short value="Base for all elements" />
+			<short value="Optional Extensions Element - found in all resources." />
 			<definition value="Record of the patients general research authorization status." />
-			<min value="0" />
-			<max value="*" />
+			<requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
+			<min value="1" />
+			<max value="1" />
 			<type>
 				<code value="Extension" />
 				<profile value="http://example.com/fhir/StructureDefinition/patient-research-authorization" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -352,11 +334,12 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="modifierExtension">
+		<element>
 			<path value="Patient.modifierExtension" />
 			<short value="Extensions that cannot be ignored" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions." />
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
 			<alias value="extensions" />
 			<alias value="user content" />
 			<min value="0" />
@@ -364,7 +347,6 @@
 			<type>
 				<code value="Extension" />
 			</type>
-			<condition value="ele-1" />
 			<isModifier value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -379,7 +361,7 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="identifier">
+		<element>
 			<path value="Patient.identifier" />
 			<short value="An identifier for this patient" />
 			<definition value="An identifier for this patient." />
@@ -389,7 +371,6 @@
 			<type>
 				<code value="Identifier" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -415,16 +396,8 @@
 				<identity value="rim" />
 				<map value="id" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".id" />
-			</mapping>
-			<mapping>
-				<identity value="w5" />
-				<map value="id" />
-			</mapping>
 		</element>
-		<element id="active">
+		<element>
 			<path value="Patient.active" />
 			<short value="Whether this patient&#39;s record is in active use" />
 			<definition value="Whether this patient record is in active use." />
@@ -436,7 +409,6 @@
 				<code value="boolean" />
 			</type>
 			<defaultValueBoolean value="true" />
-			<condition value="ele-1" />
 			<isModifier value="true" />
 			<isSummary value="true" />
 			<mapping>
@@ -447,16 +419,8 @@
 				<identity value="rim" />
 				<map value="statusCode" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="w5" />
-				<map value="status" />
-			</mapping>
 		</element>
-		<element id="name">
+		<element>
 			<path value="Patient.name" />
 			<slicing>
 				<discriminator value="use" />
@@ -464,14 +428,13 @@
 			</slicing>
 			<short value="A name associated with the patient" />
 			<definition value="A name associated with the individual." />
-			<comments value="A patient may have multiple names with different uses or applicable periods. For animals, the name is a &quot;HumanName&quot; in the sense that is assigned and used by humans and has the same patterns." />
+			<comments value="A Patient may have multiple names with different uses or applicable periods. For animals, the name is a &quot;HumanName&quot; in the sense that is assigned and used by humans and has the same patterns." />
 			<requirements value="Need to be able to track the patient by multiple names. Examples are your official name and a partner name." />
 			<min value="0" />
 			<max value="*" />
 			<type>
 				<code value="HumanName" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -497,24 +460,19 @@
 				<identity value="rim" />
 				<map value="name" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".patient.name" />
-			</mapping>
 		</element>
-		<element id="officialName">
+		<element>
 			<path value="Patient.name" />
 			<name value="officialName" />
 			<short value="A name associated with the patient" />
 			<definition value="A name associated with the individual." />
-			<comments value="A patient may have multiple names with different uses or applicable periods. For animals, the name is a &quot;HumanName&quot; in the sense that is assigned and used by humans and has the same patterns." />
+			<comments value="A Patient may have multiple names with different uses or applicable periods. For animals, the name is a &quot;HumanName&quot; in the sense that is assigned and used by humans and has the same patterns." />
 			<requirements value="Need to be able to track the patient by multiple names. Examples are your official name and a partner name." />
 			<min value="0" />
 			<max value="1" />
 			<type>
 				<code value="HumanName" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -540,17 +498,13 @@
 				<identity value="rim" />
 				<map value="name" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".patient.name" />
-			</mapping>
 		</element>
-		<element id="officialName.use">
+		<element>
 			<path value="Patient.name.use" />
 			<name value="officialName.use" />
 			<short value="usual | official | temp | nickname | anonymous | old | maiden" />
 			<definition value="Identifies the purpose for this name." />
-			<comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old name etc.for a current/permanent one. Applications can assume that a name is current unless it explicitly says that it is temporary or old." />
+			<comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old name etc for a current/permanent one. Applications can assume that a name is current unless it explicitly says that it is temporary or old." />
 			<requirements value="Allows the appropriate name for a particular context of use to be selected from among a set of names." />
 			<min value="1" />
 			<max value="1" />
@@ -558,13 +512,11 @@
 				<code value="code" />
 			</type>
 			<fixedCode value="official" />
-			<condition value="ele-1" />
 			<isModifier value="true" />
-			<isSummary value="true" />
 			<binding>
 				<strength value="required" />
 				<description value="The use of a human name" />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/name-use" />
+				<valueSetUri value="http://hl7.org/fhir/vs/name-use" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -583,7 +535,7 @@
 				<map value="./NamePurpose" />
 			</mapping>
 		</element>
-		<element id="officialName.text">
+		<element>
 			<path value="Patient.name.text" />
 			<name value="officialName.text" />
 			<short value="Text representation of the full name" />
@@ -595,8 +547,6 @@
 			<type>
 				<code value="string" />
 			</type>
-			<condition value="ele-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -610,7 +560,7 @@
 				<map value="./formatted" />
 			</mapping>
 		</element>
-		<element id="officialName.family">
+		<element>
 			<path value="Patient.name.family" />
 			<name value="officialName.family" />
 			<short value="Family name (often called &#39;Surname&#39;)" />
@@ -621,8 +571,6 @@
 			<type>
 				<code value="string" />
 			</type>
-			<condition value="ele-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -640,7 +588,7 @@
 				<map value="./FamilyName" />
 			</mapping>
 		</element>
-		<element id="officialName.given">
+		<element>
 			<path value="Patient.name.given" />
 			<name value="officialName.given" />
 			<short value="Given names (not always &#39;first&#39;). Includes middle names" />
@@ -651,8 +599,6 @@
 			<type>
 				<code value="string" />
 			</type>
-			<condition value="ele-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -670,19 +616,18 @@
 				<map value="./GivenNames" />
 			</mapping>
 		</element>
-		<element id="maidenName">
+		<element>
 			<path value="Patient.name" />
 			<name value="maidenName" />
 			<short value="A name associated with the patient" />
 			<definition value="A name associated with the individual." />
-			<comments value="A patient may have multiple names with different uses or applicable periods. For animals, the name is a &quot;HumanName&quot; in the sense that is assigned and used by humans and has the same patterns." />
+			<comments value="A Patient may have multiple names with different uses or applicable periods. For animals, the name is a &quot;HumanName&quot; in the sense that is assigned and used by humans and has the same patterns." />
 			<requirements value="Need to be able to track the patient by multiple names. Examples are your official name and a partner name." />
 			<min value="0" />
 			<max value="*" />
 			<type>
 				<code value="HumanName" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -708,17 +653,13 @@
 				<identity value="rim" />
 				<map value="name" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".patient.name" />
-			</mapping>
 		</element>
-		<element id="maidenName.use">
+		<element>
 			<path value="Patient.name.use" />
 			<name value="maidenName.use" />
 			<short value="usual | official | temp | nickname | anonymous | old | maiden" />
 			<definition value="Identifies the purpose for this name." />
-			<comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old name etc.for a current/permanent one. Applications can assume that a name is current unless it explicitly says that it is temporary or old." />
+			<comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old name etc for a current/permanent one. Applications can assume that a name is current unless it explicitly says that it is temporary or old." />
 			<requirements value="Allows the appropriate name for a particular context of use to be selected from among a set of names." />
 			<min value="1" />
 			<max value="1" />
@@ -726,13 +667,11 @@
 				<code value="code" />
 			</type>
 			<fixedCode value="maiden" />
-			<condition value="ele-1" />
 			<isModifier value="true" />
-			<isSummary value="true" />
 			<binding>
 				<strength value="required" />
 				<description value="The use of a human name" />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/name-use" />
+				<valueSetUri value="http://hl7.org/fhir/vs/name-use" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -751,7 +690,7 @@
 				<map value="./NamePurpose" />
 			</mapping>
 		</element>
-		<element id="maidenName.family">
+		<element>
 			<path value="Patient.name.family" />
 			<name value="maidenName.family" />
 			<short value="Family name (often called &#39;Surname&#39;)" />
@@ -762,8 +701,6 @@
 			<type>
 				<code value="string" />
 			</type>
-			<condition value="ele-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -781,7 +718,7 @@
 				<map value="./FamilyName" />
 			</mapping>
 		</element>
-		<element id="telecom">
+		<element>
 			<path value="Patient.telecom" />
 			<slicing>
 				<discriminator value="system" />
@@ -789,14 +726,14 @@
 			</slicing>
 			<short value="A contact detail for the individual" />
 			<definition value="A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted." />
-			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
+			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods. 
+      May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
 			<requirements value="People have (primary) ways to contact them in some way such as phone, email." />
 			<min value="0" />
 			<max value="*" />
 			<type>
 				<code value="ContactPoint" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -822,12 +759,8 @@
 				<identity value="rim" />
 				<map value="telecom" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".telecom" />
-			</mapping>
 		</element>
-		<element id="phone">
+		<element>
 			<path value="Patient.telecom" />
 			<name value="phone" />
 			<slicing>
@@ -836,14 +769,14 @@
 			</slicing>
 			<short value="Phone numbers." />
 			<definition value="A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted." />
-			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
+			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods. 
+      May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
 			<requirements value="People have (primary) ways to contact them in some way such as phone, email." />
 			<min value="0" />
 			<max value="*" />
 			<type>
 				<code value="ContactPoint" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -869,15 +802,11 @@
 				<identity value="rim" />
 				<map value="telecom" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".telecom" />
-			</mapping>
 		</element>
-		<element id="phone.system">
+		<element>
 			<path value="Patient.telecom.system" />
 			<name value="phone/system" />
-			<short value="phone | fax | email | pager | other" />
+			<short value="phone | fax | email | url" />
 			<definition value="Telecommunications form for contact point - what communications system is required to make use of the contact." />
 			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="1" />
@@ -886,11 +815,10 @@
 				<code value="code" />
 			</type>
 			<condition value="cpt-2" />
-			<isSummary value="true" />
 			<binding>
 				<strength value="required" />
 				<description value="Telecommunications form for contact point" />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/contact-point-system" />
+				<valueSetUri value="http://hl7.org/fhir/vs/contact-point-system" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -909,19 +837,19 @@
 				<map value="./ContactPointType" />
 			</mapping>
 		</element>
-		<element id="phone/homePhone">
+		<element>
 			<path value="Patient.telecom" />
 			<name value="phone/homePhone" />
 			<short value="Phone numbers." />
 			<definition value="A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted." />
-			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
+			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods. 
+      May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
 			<requirements value="People have (primary) ways to contact them in some way such as phone, email." />
 			<min value="0" />
 			<max value="*" />
 			<type>
 				<code value="ContactPoint" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -947,17 +875,13 @@
 				<identity value="rim" />
 				<map value="telecom" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".telecom" />
-			</mapping>
 		</element>
-		<element id="phone/homePhone.use">
+		<element>
 			<path value="Patient.telecom.use" />
 			<name value="phone/homePhone.use" />
 			<short value="home | work | temp | old | mobile - purpose of this contact point" />
 			<definition value="Identifies the purpose for the contact point." />
-			<comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old contact etc.for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old." />
+			<comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old contact etc for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old." />
 			<requirements value="Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose." />
 			<min value="1" />
 			<max value="1" />
@@ -965,13 +889,11 @@
 				<code value="code" />
 			</type>
 			<fixedCode value="home" />
-			<condition value="ele-1" />
 			<isModifier value="true" />
-			<isSummary value="true" />
 			<binding>
 				<strength value="required" />
 				<description value="Use of contact point" />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/contact-point-use" />
+				<valueSetUri value="http://hl7.org/fhir/vs/contact-point-use" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -990,19 +912,19 @@
 				<map value="./ContactPointPurpose" />
 			</mapping>
 		</element>
-		<element id="phone/mobilePhone">
+		<element>
 			<path value="Patient.telecom" />
 			<name value="phone/mobilePhone" />
 			<short value="Phone numbers." />
 			<definition value="A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted." />
-			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
+			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods. 
+      May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
 			<requirements value="People have (primary) ways to contact them in some way such as phone, email." />
 			<min value="0" />
 			<max value="*" />
 			<type>
 				<code value="ContactPoint" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -1028,17 +950,13 @@
 				<identity value="rim" />
 				<map value="telecom" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".telecom" />
-			</mapping>
 		</element>
-		<element id="phone/mobilePhone.use">
+		<element>
 			<path value="Patient.telecom.use" />
 			<name value="phone/mobilePhone.use" />
 			<short value="home | work | temp | old | mobile - purpose of this contact point" />
 			<definition value="Identifies the purpose for the contact point." />
-			<comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old contact etc.for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old." />
+			<comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old contact etc for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old." />
 			<requirements value="Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose." />
 			<min value="1" />
 			<max value="1" />
@@ -1046,13 +964,11 @@
 				<code value="code" />
 			</type>
 			<fixedCode value="mobile" />
-			<condition value="ele-1" />
 			<isModifier value="true" />
-			<isSummary value="true" />
 			<binding>
 				<strength value="required" />
 				<description value="Use of contact point" />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/contact-point-use" />
+				<valueSetUri value="http://hl7.org/fhir/vs/contact-point-use" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -1071,7 +987,7 @@
 				<map value="./ContactPointPurpose" />
 			</mapping>
 		</element>
-		<element id="email">
+		<element>
 			<path value="Patient.telecom" />
 			<name value="email" />
 			<slicing>
@@ -1080,14 +996,14 @@
 			</slicing>
 			<short value="A contact detail for the individual" />
 			<definition value="A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted." />
-			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
+			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods. 
+      May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
 			<requirements value="People have (primary) ways to contact them in some way such as phone, email." />
 			<min value="0" />
 			<max value="*" />
 			<type>
 				<code value="ContactPoint" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -1113,15 +1029,11 @@
 				<identity value="rim" />
 				<map value="telecom" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".telecom" />
-			</mapping>
 		</element>
-		<element id="email.system">
+		<element>
 			<path value="Patient.telecom.system" />
 			<name value="email/system" />
-			<short value="phone | fax | email | pager | other" />
+			<short value="phone | fax | email | url" />
 			<definition value="Telecommunications form for contact point - what communications system is required to make use of the contact." />
 			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="1" />
@@ -1131,11 +1043,10 @@
 			</type>
 			<fixedCode value="email" />
 			<condition value="cpt-2" />
-			<isSummary value="true" />
 			<binding>
 				<strength value="required" />
 				<description value="Telecommunications form for contact point" />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/contact-point-system" />
+				<valueSetUri value="http://hl7.org/fhir/vs/contact-point-system" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -1154,19 +1065,19 @@
 				<map value="./ContactPointType" />
 			</mapping>
 		</element>
-		<element id="email/workEmail">
+		<element>
 			<path value="Patient.telecom" />
 			<name value="email/workEmail" />
 			<short value="A contact detail for the individual" />
 			<definition value="A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted." />
-			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
+			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods. 
+      May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
 			<requirements value="People have (primary) ways to contact them in some way such as phone, email." />
 			<min value="0" />
 			<max value="*" />
 			<type>
 				<code value="ContactPoint" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -1192,17 +1103,13 @@
 				<identity value="rim" />
 				<map value="telecom" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".telecom" />
-			</mapping>
 		</element>
-		<element id="email/workEmail.use">
+		<element>
 			<path value="Patient.telecom.use" />
 			<name value="email/workEmail.use" />
 			<short value="home | work | temp | old | mobile - purpose of this contact point" />
 			<definition value="Identifies the purpose for the contact point." />
-			<comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old contact etc.for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old." />
+			<comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old contact etc for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old." />
 			<requirements value="Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose." />
 			<min value="1" />
 			<max value="1" />
@@ -1210,13 +1117,11 @@
 				<code value="code" />
 			</type>
 			<fixedCode value="work" />
-			<condition value="ele-1" />
 			<isModifier value="true" />
-			<isSummary value="true" />
 			<binding>
 				<strength value="required" />
 				<description value="Use of contact point" />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/contact-point-use" />
+				<valueSetUri value="http://hl7.org/fhir/vs/contact-point-use" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -1235,19 +1140,19 @@
 				<map value="./ContactPointPurpose" />
 			</mapping>
 		</element>
-		<element id="email/homeEmail">
+		<element>
 			<path value="Patient.telecom" />
 			<name value="email/homeEmail" />
 			<short value="A contact detail for the individual" />
 			<definition value="A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted." />
-			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
+			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods. 
+      May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
 			<requirements value="People have (primary) ways to contact them in some way such as phone, email." />
 			<min value="0" />
 			<max value="*" />
 			<type>
 				<code value="ContactPoint" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -1273,17 +1178,13 @@
 				<identity value="rim" />
 				<map value="telecom" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".telecom" />
-			</mapping>
 		</element>
-		<element id="email/homeEmail.use">
+		<element>
 			<path value="Patient.telecom.use" />
 			<name value="email/homeEmail.use" />
 			<short value="home | work | temp | old | mobile - purpose of this contact point" />
 			<definition value="Identifies the purpose for the contact point." />
-			<comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old contact etc.for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old." />
+			<comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary or old contact etc for a current/permanent one. Applications can assume that a contact is current unless it explicitly says that it is temporary or old." />
 			<requirements value="Need to track the way a person uses this contact, so a user can choose which is appropriate for their purpose." />
 			<min value="1" />
 			<max value="1" />
@@ -1291,13 +1192,11 @@
 				<code value="code" />
 			</type>
 			<fixedCode value="home" />
-			<condition value="ele-1" />
 			<isModifier value="true" />
-			<isSummary value="true" />
 			<binding>
 				<strength value="required" />
 				<description value="Use of contact point" />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/contact-point-use" />
+				<valueSetUri value="http://hl7.org/fhir/vs/contact-point-use" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -1316,19 +1215,19 @@
 				<map value="./ContactPointPurpose" />
 			</mapping>
 		</element>
-		<element id="pager">
+		<element>
 			<path value="Patient.telecom" />
 			<name value="pager" />
 			<short value="A contact detail for the individual" />
 			<definition value="A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted." />
-			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
+			<comments value="A Patient may have multiple ways to be contacted with different uses or applicable periods. 
+      May need to have options for contacting the person urgently and also to help with identification. The address may not go directly to the individual, but may reach another party that is able to proxy for the patient (i.e. home phone, or pet owner&#39;s phone)." />
 			<requirements value="People have (primary) ways to contact them in some way such as phone, email." />
 			<min value="0" />
 			<max value="*" />
 			<type>
 				<code value="ContactPoint" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -1354,15 +1253,11 @@
 				<identity value="rim" />
 				<map value="telecom" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".telecom" />
-			</mapping>
 		</element>
-		<element id="pager.system">
+		<element>
 			<path value="Patient.telecom.system" />
 			<name value="pager.system" />
-			<short value="phone | fax | email | pager | other" />
+			<short value="phone | fax | email | url" />
 			<definition value="Telecommunications form for contact point - what communications system is required to make use of the contact." />
 			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="1" />
@@ -1372,11 +1267,10 @@
 			</type>
 			<fixedCode value="pager" />
 			<condition value="cpt-2" />
-			<isSummary value="true" />
 			<binding>
 				<strength value="required" />
 				<description value="Telecommunications form for contact point" />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/contact-point-system" />
+				<valueSetUri value="http://hl7.org/fhir/vs/contact-point-system" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -1395,23 +1289,23 @@
 				<map value="./ContactPointType" />
 			</mapping>
 		</element>
-		<element id="gender">
+		<element>
 			<path value="Patient.gender" />
 			<short value="male | female | other | unknown" />
 			<definition value="Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes." />
-			<comments value="The gender may not match the biological sex as determined by genetics, or the individual&#39;s preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than M and F, though the vast majority of systems and contexts only support M and F.  Systems providing decision support or enforcing business rules should ideally do this on the basis of Observations dealing with the specific gender aspect of interest (anatomical, chromosonal, social, etc.)  However, because these observations are infrequently recorded, defaulting to the administrative gender is common practice.  Where such defaulting occurs, rule enforcement should allow for the variation between administrative and biological, chromosonal and other gender aspects.  For example, an alert about a hysterectomy on a male should be handled as a warning or overrideable error, not a &quot;hard&quot; error." />
+			<comments value="The gender may not match the biological sex as determined by genetics, or the individual&#39;s preferred identification. Note that for both humans and particularly animals, there are other legitimate possibilities than M and F, though the vast majority of systems and contexts only support M and F. 
+      Systems providing decision support or enforcing business rules should ideally do this on the basis of Observations dealing with the specific gender aspect of interest (anatomical, chromosonal, social, etc.)  However, because these observations are infrequently recorded, defaulting to the administrative gender is common practice.  Where such defaulting occurs, rule enforcement should allow for the variation between administrative and biological, chromosonal and other gender aspects.  For example, an alert about a hysterectomy on a male should be handled as a warning or overrideable error, not a &quot;hard&quot; error." />
 			<requirements value="Needed for identification of the individual, in combination with (at least) name and birth date. Gender of individual drives many clinical processes." />
 			<min value="0" />
 			<max value="1" />
 			<type>
 				<code value="code" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<binding>
 				<strength value="required" />
-				<description value="The gender of a person used for administrative purposes." />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/administrative-gender" />
+				<description value="The gender of a person used for administrative purposes" />
+				<valueSetUri value="http://hl7.org/fhir/vs/administrative-gender" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -1425,23 +1319,18 @@
 				<identity value="rim" />
 				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/administrativeGender" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".patient.administrativeGenderCode" />
-			</mapping>
 		</element>
-		<element id="birthDate">
+		<element>
 			<path value="Patient.birthDate" />
 			<short value="The date of birth for the individual" />
 			<definition value="The date of birth for the individual." />
-			<comments value="At least an estimated year should be provided as a guess if the real DOB is unknown  There is a standard extension &quot;patient-birthTime&quot; available that should be used where Time is required (such as in maternaty/infant care systems)." />
+			<comments value="At least an estimated year should be provided as a guess if the real dob is unknown." />
 			<requirements value="Age of the individual drives many clinical processes." />
 			<min value="0" />
 			<max value="1" />
 			<type>
 				<code value="date" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -1456,15 +1345,11 @@
 				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/birthTime" />
 			</mapping>
 			<mapping>
-				<identity value="cda" />
-				<map value=".patient.birthTime" />
-			</mapping>
-			<mapping>
 				<identity value="loinc" />
 				<map value="21112-8" />
 			</mapping>
 		</element>
-		<element id="deceased[x]">
+		<element>
 			<path value="Patient.deceased[x]" />
 			<short value="Indicates if the individual is deceased or not" />
 			<definition value="Indicates if the individual is deceased or not." />
@@ -1478,27 +1363,14 @@
 			<type>
 				<code value="dateTime" />
 			</type>
-			<condition value="ele-1" />
 			<isModifier value="true" />
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="PID-30  (bool) and PID-29 (datetime)" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/deceasedInd, player[classCode=PSN|ANM and determinerCode=INSTANCE]/deceasedTime" />
-			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="address">
+		<element>
 			<path value="Patient.address" />
 			<short value="Addresses for the individual" />
 			<definition value="Addresses for the individual." />
@@ -1509,7 +1381,6 @@
 			<type>
 				<code value="Address" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -1535,12 +1406,8 @@
 				<identity value="rim" />
 				<map value="addr" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".addr" />
-			</mapping>
 		</element>
-		<element id="maritalStatus">
+		<element>
 			<path value="Patient.maritalStatus" />
 			<short value="Marital (civil) status of a patient" />
 			<definition value="This field contains a patient&#39;s most recent marital (civil) status." />
@@ -1551,11 +1418,10 @@
 			<type>
 				<code value="CodeableConcept" />
 			</type>
-			<condition value="ele-1" />
 			<binding>
 				<strength value="required" />
-				<description value="The domestic partnership status of a person." />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/marital-status" />
+				<description value="The domestic partnership status of a person" />
+				<valueSetUri value="http://hl7.org/fhir/vs/marital-status" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -1570,10 +1436,6 @@
 				<map value="CD" />
 			</mapping>
 			<mapping>
-				<identity value="orim" />
-				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="PID-16" />
 			</mapping>
@@ -1581,15 +1443,11 @@
 				<identity value="rim" />
 				<map value="player[classCode=PSN]/maritalStatusCode" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".patient.maritalStatusCode" />
-			</mapping>
 		</element>
-		<element id="multipleBirth[x]">
+		<element>
 			<path value="Patient.multipleBirth[x]" />
 			<short value="Whether patient is part of a multiple birth" />
-			<definition value="Indicates whether the patient is part of a multiple (bool) or indicates the actual birth order (integer)." />
+			<definition value="Indicates whether the patient is part of a multiple or indicates the actual birth order." />
 			<comments value="Where the valueInteger is provided, the number is the birth number in the sequence.
       E.g. The middle birth in tripplets would be valueInteger=2 and the third born would have valueInteger=3
       If a bool value was provided for this tripplets examle, then all 3 patient records would have valueBool=true (the ordering is not indicated)." />
@@ -1602,7 +1460,6 @@
 			<type>
 				<code value="integer" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1611,16 +1468,8 @@
 				<identity value="v2" />
 				<map value="PID-24 (bool), PID-25 (integer)" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/multipleBirthInd,  player[classCode=PSN|ANM and determinerCode=INSTANCE]/multipleBirthOrderNumber" />
-			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="photo">
+		<element>
 			<path value="Patient.photo" />
 			<short value="Image of the patient" />
 			<definition value="Image of the patient." />
@@ -1631,7 +1480,6 @@
 			<type>
 				<code value="Attachment" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1652,12 +1500,8 @@
 				<identity value="rim" />
 				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/desc" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="contact">
+		<element>
 			<path value="Patient.contact" />
 			<short value="A contact party (e.g. guardian, partner, friend) for the patient" />
 			<definition value="A contact party (e.g. guardian, partner, friend) for the patient." />
@@ -1668,12 +1512,11 @@
 			<type>
 				<code value="BackboneElement" />
 			</type>
-			<condition value="ele-1" />
 			<constraint>
 				<key value="pat-1" />
+				<name value="pat-1" />
 				<severity value="error" />
 				<human value="SHALL at least contain a contact&#39;s details or a reference to an organization" />
-				<expression value="name.exists() or telecom.exists() or address.exists() or organization.exists()" />
 				<xpath value="exists(f:name) or exists(f:telecom) or exists(f:address) or exists(f:organization)" />
 			</constraint>
 			<mapping>
@@ -1689,11 +1532,11 @@
 				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/scopedRole[classCode=CON]" />
 			</mapping>
 			<mapping>
-				<identity value="cda" />
+				<identity value="" />
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="contact.relationship">
+		<element>
 			<path value="Patient.contact.relationship" />
 			<short value="The kind of relationship" />
 			<definition value="The nature of the relationship between the patient and the contact person." />
@@ -1704,11 +1547,10 @@
 			<type>
 				<code value="CodeableConcept" />
 			</type>
-			<condition value="ele-1" />
 			<binding>
-				<strength value="extensible" />
-				<description value="The nature of the relationship between a patient and a contact person for that patient." />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/patient-contact-relationship" />
+				<strength value="required" />
+				<description value="The nature of the relationship between a patient and a contact person for that patient" />
+				<valueSetUri value="http://hl7.org/fhir/vs/patient-contact-relationship" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -1723,10 +1565,6 @@
 				<map value="CD" />
 			</mapping>
 			<mapping>
-				<identity value="orim" />
-				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="NK1-7, NK1-3" />
 			</mapping>
@@ -1734,12 +1572,8 @@
 				<identity value="rim" />
 				<map value="code" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="contact.name">
+		<element>
 			<path value="Patient.contact.name" />
 			<short value="A name associated with the contact person" />
 			<definition value="A name associated with the contact person." />
@@ -1750,7 +1584,6 @@
 			<type>
 				<code value="HumanName" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1775,23 +1608,19 @@
 				<identity value="rim" />
 				<map value="name" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="contact.telecom">
+		<element>
 			<path value="Patient.contact.telecom" />
 			<short value="A contact detail for the person" />
 			<definition value="A contact detail for the person, e.g. a telephone number or an email address." />
-			<comments value="Contact may have multiple ways to be contacted with different uses or applicable periods.  May need to have options for contacting the person urgently, and also to help with identification." />
+			<comments value="Contact may have multiple ways to be contacted with different uses or applicable periods. 
+      May need to have options for contacting the person urgently, and also to help with identification." />
 			<requirements value="People have (primary) ways to contact them in some way such as phone, email." />
 			<min value="0" />
 			<max value="*" />
 			<type>
 				<code value="ContactPoint" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1816,12 +1645,8 @@
 				<identity value="rim" />
 				<map value="telecom" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="contact.address">
+		<element>
 			<path value="Patient.contact.address" />
 			<short value="Address for the contact person" />
 			<definition value="Address for the contact person." />
@@ -1832,7 +1657,6 @@
 			<type>
 				<code value="Address" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1857,12 +1681,8 @@
 				<identity value="rim" />
 				<map value="addr" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="contact.gender">
+		<element>
 			<path value="Patient.contact.gender" />
 			<short value="male | female | other | unknown" />
 			<definition value="Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes." />
@@ -1873,11 +1693,10 @@
 			<type>
 				<code value="code" />
 			</type>
-			<condition value="ele-1" />
 			<binding>
 				<strength value="required" />
-				<description value="The gender of a person used for administrative purposes." />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/administrative-gender" />
+				<description value="The gender of a person used for administrative purposes" />
+				<valueSetUri value="http://hl7.org/fhir/vs/administrative-gender" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -1891,12 +1710,8 @@
 				<identity value="rim" />
 				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/administrativeGender" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="contact.organization">
+		<element>
 			<path value="Patient.contact.organization" />
 			<short value="Organization that is associated with the contact" />
 			<definition value="Organization on behalf of which the contact is acting or for which the contact is working." />
@@ -1924,22 +1739,17 @@
 				<identity value="rim" />
 				<map value="scoper" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="contact.period">
+		<element>
 			<path value="Patient.contact.period" />
 			<short value="The period during which this contact person or organization is valid to be contacted relating to this patient" />
 			<definition value="The period during which this contact person or organization is valid to be contacted relating to this patient." />
-			<comments value="This is not a duration - that&#39;s a measure of time (a separate type), but a duration that occurs at a fixed value of time. A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;). If duration is required, specify the type as Interval|Duration." />
+			<comments value="This is not a duration - that&#39;s a measure of time (a separate type), but a duration that occurs at a fixed value of time. A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;). If a duration might be required, specify the type as Interval|Duration." />
 			<min value="0" />
 			<max value="1" />
 			<type>
 				<code value="Period" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1957,22 +1767,21 @@
 				<map value="effectiveTime" />
 			</mapping>
 			<mapping>
-				<identity value="cda" />
+				<identity value="" />
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="animal">
+		<element>
 			<path value="Patient.animal" />
-			<short value="This patient is known to be an animal (non-human)" />
-			<definition value="This patient is known to be an animal." />
-			<comments value="The animal element is labeled &quot;Is Modifier&quot; since patients may be non-human. Systems SHALL either handle patient details appropriately (e.g. inform users patient is not human) or reject declared animal records.   The absense of the animal element does not imply that the patient is a human. If a system requires such a positive assertion that the patient is human, an extension will be required.  (Do not use a species of homo-sapiens in animal species, as this would incorrectly infer that the patient is an animal)." />
+			<short value="If this patient is an animal (non-human)" />
+			<definition value="This element has a value if the patient is an animal." />
+			<comments value="The animal element is labeled &quot;Is Modifier&quot; since patients may be non-human. Systems SHALL either handle patient details appropriately (e.g. inform users patient is not human) or reject non-human patient records." />
 			<requirements value="Many clinical systems are extended to care for animal patients as well as human." />
 			<min value="0" />
 			<max value="1" />
 			<type>
 				<code value="BackboneElement" />
 			</type>
-			<condition value="ele-1" />
 			<isModifier value="true" />
 			<isSummary value="true" />
 			<mapping>
@@ -1988,27 +1797,26 @@
 				<map value="player[classCode=ANM]" />
 			</mapping>
 			<mapping>
-				<identity value="cda" />
+				<identity value="" />
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="animal.species">
+		<element>
 			<path value="Patient.animal.species" />
 			<short value="E.g. Dog, Cow" />
 			<definition value="Identifies the high level taxonomic categorization of the kind of animal." />
-			<comments value="If the patient is non-human, at least a species SHALL be specified. Species SHALL be a widely recognised taxonomic classification.  It may or may not be Linnaean taxonomy and may or may not be at the level of species. If the level is finer than species--such as a breed code--the code system used SHALL allow inference of the species.  (The common example is that the word &quot;Hereford&quot; does not allow inference of the species Bos taurus, because there is a Hereford pig breed, but the SNOMED CT code for &quot;Hereford Cattle Breed&quot; does.)." />
+			<comments value="If the patient is non-human, at least a species SHALL be specified. Species SHALL be a widely recognised taxonomic classification.  It may or may not be Linnaean taxonomy and may or may not be at the level of species. If the level is finer than species--such as a breed code--the code system used SHALL allow inference of the species.  (The common example is that the word &quot;Hereford&quot; does not allow inference of the species Bos taurus, because there is a Hereford pig breed, but the SNOMED code for &quot;Hereford Cattle Breed&quot; does.)." />
 			<requirements value="Need to know what kind of animal." />
 			<min value="1" />
 			<max value="1" />
 			<type>
 				<code value="CodeableConcept" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<binding>
 				<strength value="example" />
-				<description value="The species of an animal." />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/animal-species" />
+				<description value="The species of an animal" />
+				<valueSetUri value="http://hl7.org/fhir/vs/animal-species" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -2023,10 +1831,6 @@
 				<map value="CD" />
 			</mapping>
 			<mapping>
-				<identity value="orim" />
-				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="PID-35" />
 			</mapping>
@@ -2034,12 +1838,8 @@
 				<identity value="rim" />
 				<map value="code" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="animal.breed">
+		<element>
 			<path value="Patient.animal.breed" />
 			<short value="E.g. Poodle, Angus" />
 			<definition value="Identifies the detailed categorization of the kind of animal." />
@@ -2050,12 +1850,11 @@
 			<type>
 				<code value="CodeableConcept" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<binding>
 				<strength value="example" />
-				<description value="The breed of an animal." />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/animal-breeds" />
+				<description value="The breed of an animal" />
+				<valueSetUri value="http://hl7.org/fhir/vs/animal-breeds" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -2070,10 +1869,6 @@
 				<map value="CD" />
 			</mapping>
 			<mapping>
-				<identity value="orim" />
-				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="PID-37" />
 			</mapping>
@@ -2081,12 +1876,8 @@
 				<identity value="rim" />
 				<map value="playedRole[classCode=GEN]/scoper[classCode=ANM, determinerCode=KIND]/code" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="animal.genderStatus">
+		<element>
 			<path value="Patient.animal.genderStatus" />
 			<short value="E.g. Neutered, Intact" />
 			<definition value="Indicates the current state of the animal&#39;s reproductive organs." />
@@ -2097,12 +1888,11 @@
 			<type>
 				<code value="CodeableConcept" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<binding>
 				<strength value="example" />
-				<description value="The state of the animal&#39;s reproductive organs." />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/animal-genderstatus" />
+				<description value="The state of the animal&#39;s reproductive organs" />
+				<valueSetUri value="http://hl7.org/fhir/vs/animal-genderstatus" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -2117,10 +1907,6 @@
 				<map value="CD" />
 			</mapping>
 			<mapping>
-				<identity value="orim" />
-				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="N/A" />
 			</mapping>
@@ -2128,23 +1914,20 @@
 				<identity value="rim" />
 				<map value="genderStatusCode" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="communication">
+		<element>
 			<path value="Patient.communication" />
 			<short value="A list of Languages which may be used to communicate with the patient about his or her health" />
 			<definition value="Languages which may be used to communicate with the patient about his or her health." />
-			<comments value="If no language is specified, this *implies* that the default local language is spoken.  If you need to convey proficiency for multiple modes then you need multiple Patient.Communication associations.   For animals, language is not a relevant field, and should be absent from the instance. If the Patient does not speak the default local language, then the Interpreter Required Standard can be used to explicitly declare that an interpreter is required." />
+			<comments value="If no language is specified, this *implies* that the default local language is spoken.
+      If you need to convey proficiency for multiple modes than you need multiple Patient.Communication associations. 
+      For animals, language is not a relevant field, and should be absent from the instance. If the Patient does not speak the default local language, then the Interpreter Required Standard can be used to explicitly declare that an interpreter is required." />
 			<requirements value="If a patient does not speak the local language, interpreters may be required, so languages spoken and proficiency is an important things to keep track of both for patient and other persons of interest." />
 			<min value="0" />
 			<max value="*" />
 			<type>
 				<code value="BackboneElement" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -2158,14 +1941,14 @@
 				<map value="LanguageCommunication" />
 			</mapping>
 			<mapping>
-				<identity value="cda" />
+				<identity value="" />
 				<map value="patient.languageCommunication" />
 			</mapping>
 		</element>
-		<element id="communication.language">
+		<element>
 			<path value="Patient.communication.language" />
 			<short value="The language which can be used to communicate with the patient about his or her health" />
-			<definition value="The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. &quot;en&quot; for English, or &quot;en-US&quot; for American English versus &quot;en-EN&quot; for England English." />
+			<definition value="The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case. E.g. &quot;en&quot; for English, or &quot;en-US&quot; for American English versus &quot;en-EN&quot; for England English." />
 			<comments value="The structure aa-BB with this exact casing is one the most widely used notations for locale. However not all systems actually code this but instead have it as free text. Hence CodeableConcept instead of code as the data type." />
 			<requirements value="Most systems in multilingual countries will want to convey language. Not all systems actually need the regional dialect." />
 			<min value="1" />
@@ -2173,10 +1956,9 @@
 			<type>
 				<code value="CodeableConcept" />
 			</type>
-			<condition value="ele-1" />
 			<binding>
 				<strength value="required" />
-				<description value="A human language." />
+				<description value="A human language" />
 				<valueSetUri value="http://tools.ietf.org/html/bcp47" />
 			</binding>
 			<mapping>
@@ -2192,10 +1974,6 @@
 				<map value="CD" />
 			</mapping>
 			<mapping>
-				<identity value="orim" />
-				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="PID-15, LAN-2" />
 			</mapping>
@@ -2203,15 +1981,11 @@
 				<identity value="rim" />
 				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/languageCommunication/code" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".languageCode" />
-			</mapping>
 		</element>
-		<element id="communication.preferred">
+		<element>
 			<path value="Patient.communication.preferred" />
 			<short value="Language preference indicator" />
-			<definition value="Indicates whether or not the patient prefers this language (over other languages he masters up a certain level)." />
+			<definition value="Indicates whether or not the Patient prefers this language (over other languages he masters up a certain level)." />
 			<comments value="This language is specifically identified for communicating healthcare information." />
 			<requirements value="People that master multiple languages up to certain level may prefer one or more, i.e. feel more confident in communicating in a particular language making other languages sort of a fall back method." />
 			<min value="0" />
@@ -2219,7 +1993,6 @@
 			<type>
 				<code value="boolean" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -2232,14 +2005,10 @@
 				<identity value="rim" />
 				<map value="preferenceInd" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".preferenceInd" />
-			</mapping>
 		</element>
-		<element id="careProvider">
+		<element>
 			<path value="Patient.careProvider" />
-			<short value="Patient&#39;s nominated primary care provider" />
+			<short value="Patient&#39;s nominated care provider" />
 			<definition value="Patient&#39;s nominated care provider." />
 			<comments value="This may be the primary care provider (in a GP context), or it may be a patient nominated care manager in a community/disablity setting, or even organization that will provide people to perform the care provider roles.
       This is not to be used to record Care Teams, these should be recorded on either the CarePlan or EpisodeOfCare resources." />
@@ -2253,7 +2022,6 @@
 				<code value="Reference" />
 				<profile value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -2263,19 +2031,11 @@
 				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PD1-4" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
 				<map value="subjectOf.CareEvent.performer.AssignedEntity" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="managingOrganization">
+		<element>
 			<path value="Patient.managingOrganization" />
 			<short value="Organization that is the custodian of the patient record" />
 			<definition value="Organization that is the custodian of the patient record." />
@@ -2287,7 +2047,6 @@
 				<code value="Reference" />
 				<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -2301,24 +2060,19 @@
 				<identity value="rim" />
 				<map value="scoper" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".providerOrganization" />
-			</mapping>
 		</element>
-		<element id="link">
+		<element>
 			<path value="Patient.link" />
 			<short value="Link to another patient resource that concerns the same actual person" />
 			<definition value="Link to another patient resource that concerns the same actual patient." />
 			<comments value="There is no assumption that linked patient records have mutual links." />
-			<requirements value="There are multiple usecases: 
-      * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple server" />
+			<requirements value="There are multiple usecases: * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple servers." />
 			<min value="0" />
 			<max value="*" />
 			<type>
 				<code value="BackboneElement" />
 			</type>
-			<condition value="ele-1" />
+			<isModifier value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -2332,11 +2086,11 @@
 				<map value="outboundLink" />
 			</mapping>
 			<mapping>
-				<identity value="cda" />
+				<identity value="" />
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="link.other">
+		<element>
 			<path value="Patient.link.other" />
 			<short value="The other patient resource that the link refers to" />
 			<definition value="The other patient resource that the link refers to." />
@@ -2346,7 +2100,6 @@
 				<code value="Reference" />
 				<profile value="http://hl7.org/fhir/StructureDefinition/Patient" />
 			</type>
-			<condition value="ele-1" />
 			<isModifier value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -2364,12 +2117,8 @@
 				<identity value="rim" />
 				<map value="id" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="link.type">
+		<element>
 			<path value="Patient.link.type" />
 			<short value="replace | refer | seealso - type of link" />
 			<definition value="The type of link between this patient resource and another patient resource." />
@@ -2379,12 +2128,11 @@
 			<type>
 				<code value="code" />
 			</type>
-			<condition value="ele-1" />
 			<isModifier value="true" />
 			<binding>
 				<strength value="required" />
 				<description value="The type of link between this patient resource and another patient resource." />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/link-type" />
+				<valueSetUri value="http://hl7.org/fhir/vs/link-type" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -2394,24 +2142,20 @@
 				<identity value="rim" />
 				<map value="typeCode" />
 			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 	</snapshot>
 	<differential>
-		<element id="Patient">
+		<element>
 			<path value="Patient" />
 		</element>
-		<element id="telecom">
+		<element>
 			<path value="Patient.telecom" />
 			<slicing>
 				<discriminator value="system" />
 				<rules value="open" />
 			</slicing>
 		</element>
-		<element id="phone">
+		<element>
 			<path value="Patient.telecom" />
 			<name value="phone" />
 			<slicing>
@@ -2420,24 +2164,24 @@
 			</slicing>
 			<short value="Phone numbers." />
 		</element>
-		<element id="phone/homePhone.use">
+		<element>
 			<path value="Patient.telecom.use" />
 			<name value="phone/homePhone.use" />
 			<min value="1" />
 			<fixedCode value="home" />
 		</element>
-		<element id="phone/mobilePhone.use">
+		<element>
 			<path value="Patient.telecom.use" />
 			<name value="phone/mobilePhone.use" />
 			<min value="1" />
 			<fixedCode value="mobile" />
 		</element>
-		<element id="phone.system">
+		<element>
 			<path value="Patient.telecom.system" />
 			<name value="phone/system" />
 			<min value="1" />
 		</element>
-		<element id="email">
+		<element>
 			<path value="Patient.telecom" />
 			<name value="email" />
 			<slicing>
@@ -2445,25 +2189,25 @@
 				<rules value="open" />
 			</slicing>
 		</element>
-		<element id="email.system">
+		<element>
 			<path value="Patient.telecom.system" />
 			<name value="email/system" />
 			<min value="1" />
 			<fixedCode value="email" />
 		</element>
-		<element id="email/workEmail.use">
+		<element>
 			<path value="Patient.telecom.use" />
 			<name value="email/workEmail.use" />
 			<min value="1" />
 			<fixedCode value="work" />
 		</element>
-		<element id="email/homeEmail.use">
+		<element>
 			<path value="Patient.telecom.use" />
 			<name value="email/homeEmail.use" />
 			<min value="1" />
 			<fixedCode value="home" />
 		</element>
-		<element id="pager.system">
+		<element>
 			<path value="Patient.telecom.system" />
 			<name value="pager.system" />
 			<min value="1" />

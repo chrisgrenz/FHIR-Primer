@@ -4,24 +4,22 @@
 	<publisher value="Analysts International" />
 	<date value="2016-05-02T15:00:00-06:00" />
 	<description value="An example type profile constraining the Identifier type. For use in slicing by profile examples." />
-	<fhirVersion value="1.4.0" />
-	<kind value="datatype" />
+	<fhirVersion value="0.5" />
+	<type value="type" />
 	<abstract value="false" />
-	<baseType value="Identifier" />
-	<baseDefinition value="http://hl7.org/fhir/StructureDefinition/Identifier" />
-	<derivation value="constraint" />
+	<base value="http://hl7.org/fhir/StructureDefinition/Identifier" />
 	<snapshot>
-		<element id="Identifier">
+		<element>
 			<path value="Identifier" />
 			<label value="MDM Identifier" />
 			<short value="An identifier intended for computation" />
 			<definition value="A technical identifier - identifies some entity uniquely and unambiguously." />
-			<min value="0" />
-			<max value="*" />
+			<requirements value="Need to be able to identify things with confidence and be sure that the identification is not subject to misinterpretation." />
+			<min value="1" />
+			<max value="1" />
 			<type>
 				<code value="Identifier" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -39,7 +37,7 @@
 				<map value="Identifier" />
 			</mapping>
 		</element>
-		<element id="id">
+		<element>
 			<path value="Identifier.id" />
 			<representation value="xmlAttr" />
 			<short value="xml:id (or equivalent in JSON)" />
@@ -50,7 +48,6 @@
 			<type>
 				<code value="id" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -60,17 +57,17 @@
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="extension">
+		<element>
 			<path value="Identifier.extension" />
 			<short value="Additional Content defined by implementations" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
 			<min value="0" />
 			<max value="*" />
 			<type>
 				<code value="Extension" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -80,18 +77,18 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="issuingSite">
+		<element>
 			<path value="Identifier.extension" />
 			<name value="issuingSite" />
 			<short value="Site code where an identifier was issued." />
 			<definition value="Optional Extensions Element - found in all resources." />
-			<min value="0" />
-			<max value="*" />
+			<requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
+			<min value="1" />
+			<max value="1" />
 			<type>
 				<code value="Extension" />
 				<profile value="http://example.com/fhir/StructureDefinition/patient-identifier-issuing-site" />
 			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -101,7 +98,7 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="use">
+		<element>
 			<path value="Identifier.use" />
 			<short value="usual | official | temp | secondary (If known)" />
 			<definition value="The purpose of this identifier." />
@@ -112,13 +109,11 @@
 			<type>
 				<code value="code" />
 			</type>
-			<condition value="ele-1" />
 			<isModifier value="true" />
-			<isSummary value="true" />
 			<binding>
 				<strength value="required" />
-				<description value="Identifies the purpose for this identifier, if known ." />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/identifier-use" />
+				<description value="Identifies the purpose for this identifier, if known" />
+				<valueSetUri value="http://hl7.org/fhir/vs/identifier-use" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -133,24 +128,21 @@
 				<map value="Role.code or implied by context" />
 			</mapping>
 		</element>
-		<element id="type">
+		<element>
 			<path value="Identifier.type" />
 			<short value="Description of identifier" />
 			<definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
-			<comments value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage. 
-      Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
+			<comments value="Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
 			<requirements value="Allows users to make use of identifiers when the identifier system is not known." />
 			<min value="0" />
 			<max value="1" />
 			<type>
 				<code value="CodeableConcept" />
 			</type>
-			<condition value="ele-1" />
-			<isSummary value="true" />
 			<binding>
 				<strength value="extensible" />
-				<description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose." />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/identifier-type" />
+				<description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose" />
+				<valueSetUri value="http://hl7.org/fhir/vs/identifier-type" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
@@ -165,10 +157,6 @@
 				<map value="CD" />
 			</mapping>
 			<mapping>
-				<identity value="orim" />
-				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="CX.5" />
 			</mapping>
@@ -177,7 +165,7 @@
 				<map value="Role.code or implied by context" />
 			</mapping>
 		</element>
-		<element id="system">
+		<element>
 			<path value="Identifier.system" />
 			<short value="The namespace for the identifier" />
 			<definition value="Establishes the namespace in which set of possible id values is unique." />
@@ -189,9 +177,7 @@
 				<code value="uri" />
 			</type>
 			<fixedUri value="http://example.com/fhir/localsystems/PATIENT-ID-MDM" />
-			<exampleUri value="http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri" />
-			<condition value="ele-1" />
-			<isSummary value="true" />
+			<exampleUri value="http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the id itself is a full uri" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -209,19 +195,17 @@
 				<map value="./IdentifierType" />
 			</mapping>
 		</element>
-		<element id="value">
+		<element>
 			<path value="Identifier.value" />
 			<short value="The value that is unique" />
-			<definition value="The portion of the identifier typically relevant to the user and which is unique within the context of the system." />
-			<comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value&#39;s primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html)." />
+			<definition value="The portion of the identifier typically displayed to the user and which is unique within the context of the system." />
+			<comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986." />
 			<min value="0" />
 			<max value="1" />
 			<type>
 				<code value="string" />
 			</type>
 			<exampleString value="123456" />
-			<condition value="ele-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -239,18 +223,16 @@
 				<map value="./Value" />
 			</mapping>
 		</element>
-		<element id="period">
+		<element>
 			<path value="Identifier.period" />
 			<short value="Time period when id is/was valid for use" />
 			<definition value="Time period during which identifier is/was valid for use." />
-			<comments value="This is not a duration - that&#39;s a measure of time (a separate type), but a duration that occurs at a fixed value of time. A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;). If duration is required, specify the type as Interval|Duration." />
+			<comments value="This is not a duration - that&#39;s a measure of time (a separate type), but a duration that occurs at a fixed value of time. A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;). If a duration might be required, specify the type as Interval|Duration." />
 			<min value="0" />
 			<max value="1" />
 			<type>
 				<code value="Period" />
 			</type>
-			<condition value="ele-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -276,19 +258,17 @@
 				<map value="./StartDate and ./EndDate" />
 			</mapping>
 		</element>
-		<element id="assigner">
+		<element>
 			<path value="Identifier.assigner" />
 			<short value="Organization that issued id (may be just text)" />
 			<definition value="Organization that issued/manages the identifier." />
-			<comments value="The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization." />
+			<comments value="The reference may be just a text description of the assigner." />
 			<min value="0" />
 			<max value="1" />
 			<type>
 				<code value="Reference" />
 				<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
 			</type>
-			<condition value="ele-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -312,16 +292,16 @@
 		</element>
 	</snapshot>
 	<differential>
-		<element id="Identifier">
+		<element>
 			<path value="Identifier" />
 			<label value="MDM Identifier" />
 		</element>
-		<element id="system">
+		<element>
 			<path value="Identifier.system" />
 			<min value="1" />
 			<fixedUri value="http://example.com/fhir/localsystems/PATIENT-ID-MDM" />
 		</element>
-		<element id="issuingSite">
+		<element>
 			<path value="Identifier.extension" />
 			<name value="issuingSite" />
 			<type>
