@@ -2,12 +2,10 @@
 	<url value="http://example.com/fhir/SD/encounter-with-type-profile" />
 	<name value="encounter-with-type-profile" />
 	<status value="draft" />
-	<fhirVersion value="1.4.0" />
+	<fhirVersion value="1.0.2" />
 	<kind value="resource" />
 	<abstract value="false" />
-	<baseType value="Encounter" />
-	<baseDefinition value="http://hl7.org/fhir/StructureDefinition/Encounter" />
-	<derivation value="constraint" />
+	<base value="http://hl7.org/fhir/StructureDefinition/Encounter" />
 	<snapshot>
 		<element id="Encounter">
 			<path value="Encounter" />
@@ -333,6 +331,7 @@
 				<code value="Period" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -392,6 +391,7 @@
 				<profile value="http://example.com/fhir/SD/codeable-with-systems" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -421,6 +421,7 @@
 				<profile value="http://example.com/fhir/SD/codeable-with-systems" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -513,6 +514,7 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/ReferralRequest" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -603,6 +605,7 @@
 				<code value="Period" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -697,6 +700,7 @@
 				<code value="Period" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -734,6 +738,7 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/Duration" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -820,6 +825,7 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/Procedure" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -876,6 +882,7 @@
 				<code value="Identifier" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -912,6 +919,7 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/Location" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -936,6 +944,7 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<binding>
 				<strength value="preferred" />
 				<description value="From where the patient was admitted." />
@@ -977,6 +986,7 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/Condition" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -997,6 +1007,7 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1034,6 +1045,7 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<binding>
 				<strength value="example" />
 				<description value="Medical, cultural or ethical food preferences to help with catering requirements." />
@@ -1075,6 +1087,7 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<binding>
 				<strength value="preferred" />
 				<description value="Special courtesies" />
@@ -1116,6 +1129,7 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<binding>
 				<strength value="preferred" />
 				<description value="Special arrangements" />
@@ -1157,6 +1171,7 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/Location" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1185,6 +1200,7 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<binding>
 				<strength value="preferred" />
 				<description value="Discharge Disposition" />
@@ -1226,6 +1242,7 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/Condition" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1274,6 +1291,7 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/Location" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1327,6 +1345,7 @@
 				<code value="Period" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1355,6 +1374,7 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1383,6 +1403,7 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/Encounter" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />

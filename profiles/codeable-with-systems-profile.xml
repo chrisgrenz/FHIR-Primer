@@ -2,12 +2,10 @@
 	<url value="http://example.com/fhir/SD/codeable-with-systems" />
 	<name value="codeable-with-systems" />
 	<description value="An example of a type profile with named slices." />
-	<fhirVersion value="1.4.0" />
+	<fhirVersion value="1.0.2" />
 	<kind value="datatype" />
 	<abstract value="false" />
-	<baseType value="CodeableConcept" />
-	<baseDefinition value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
-	<derivation value="constraint" />
+	<base value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
 	<snapshot>
 		<element id="CodeableConcept">
 			<path value="CodeableConcept" />
@@ -20,6 +18,7 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />

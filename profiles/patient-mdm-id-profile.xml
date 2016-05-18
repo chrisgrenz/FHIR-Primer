@@ -4,12 +4,10 @@
 	<publisher value="Analysts International" />
 	<date value="2016-05-02T15:00:00-06:00" />
 	<description value="An example type profile constraining the Identifier type. For use in slicing by profile examples." />
-	<fhirVersion value="1.4.0" />
+	<fhirVersion value="1.0.2" />
 	<kind value="datatype" />
 	<abstract value="false" />
-	<baseType value="Identifier" />
-	<baseDefinition value="http://hl7.org/fhir/StructureDefinition/Identifier" />
-	<derivation value="constraint" />
+	<base value="http://hl7.org/fhir/StructureDefinition/Identifier" />
 	<snapshot>
 		<element id="Identifier">
 			<path value="Identifier" />
@@ -22,6 +20,7 @@
 				<code value="Identifier" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -212,8 +211,8 @@
 		<element id="value">
 			<path value="Identifier.value" />
 			<short value="The value that is unique" />
-			<definition value="The portion of the identifier typically relevant to the user and which is unique within the context of the system." />
-			<comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value&#39;s primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html)." />
+			<definition value="The portion of the identifier typically displayed to the user and which is unique within the context of the system." />
+			<comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986." />
 			<min value="0" />
 			<max value="1" />
 			<type>
@@ -280,7 +279,7 @@
 			<path value="Identifier.assigner" />
 			<short value="Organization that issued id (may be just text)" />
 			<definition value="Organization that issued/manages the identifier." />
-			<comments value="The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization." />
+			<comments value="The reference may be just a text description of the assigner." />
 			<min value="0" />
 			<max value="1" />
 			<type>
