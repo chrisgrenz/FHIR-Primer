@@ -4,6 +4,7 @@
 	<status value="draft" />
 	<fhirVersion value="1.0.2" />
 	<kind value="resource" />
+	<constrainedType value="Patient" />
 	<abstract value="false" />
 	<base value="http://hl7.org/fhir/StructureDefinition/Patient" />
 	<snapshot>
@@ -13,6 +14,11 @@
 			<definition value="Demographics and other administrative information about an individual or animal receiving care or other health-related services." />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="Patient" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="DomainResource" />
 			</type>
@@ -44,6 +50,11 @@
 			<comments value="The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Resource.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="id" />
 			</type>
@@ -60,6 +71,11 @@
 			<definition value="The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Resource.meta" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="Meta" />
 			</type>
@@ -77,6 +93,11 @@
 			<comments value="Asserting this rule set restricts the content to be only understood by a limited set of trading partners. This inherently limits the usefulness of the data in the long term. However, the existing health eco-system is highly fractured, and not yet ready to define, collect, and exchange data in a generally computable sense. Wherever possible, implementers and/or specification writers should avoid using this element as much as possible." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Resource.implicitRules" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="uri" />
 			</type>
@@ -95,6 +116,11 @@
 			<comments value="Language is provided to support indexing and accessibility (typically, services such as text to speech use the language tag). The html language tag in the narrative applies  to the narrative. The language tag on the resource may be used to specify the language of other presentations generated from the data in the resource  Not all the content has to be in the base language. The Resource.language should not be assumed to apply to the narrative automatically. If a language is specified, it should it also be specified on the div element in the html (see rules in HTML5 for information about the relationship between xml:lang and the html lang attribute)." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Resource.language" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="code" />
 			</type>
@@ -116,6 +142,11 @@
 			<comments value="Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="DomainResource.text" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="Narrative" />
 			</type>
@@ -140,6 +171,11 @@
 			<comments value="This should never be done when the content can be identified properly, as once identification is lost, it is extremely difficult (and context dependent) to restore it again." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="DomainResource.contained" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Resource" />
 			</type>
@@ -159,6 +195,11 @@
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="DomainResource.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Extension" />
 			</type>
@@ -179,6 +220,11 @@
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="DomainResource.modifierExtension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Extension" />
 			</type>
@@ -204,6 +250,11 @@
 			<requirements value="Patients are almost always assigned specific numerical identifiers." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Patient.identifier" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Identifier" />
 			</type>
@@ -250,6 +301,11 @@
 			<requirements value="Need to be able to mark a patient record as not to be used because it was created in error." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Patient.active" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="boolean" />
 			</type>
@@ -282,6 +338,11 @@
 			<requirements value="Need to be able to track the patient by multiple names. Examples are your official name and a partner name." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Patient.name" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="HumanName" />
 			</type>
@@ -324,6 +385,11 @@
 			<requirements value="People have (primary) ways to contact them in some way such as phone, email." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Patient.telecom" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="ContactPoint" />
 			</type>
@@ -366,6 +432,11 @@
 			<requirements value="Needed for identification of the individual, in combination with (at least) name and birth date. Gender of individual drives many clinical processes." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Patient.gender" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="code" />
 			</type>
@@ -401,6 +472,11 @@
 			<requirements value="Age of the individual drives many clinical processes." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Patient.birthDate" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="date" />
 			</type>
@@ -435,6 +511,11 @@
 			<requirements value="The fact that a patient is deceased influences the clinical process. Also, in human communication and relation management it is necessary to know whether the person is alive." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Patient.deceased[x]" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="boolean" />
 			</type>
@@ -469,6 +550,11 @@
 			<requirements value="May need to keep track of patient addresses for contacting, billing or reporting requirements and also to help with identification." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Patient.address" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Address" />
 			</type>
@@ -511,6 +597,11 @@
 			<requirements value="Most, if not all systems capture it." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Patient.maritalStatus" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="CodeableConcept" />
 			</type>
@@ -560,6 +651,11 @@
 			<requirements value="For disambiguation of multiple-birth children, especially relevant where the care provider doesn&#39;t meet the patient, such as labs." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Patient.multipleBirth[x]" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="boolean" />
 			</type>
@@ -592,6 +688,11 @@
 			<requirements value="Many EHR systems have the capability to capture an image of the patient. Fits with newer social media usage too." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Patient.photo" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Attachment" />
 			</type>
@@ -630,6 +731,11 @@
 			<requirements value="Need to track people you can contact about the patient." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Patient.contact" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="BackboneElement" />
 			</type>
@@ -659,6 +765,11 @@
 			<requirements value="Used to determine which contact person is the most relevant to approach, depending on circumstances." />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="Patient.contact.relationship" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="CodeableConcept" />
 			</type>
@@ -706,6 +817,11 @@
 			<requirements value="Contact persons need to be identified by name, but it is uncommon to need details about multiple other names for that contact person." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Patient.contact.name" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="HumanName" />
 			</type>
@@ -748,6 +864,11 @@
 			<requirements value="People have (primary) ways to contact them in some way such as phone, email." />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="Patient.contact.telecom" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="ContactPoint" />
 			</type>
@@ -790,6 +911,11 @@
 			<requirements value="Need to keep track where the contact person can be contacted per postal mail or visited." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Patient.contact.address" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="Address" />
 			</type>
@@ -832,6 +958,11 @@
 			<requirements value="Needed to address the person correctly." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Patient.contact.gender" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="code" />
 			</type>
@@ -865,6 +996,11 @@
 			<requirements value="For guardians or business related contacts, the organization is relevant." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Patient.contact.organization" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="Reference" />
 				<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
@@ -899,6 +1035,11 @@
 			<comments value="This is not a duration - that&#39;s a measure of time (a separate type), but a duration that occurs at a fixed value of time. A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;). If duration is required, specify the type as Interval|Duration." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Patient.contact.period" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="Period" />
 			</type>
@@ -933,6 +1074,11 @@
 			<requirements value="Many clinical systems are extended to care for animal patients as well as human." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Patient.animal" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="BackboneElement" />
 			</type>
@@ -964,6 +1110,11 @@
 			<requirements value="Need to know what kind of animal." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Patient.animal.species" />
+				<min value="1" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="CodeableConcept" />
 			</type>
@@ -1011,6 +1162,11 @@
 			<requirements value="May need to know the specific kind within the species." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Patient.animal.breed" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="CodeableConcept" />
 			</type>
@@ -1058,6 +1214,11 @@
 			<requirements value="Gender status can affect housing and animal behavior." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Patient.animal.genderStatus" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="CodeableConcept" />
 			</type>
@@ -1105,6 +1266,11 @@
 			<requirements value="If a patient does not speak the local language, interpreters may be required, so languages spoken and proficiency is an important things to keep track of both for patient and other persons of interest." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Patient.communication" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="BackboneElement" />
 			</type>
@@ -1134,6 +1300,11 @@
 			<requirements value="Most systems in multilingual countries will want to convey language. Not all systems actually need the regional dialect." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Patient.communication.language" />
+				<min value="1" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="CodeableConcept" />
 			</type>
@@ -1181,6 +1352,11 @@
 			<requirements value="People that master multiple languages up to certain level may prefer one or more, i.e. feel more confident in communicating in a particular language making other languages sort of a fall back method." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Patient.communication.preferred" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="boolean" />
 			</type>
@@ -1210,6 +1386,11 @@
       This is not to be used to record Care Teams, these should be recorded on either the CarePlan or EpisodeOfCare resources." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Patient.careProvider" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Reference" />
 			</type>
@@ -1244,6 +1425,11 @@
 			<requirements value="Need to know who recognizes this patient record, manages and updates it." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Patient.managingOrganization" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="Reference" />
 			</type>
@@ -1275,6 +1461,11 @@
       * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple servers." />
 			<min value="0" />
 			<max value="0" />
+			<base>
+				<path value="Patient.link" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="BackboneElement" />
 			</type>
@@ -1303,6 +1494,11 @@
 			<definition value="The other patient resource that the link refers to." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Patient.link.other" />
+				<min value="1" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="Reference" />
 				<profile value="http://hl7.org/fhir/StructureDefinition/Patient" />
@@ -1338,6 +1534,11 @@
 			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Patient.link.type" />
+				<min value="1" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="code" />
 			</type>

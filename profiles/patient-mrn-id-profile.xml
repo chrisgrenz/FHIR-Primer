@@ -6,6 +6,7 @@
 	<description value="An example type profile constraining the Identifier type. For use in slicing by profile examples." />
 	<fhirVersion value="1.0.2" />
 	<kind value="datatype" />
+	<constrainedType value="Identifier" />
 	<abstract value="false" />
 	<base value="http://hl7.org/fhir/StructureDefinition/Identifier" />
 	<snapshot>
@@ -15,6 +16,11 @@
 			<definition value="A technical identifier - identifies some entity uniquely and unambiguously." />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="Identifier" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Identifier" />
 			</type>
@@ -45,6 +51,11 @@
 			<comments value="RFC 4122" />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="id" />
 			</type>
@@ -67,6 +78,11 @@
 			<alias value="user content" />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Extension" />
 			</type>
@@ -88,6 +104,11 @@
 			<requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Identifier.use" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="code" />
 			</type>
@@ -121,6 +142,11 @@
 			<requirements value="Allows users to make use of identifiers when the identifier system is not known." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Identifier.type" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="CodeableConcept" />
 			</type>
@@ -164,6 +190,11 @@
 			<requirements value="There are many sequences of identifiers.  To perform matching, we need to know what sequence we&#39;re dealing with. The system identifies a particular sequence or set of unique identifiers." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Identifier.system" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="uri" />
 			</type>
@@ -195,6 +226,11 @@
 			<comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Identifier.value" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="string" />
 			</type>
@@ -225,6 +261,11 @@
 			<comments value="This is not a duration - that&#39;s a measure of time (a separate type), but a duration that occurs at a fixed value of time. A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;). If duration is required, specify the type as Interval|Duration." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Identifier.period" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="Period" />
 			</type>
@@ -262,6 +303,11 @@
 			<comments value="The reference may be just a text description of the assigner." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Identifier.assigner" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="Reference" />
 				<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />

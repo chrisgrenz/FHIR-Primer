@@ -9,6 +9,7 @@
 	<requirements value="Requirements for patient-do-not-call." />
 	<fhirVersion value="1.0.2" />
 	<kind value="datatype" />
+	<constrainedType value="Extension" />
 	<abstract value="false" />
 	<contextType value="resource" />
 	<context value="Patient" />
@@ -23,6 +24,11 @@
 			<alias value="no-contact-me-plz" />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="Extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Extension" />
 			</type>
@@ -44,6 +50,11 @@
 			<comments value="RFC 4122" />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="id" />
 			</type>
@@ -66,6 +77,11 @@
 			<alias value="user content" />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Extension" />
 			</type>
@@ -87,6 +103,11 @@
 			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Extension.url" />
+				<min value="1" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="uri" />
 			</type>
@@ -107,6 +128,11 @@
 			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Extension.value[x]" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="boolean" />
 			</type>
