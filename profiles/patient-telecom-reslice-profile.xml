@@ -275,7 +275,7 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="legalCase.value[x]">
+		<element id="legalCase.valuex">
 			<path value="Patient.extension.value[x]" />
 			<name value="legalCase.value[x]" />
 			<short value="Value of extension" />
@@ -1063,7 +1063,7 @@
 				<map value="./ContactPointType" />
 			</mapping>
 		</element>
-		<element id="phone/homePhone">
+		<element id="phone-homePhone">
 			<path value="Patient.telecom" />
 			<name value="phone/homePhone" />
 			<short value="Phone numbers." />
@@ -1111,7 +1111,7 @@
 				<map value=".telecom" />
 			</mapping>
 		</element>
-		<element id="phone/homePhone.use">
+		<element id="phone-homePhone.use">
 			<path value="Patient.telecom.use" />
 			<name value="phone/homePhone.use" />
 			<short value="home | work | temp | old | mobile - purpose of this contact point" />
@@ -1154,7 +1154,7 @@
 				<map value="./ContactPointPurpose" />
 			</mapping>
 		</element>
-		<element id="phone/mobilePhone">
+		<element id="phone-mobilePhone">
 			<path value="Patient.telecom" />
 			<name value="phone/mobilePhone" />
 			<short value="Phone numbers." />
@@ -1202,7 +1202,7 @@
 				<map value=".telecom" />
 			</mapping>
 		</element>
-		<element id="phone/mobilePhone.use">
+		<element id="phone-mobilePhone.use">
 			<path value="Patient.telecom.use" />
 			<name value="phone/mobilePhone.use" />
 			<short value="home | work | temp | old | mobile - purpose of this contact point" />
@@ -1338,7 +1338,7 @@
 				<map value="./ContactPointType" />
 			</mapping>
 		</element>
-		<element id="email/workEmail">
+		<element id="email-workEmail">
 			<path value="Patient.telecom" />
 			<name value="email/workEmail" />
 			<short value="A contact detail for the individual" />
@@ -1386,7 +1386,7 @@
 				<map value=".telecom" />
 			</mapping>
 		</element>
-		<element id="email/workEmail.use">
+		<element id="email-workEmail.use">
 			<path value="Patient.telecom.use" />
 			<name value="email/workEmail.use" />
 			<short value="home | work | temp | old | mobile - purpose of this contact point" />
@@ -1429,7 +1429,7 @@
 				<map value="./ContactPointPurpose" />
 			</mapping>
 		</element>
-		<element id="email/homeEmail">
+		<element id="email-homeEmail">
 			<path value="Patient.telecom" />
 			<name value="email/homeEmail" />
 			<short value="A contact detail for the individual" />
@@ -1477,7 +1477,7 @@
 				<map value=".telecom" />
 			</mapping>
 		</element>
-		<element id="email/homeEmail.use">
+		<element id="email-homeEmail.use">
 			<path value="Patient.telecom.use" />
 			<name value="email/homeEmail.use" />
 			<short value="home | work | temp | old | mobile - purpose of this contact point" />
@@ -1688,7 +1688,7 @@
 				<map value="21112-8" />
 			</mapping>
 		</element>
-		<element id="deceased[x]">
+		<element id="deceasedx">
 			<path value="Patient.deceased[x]" />
 			<short value="Indicates if the individual is deceased or not" />
 			<definition value="Indicates if the individual is deceased or not." />
@@ -1826,7 +1826,7 @@
 				<map value=".patient.maritalStatusCode" />
 			</mapping>
 		</element>
-		<element id="multipleBirth[x]">
+		<element id="multipleBirthx">
 			<path value="Patient.multipleBirth[x]" />
 			<short value="Whether patient is part of a multiple birth" />
 			<definition value="Indicates whether the patient is part of a multiple or indicates the actual birth order." />
@@ -2780,13 +2780,13 @@
 			</slicing>
 			<short value="Phone numbers." />
 		</element>
-		<element id="phone/homePhone.use">
+		<element id="phone-homePhone.use">
 			<path value="Patient.telecom.use" />
 			<name value="phone/homePhone.use" />
 			<min value="1" />
 			<fixedCode value="home" />
 		</element>
-		<element id="phone/mobilePhone.use">
+		<element id="phone-mobilePhone.use">
 			<path value="Patient.telecom.use" />
 			<name value="phone/mobilePhone.use" />
 			<min value="1" />
@@ -2811,13 +2811,13 @@
 			<min value="1" />
 			<fixedCode value="email" />
 		</element>
-		<element id="email/workEmail.use">
+		<element id="email-workEmail.use">
 			<path value="Patient.telecom.use" />
 			<name value="email/workEmail.use" />
 			<min value="1" />
 			<fixedCode value="work" />
 		</element>
-		<element id="email/homeEmail.use">
+		<element id="email-homeEmail.use">
 			<path value="Patient.telecom.use" />
 			<name value="email/homeEmail.use" />
 			<min value="1" />

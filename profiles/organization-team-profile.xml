@@ -368,8 +368,8 @@
 			</type>
 			<patternCodeableConcept>
 				<coding>
-					<code value="team" />
 					<system value="http://hl7.org/fhir/organization-type" />
+					<code value="team" />
 				</coding>
 			</patternCodeableConcept>
 			<condition value="ele-1" />
@@ -804,8 +804,8 @@
 			<min value="1" />
 			<patternCodeableConcept>
 				<coding>
-					<code value="team" />
 					<system value="http://hl7.org/fhir/organization-type" />
+					<code value="team" />
 				</coding>
 			</patternCodeableConcept>
 		</element>

@@ -278,7 +278,7 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="legalCase.value[x]">
+		<element id="legalCase.valuex">
 			<path value="Patient.extension.value[x]" />
 			<name value="legalCase.value[x]" />
 			<short value="Value of extension" />
@@ -726,7 +726,7 @@
 				<map value="21112-8" />
 			</mapping>
 		</element>
-		<element id="deceased[x]">
+		<element id="deceasedx">
 			<path value="Patient.deceased[x]" />
 			<short value="Indicates if the individual is deceased or not" />
 			<definition value="Indicates if the individual is deceased or not." />
@@ -864,7 +864,7 @@
 				<map value=".patient.maritalStatusCode" />
 			</mapping>
 		</element>
-		<element id="multipleBirth[x]">
+		<element id="multipleBirthx">
 			<path value="Patient.multipleBirth[x]" />
 			<short value="Whether patient is part of a multiple birth" />
 			<definition value="Indicates whether the patient is part of a multiple or indicates the actual birth order." />
