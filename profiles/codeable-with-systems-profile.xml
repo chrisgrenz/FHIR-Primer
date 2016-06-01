@@ -4,7 +4,7 @@
 	<status value="draft" />
 	<description value="An example of a type profile with named slices." />
 	<fhirVersion value="1.4.0" />
-	<kind value="datatype" />
+	<kind value="complex-type" />
 	<abstract value="false" />
 	<baseType value="CodeableConcept" />
 	<baseDefinition value="http://hl7.org/fhir/StructureDefinition/CodeableConcept" />
@@ -17,6 +17,11 @@
 			<comments value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination." />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="CodeableConcept" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="CodeableConcept" />
 			</type>
@@ -46,6 +51,11 @@
 			<comments value="RFC 4122" />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="id" />
 			</type>
@@ -68,6 +78,11 @@
 			<alias value="user content" />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Extension" />
 			</type>
@@ -93,6 +108,11 @@
 			<requirements value="Allows for translations and alternate encodings within a code system.  Also supports communication of the same instance to systems requiring different encodings." />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="CodeableConcept.coding" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Coding" />
 			</type>
@@ -136,6 +156,11 @@
 			<requirements value="Allows for translations and alternate encodings within a code system.  Also supports communication of the same instance to systems requiring different encodings." />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="CodeableConcept.coding" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Coding" />
 			</type>
@@ -179,6 +204,11 @@
 			<requirements value="Need to be unambiguous about the source of the definition of the symbol." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Coding.system" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="uri" />
 			</type>
@@ -211,6 +241,11 @@
 			<requirements value="Allows for translations and alternate encodings within a code system.  Also supports communication of the same instance to systems requiring different encodings." />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="CodeableConcept.coding" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Coding" />
 			</type>
@@ -254,6 +289,11 @@
 			<requirements value="Need to be unambiguous about the source of the definition of the symbol." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Coding.system" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="uri" />
 			</type>
@@ -285,6 +325,11 @@
 			<requirements value="The codes from the terminologies do not always capture the correct meaning with all the nuances of the human using them, or sometimes there is no appropriate code at all. In these cases, the text is used to capture the full meaning of the source." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="CodeableConcept.text" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="string" />
 			</type>

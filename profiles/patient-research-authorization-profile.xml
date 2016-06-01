@@ -5,7 +5,7 @@
 	<publisher value="Analysts (analysts.com)" />
 	<date value="2016-05-02T15:00:00-06:00" />
 	<fhirVersion value="1.4.0" />
-	<kind value="datatype" />
+	<kind value="complex-type" />
 	<abstract value="false" />
 	<contextType value="resource" />
 	<context value="Patient" />
@@ -19,6 +19,11 @@
 			<definition value="Record of the patients general research authorization status." />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="Extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Extension" />
 			</type>
@@ -40,6 +45,11 @@
 			<comments value="RFC 4122" />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="id" />
 			</type>
@@ -60,6 +70,11 @@
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Extension" />
 			</type>
@@ -81,6 +96,11 @@
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Extension" />
 			</type>
@@ -103,6 +123,11 @@
 			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Extension.url" />
+				<min value="1" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="uri" />
 			</type>
@@ -117,13 +142,18 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="type.value[x]">
+		<element id="type.valuex">
 			<path value="Extension.extension.value[x]" />
 			<name value="type.value[x]" />
 			<short value="Value of extension" />
 			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Extension.value[x]" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="code" />
 			</type>
@@ -145,6 +175,11 @@
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Extension" />
 			</type>
@@ -167,6 +202,11 @@
 			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Extension.url" />
+				<min value="1" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="uri" />
 			</type>
@@ -181,13 +221,18 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="flag.value[x]">
+		<element id="flag.valuex">
 			<path value="Extension.extension.value[x]" />
 			<name value="flag.value[x]" />
 			<short value="Value of extension" />
 			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Extension.value[x]" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="boolean" />
 			</type>
@@ -305,6 +350,11 @@
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Extension" />
 			</type>
@@ -327,6 +377,11 @@
 			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Extension.url" />
+				<min value="1" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="uri" />
 			</type>
@@ -341,13 +396,18 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="date.value[x]">
+		<element id="date.valuex">
 			<path value="Extension.extension.value[x]" />
 			<name value="date.value[x]" />
 			<short value="Value of extension" />
 			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Extension.value[x]" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="boolean" />
 			</type>
@@ -465,6 +525,11 @@
 			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Extension.url" />
+				<min value="1" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="uri" />
 			</type>
@@ -479,12 +544,17 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="value[x]">
+		<element id="valuex">
 			<path value="Extension.value[x]" />
 			<short value="Value of extension" />
 			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Extension.value[x]" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="boolean" />
 			</type>
@@ -615,7 +685,7 @@
 			<name value="type.url" />
 			<fixedUri value="type" />
 		</element>
-		<element id="type.value[x]">
+		<element id="type.valuex">
 			<path value="Extension.extension.value[x]" />
 			<name value="type.value[x]" />
 			<min value="1" />
@@ -633,7 +703,7 @@
 			<name value="flag.url" />
 			<fixedUri value="flag" />
 		</element>
-		<element id="flag.value[x]">
+		<element id="flag.valuex">
 			<path value="Extension.extension.value[x]" />
 			<name value="flag.value[x]" />
 			<min value="1" />
@@ -648,7 +718,7 @@
 			<name value="date.url" />
 			<fixedUri value="date" />
 		</element>
-		<element id="date.value[x]">
+		<element id="date.valuex">
 			<path value="Extension.extension.value[x]" />
 			<name value="date.value[x]" />
 			<min value="1" />

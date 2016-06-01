@@ -6,7 +6,7 @@
 	<date value="2016-05-02T15:00:00-06:00" />
 	<description value="An example type profile constraining the Identifier type. For use in slicing by profile examples." />
 	<fhirVersion value="1.4.0" />
-	<kind value="datatype" />
+	<kind value="complex-type" />
 	<abstract value="false" />
 	<baseType value="Identifier" />
 	<baseDefinition value="http://hl7.org/fhir/StructureDefinition/Identifier" />
@@ -19,6 +19,11 @@
 			<definition value="A technical identifier - identifies some entity uniquely and unambiguously." />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="Identifier" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Identifier" />
 			</type>
@@ -48,6 +53,11 @@
 			<comments value="RFC 4122" />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="id" />
 			</type>
@@ -68,6 +78,11 @@
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Extension" />
 			</type>
@@ -88,6 +103,11 @@
 			<definition value="Optional Extensions Element - found in all resources." />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="Extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Extension" />
 				<profile value="http://example.com/fhir/StructureDefinition/patient-identifier-issuing-site" />
@@ -110,6 +130,11 @@
 			<requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Identifier.use" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="code" />
 			</type>
@@ -143,6 +168,11 @@
 			<requirements value="Allows users to make use of identifiers when the identifier system is not known." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Identifier.type" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="CodeableConcept" />
 			</type>
@@ -186,6 +216,11 @@
 			<requirements value="There are many sequences of identifiers.  To perform matching, we need to know what sequence we&#39;re dealing with. The system identifies a particular sequence or set of unique identifiers." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Identifier.system" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="uri" />
 			</type>
@@ -217,6 +252,11 @@
 			<comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value&#39;s primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html)." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Identifier.value" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="string" />
 			</type>
@@ -247,6 +287,11 @@
 			<comments value="This is not a duration - that&#39;s a measure of time (a separate type), but a duration that occurs at a fixed value of time. A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;). If duration is required, specify the type as Interval|Duration." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Identifier.period" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="Period" />
 			</type>
@@ -284,6 +329,11 @@
 			<comments value="The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization." />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Identifier.assigner" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="Reference" />
 				<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />

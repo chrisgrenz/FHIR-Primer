@@ -5,7 +5,7 @@
 	<publisher value="Analysts (analysts.com)" />
 	<date value="2016-05-02T15:00:00-06:00" />
 	<fhirVersion value="1.4.0" />
-	<kind value="datatype" />
+	<kind value="complex-type" />
 	<abstract value="false" />
 	<contextType value="datatype" />
 	<context value="Extension.value[x]" />
@@ -19,6 +19,11 @@
 			<definition value="Identification of the the legal counsel assigned to the case in question." />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="Extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Extension" />
 			</type>
@@ -40,6 +45,11 @@
 			<comments value="RFC 4122" />
 			<min value="0" />
 			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="id" />
 			</type>
@@ -62,6 +72,11 @@
 			<alias value="user content" />
 			<min value="0" />
 			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
 			<type>
 				<code value="Extension" />
 			</type>
@@ -83,6 +98,11 @@
 			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Extension.url" />
+				<min value="1" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="uri" />
 			</type>
@@ -97,12 +117,17 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="value[x]">
+		<element id="valuex">
 			<path value="Extension.value[x]" />
 			<short value="Value of extension" />
 			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
 			<min value="1" />
 			<max value="1" />
+			<base>
+				<path value="Extension.value[x]" />
+				<min value="0" />
+				<max value="1" />
+			</base>
 			<type>
 				<code value="boolean" />
 			</type>
@@ -222,7 +247,7 @@
 			<path value="Extension.url" />
 			<fixedUri value="http://example.com/fhir/StructureDefinition/patient-legal-case-lead-counsel" />
 		</element>
-		<element id="value[x]">
+		<element id="valuex">
 			<path value="Extension.value[x]" />
 			<min value="1" />
 		</element>
