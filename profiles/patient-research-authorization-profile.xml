@@ -115,8 +115,8 @@
 		</element>
 		<element id="type.url">
 			<path value="Extension.extension.url" />
-			<name value="type.url" />
 			<representation value="xmlAttr" />
+			<name value="type.url" />
 			<short value="identifies the meaning of the extension" />
 			<definition value="Source of the definition for the extension code - a logical name or a URL." />
 			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
@@ -141,7 +141,7 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="type.value[x]">
+		<element id="type.valuex">
 			<path value="Extension.extension.value[x]" />
 			<name value="type.value[x]" />
 			<short value="Value of extension" />
@@ -194,8 +194,8 @@
 		</element>
 		<element id="flag.url">
 			<path value="Extension.extension.url" />
-			<name value="flag.url" />
 			<representation value="xmlAttr" />
+			<name value="flag.url" />
 			<short value="identifies the meaning of the extension" />
 			<definition value="Source of the definition for the extension code - a logical name or a URL." />
 			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
@@ -220,7 +220,7 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="flag.value[x]">
+		<element id="flag.valuex">
 			<path value="Extension.extension.value[x]" />
 			<name value="flag.value[x]" />
 			<short value="Base for all elements" />
@@ -269,8 +269,8 @@
 		</element>
 		<element id="date.url">
 			<path value="Extension.extension.url" />
-			<name value="date.url" />
 			<representation value="xmlAttr" />
+			<name value="date.url" />
 			<short value="identifies the meaning of the extension" />
 			<definition value="Source of the definition for the extension code - a logical name or a URL." />
 			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
@@ -295,7 +295,7 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="date.value[x]">
+		<element id="date.valuex">
 			<path value="Extension.extension.value[x]" />
 			<name value="date.value[x]" />
 			<short value="Base for all elements" />
@@ -343,7 +343,7 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="value[x]">
+		<element id="valuex">
 			<path value="Extension.value[x]" />
 			<short value="Value of extension" />
 			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
@@ -484,7 +484,7 @@
 			<name value="type.url" />
 			<fixedUri value="type" />
 		</element>
-		<element id="type.value[x]">
+		<element id="type.valuex">
 			<path value="Extension.extension.value[x]" />
 			<name value="type.value[x]" />
 			<min value="1" />
@@ -502,7 +502,7 @@
 			<name value="flag.url" />
 			<fixedUri value="flag" />
 		</element>
-		<element id="flag.value[x]">
+		<element id="flag.valuex">
 			<path value="Extension.extension.value[x]" />
 			<name value="flag.value[x]" />
 			<min value="1" />
@@ -517,7 +517,7 @@
 			<name value="date.url" />
 			<fixedUri value="date" />
 		</element>
-		<element id="date.value[x]">
+		<element id="date.valuex">
 			<path value="Extension.extension.value[x]" />
 			<name value="date.value[x]" />
 			<min value="1" />

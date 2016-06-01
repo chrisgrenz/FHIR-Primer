@@ -122,7 +122,7 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
-		<element id="value[x]">
+		<element id="valuex">
 			<path value="Extension.value[x]" />
 			<short value="Value of extension" />
 			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
@@ -160,7 +160,7 @@
 			<path value="Extension.url" />
 			<fixedUri value="http://example.com/fhir/StructureDefinition/patient-do-not-call" />
 		</element>
-		<element id="value[x]">
+		<element id="valuex">
 			<path value="Extension.value[x]" />
 			<min value="1" />
 			<type>

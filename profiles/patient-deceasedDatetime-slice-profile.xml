@@ -2669,7 +2669,7 @@
 			<definition value="Link to another patient resource that concerns the same actual patient." />
 			<comments value="There is no assumption that linked patient records have mutual links." />
 			<requirements value="There are multiple usecases: 
-      * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple servers." />
+      * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple server" />
 			<min value="0" />
 			<max value="*" />
 			<base>
@@ -2681,7 +2681,6 @@
 				<code value="BackboneElement" />
 			</type>
 			<condition value="ele-1" />
-			<isModifier value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
