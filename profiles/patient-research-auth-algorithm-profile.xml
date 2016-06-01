@@ -117,8 +117,8 @@
 		</element>
 		<element id="name.url">
 			<path value="Extension.extension.url" />
-			<name value="name.url" />
 			<representation value="xmlAttr" />
+			<name value="name.url" />
 			<short value="identifies the meaning of the extension" />
 			<definition value="Source of the definition for the extension code - a logical name or a URL." />
 			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
@@ -292,8 +292,8 @@
 		</element>
 		<element id="version.url">
 			<path value="Extension.extension.url" />
-			<name value="version.url" />
 			<representation value="xmlAttr" />
+			<name value="version.url" />
 			<short value="identifies the meaning of the extension" />
 			<definition value="Source of the definition for the extension code - a logical name or a URL." />
 			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
