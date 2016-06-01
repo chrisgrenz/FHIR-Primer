@@ -3,11 +3,12 @@
 	<name value="patient-only-mrn-slice" />
 	<status value="draft" />
 	<description value="A profile with all elements removed _except_ one slice of identifer (mrn). Closed slicing." />
-	<fhirVersion value="1.0.2" />
+	<fhirVersion value="1.4.0" />
 	<kind value="resource" />
-	<constrainedType value="Patient" />
 	<abstract value="false" />
-	<base value="http://hl7.org/fhir/StructureDefinition/Patient" />
+	<baseType value="Patient" />
+	<baseDefinition value="http://hl7.org/fhir/StructureDefinition/Patient" />
+	<derivation value="constraint" />
 	<snapshot>
 		<element id="Patient">
 			<path value="Patient" />
@@ -326,7 +327,6 @@
 				<profile value="http://example.com/fhir/SD/patient-mrn-id" />
 			</type>
 			<condition value="ele-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -554,7 +554,7 @@
 				<map value="21112-8" />
 			</mapping>
 		</element>
-		<element id="deceased[x]">
+		<element id="deceasedx">
 			<path value="Patient.deceased[x]" />
 			<short value="Indicates if the individual is deceased or not" />
 			<definition value="Indicates if the individual is deceased or not." />
@@ -657,7 +657,6 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
-			<isSummary value="true" />
 			<binding>
 				<strength value="required" />
 				<description value="The domestic partnership status of a person." />
@@ -692,10 +691,10 @@
 				<map value=".patient.maritalStatusCode" />
 			</mapping>
 		</element>
-		<element id="multipleBirth[x]">
+		<element id="multipleBirthx">
 			<path value="Patient.multipleBirth[x]" />
 			<short value="Whether patient is part of a multiple birth" />
-			<definition value="Indicates whether the patient is part of a multiple or indicates the actual birth order." />
+			<definition value="Indicates whether the patient is part of a multiple (bool) or indicates the actual birth order (integer)." />
 			<comments value="Where the valueInteger is provided, the number is the birth number in the sequence.
       E.g. The middle birth in tripplets would be valueInteger=2 and the third born would have valueInteger=3
       If a bool value was provided for this tripplets examle, then all 3 patient records would have valueBool=true (the ordering is not indicated)." />
@@ -748,7 +747,6 @@
 				<code value="Attachment" />
 			</type>
 			<condition value="ele-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -795,7 +793,8 @@
 				<key value="pat-1" />
 				<severity value="error" />
 				<human value="SHALL at least contain a contact&#39;s details or a reference to an organization" />
-				<xpath value="f:name or f:telecom or f:address or f:organization" />
+				<expression value="name.exists() or telecom.exists() or address.exists() or organization.exists()" />
+				<xpath value="exists(f:name) or exists(f:telecom) or exists(f:address) or exists(f:organization)" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -831,7 +830,6 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
-			<isSummary value="true" />
 			<binding>
 				<strength value="extensible" />
 				<description value="The nature of the relationship between a patient and a contact person for that patient." />
@@ -883,7 +881,6 @@
 				<code value="HumanName" />
 			</type>
 			<condition value="ele-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -930,7 +927,6 @@
 				<code value="ContactPoint" />
 			</type>
 			<condition value="ele-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -977,7 +973,6 @@
 				<code value="Address" />
 			</type>
 			<condition value="ele-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1063,7 +1058,6 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
 			</type>
 			<condition value="pat-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1101,7 +1095,6 @@
 				<code value="Period" />
 			</type>
 			<condition value="ele-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1366,7 +1359,6 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
-			<isSummary value="true" />
 			<binding>
 				<strength value="required" />
 				<description value="A human language." />
@@ -1457,7 +1449,6 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
 			</type>
 			<condition value="ele-1" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1521,7 +1512,7 @@
 			<definition value="Link to another patient resource that concerns the same actual patient." />
 			<comments value="There is no assumption that linked patient records have mutual links." />
 			<requirements value="There are multiple usecases: 
-      * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple servers." />
+      * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple server" />
 			<min value="0" />
 			<max value="*" />
 			<base>
@@ -1533,7 +1524,6 @@
 				<code value="BackboneElement" />
 			</type>
 			<condition value="ele-1" />
-			<isModifier value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1568,7 +1558,6 @@
 			</type>
 			<condition value="ele-1" />
 			<isModifier value="true" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
