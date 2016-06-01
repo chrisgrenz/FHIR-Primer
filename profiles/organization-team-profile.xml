@@ -3,12 +3,11 @@
 	<name value="organization-team" />
 	<status value="draft" />
 	<description value="An organization of type &quot;team&quot;." />
-	<fhirVersion value="1.4.0" />
+	<fhirVersion value="1.0.2" />
 	<kind value="resource" />
+	<constrainedType value="Organization" />
 	<abstract value="false" />
-	<baseType value="Organization" />
-	<baseDefinition value="http://hl7.org/fhir/StructureDefinition/Organization" />
-	<derivation value="constraint" />
+	<base value="http://hl7.org/fhir/StructureDefinition/Organization" />
 	<snapshot>
 		<element id="Organization">
 			<path value="Organization" />
@@ -469,9 +468,9 @@
 				<key value="org-3" />
 				<severity value="error" />
 				<human value="The telecom of an organization can never be of use &#39;home&#39;" />
-				<expression value="select(use = &#39;home&#39;).empty()" />
 				<xpath value="count(f:use[@value=&#39;home&#39;]) = 0" />
 			</constraint>
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -522,9 +521,9 @@
 				<key value="org-2" />
 				<severity value="error" />
 				<human value="An address of an organization can never be of use &#39;home&#39;" />
-				<expression value="select(use = &#39;home&#39;).empty()" />
 				<xpath value="count(f:use[@value=&#39;home&#39;]) = 0" />
 			</constraint>
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -640,6 +639,7 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<binding>
 				<strength value="extensible" />
 				<description value="The purpose for which you would contact a contact party" />
@@ -683,6 +683,7 @@
 				<code value="HumanName" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -724,6 +725,7 @@
 				<code value="ContactPoint" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -766,6 +768,7 @@
 				<code value="Address" />
 			</type>
 			<condition value="ele-1" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
