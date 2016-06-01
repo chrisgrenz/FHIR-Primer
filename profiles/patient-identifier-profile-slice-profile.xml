@@ -1,6 +1,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
 	<url value="http://example.com/fhir/SD/patient-slice-by-profile" />
 	<name value="patient-identifier-profile-slice" />
+	<status value="draft" />
 	<display value="Slice Patient identifiers by profile" />
 	<publisher value="Analysts International" />
 	<date value="2016-05-02T15:00:00-06:00" />

@@ -1,6 +1,7 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
 	<url value="http://example.com/fhir/SD/codeable-with-systems" />
 	<name value="codeable-with-systems" />
+	<status value="draft" />
 	<description value="An example of a type profile with named slices." />
 	<fhirVersion value="0.5" />
 	<type value="type" />
