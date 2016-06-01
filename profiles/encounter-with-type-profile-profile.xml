@@ -676,11 +676,10 @@
 			<path value="Encounter.indication" />
 			<short value="Reason the encounter takes place (resource)" />
 			<definition value="Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis.
-      The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure." />
+      The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure" />
 			<comments value="For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis)." />
-			<alias value="Admission diagnosis" />
-			<min value="0" />
-			<max value="*" />
+			<min value="1" />
+			<max value="1" />
 			<type>
 				<code value="Reference" />
 				<profile value="http://hl7.org/fhir/StructureDefinition/Resource" />

@@ -93,8 +93,8 @@
 		</element>
 		<element>
 			<path value="Extension.extension.url" />
-			<name value="type.url" />
 			<representation value="xmlAttr" />
+			<name value="type.url" />
 			<short value="identifies the meaning of the extension" />
 			<definition value="Source of the definition for the extension code - a logical name or a URL." />
 			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
@@ -155,8 +155,8 @@
 		</element>
 		<element>
 			<path value="Extension.extension.url" />
-			<name value="flag.url" />
 			<representation value="xmlAttr" />
+			<name value="flag.url" />
 			<short value="identifies the meaning of the extension" />
 			<definition value="Source of the definition for the extension code - a logical name or a URL." />
 			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />
@@ -289,8 +289,8 @@
 		</element>
 		<element>
 			<path value="Extension.extension.url" />
-			<name value="date.url" />
 			<representation value="xmlAttr" />
+			<name value="date.url" />
 			<short value="identifies the meaning of the extension" />
 			<definition value="Source of the definition for the extension code - a logical name or a URL." />
 			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition should be version specific.  This will ideally be the URI for the Resource Profile defining the extension, with the code for the extension after a #." />

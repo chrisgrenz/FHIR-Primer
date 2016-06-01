@@ -1,8 +1,8 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
 	<url value="http://example.com/fhir/SD/patient-slice-by-profile" />
 	<name value="patient-identifier-profile-slice" />
-	<status value="draft" />
 	<display value="Slice Patient identifiers by profile" />
+	<status value="draft" />
 	<publisher value="Analysts International" />
 	<date value="2016-05-02T15:00:00-06:00" />
 	<description value="An example profile where an element is sliced by profile (discriminator:&quot;@profile&quot;). Type profiles are created (outside this profile) by constraining the FHIR type. They are then applied to a named slice using the elementdefinition.type.profile element." />
