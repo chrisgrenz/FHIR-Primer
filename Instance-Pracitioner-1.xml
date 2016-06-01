@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Practitioner xmlns="http://hl7.org/fhir">
+	<id value="test-prac-1" />
+	<identifier>
+		<system value="http://example.com/fhir/localsystems/practitioner-id" />
+		<value value="ExamplePracitioner1" />
+	</identifier>
+	<active value="true" />
+	<name>
+		<text value="Dr. J Doe Jr." />
+	</name>
+</Practitioner>
