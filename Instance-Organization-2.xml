@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Organization xmlns="http://hl7.org/fhir">
+	<id value="test-org-2" />
+	<identifier>
+		<system value="http://example.com/fhir/localsystems/organization-id" />
+		<value value="ExampleOrg2" />
+	</identifier>
+	<type>
+		<coding>
+			<code value="dept" />
+			<system value="http://hl7.org/fhir/organization-type" />
+		</coding>
+	</type>
+</Organization>
