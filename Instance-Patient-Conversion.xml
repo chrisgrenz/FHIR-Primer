@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patient xmlns="http://hl7.org/fhir">
+	<!-- Example instance to test XML/JSON conversion. -->
+	<meta>
+		<profile value="http://hl7.org/fhir/StructureDefinition/Patient"/>
+	</meta>
+	<!-- url attribute -->
+	<extension url="http://example.com/fhir/StructureDefinition/patient-do-not-call">
+		<valueBoolean value="false"/>
+	</extension>
+	<!-- id attribute -->
+	<identifier id="id-1">
+		<use value="usual"/>
+		<system value="http://example.com/fhir/localsystems/PATIENT-ID-MRN"/>
+		<value value="13579-24680"/>
+	</identifier>
+	<!-- extension to be rendered in _gender JSON element -->
+	<gender value="male" id="gen-1">
+		<extension url="http://example.com/fhir/StructureDefinition/patient-gender-status">
+			<valueDate value="2000-01-01" />
+		</extension>
+	</gender>
+</Patient>

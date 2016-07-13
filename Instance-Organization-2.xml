@@ -7,8 +7,8 @@
 	</identifier>
 	<type>
 		<coding>
-			<code value="dept" />
 			<system value="http://hl7.org/fhir/organization-type" />
+			<code value="dept" />
 		</coding>
 	</type>
 </Organization>
