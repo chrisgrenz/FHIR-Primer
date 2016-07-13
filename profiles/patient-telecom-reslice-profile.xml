@@ -1566,10 +1566,6 @@
 				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/scopedRole[classCode=CON]" />
 			</mapping>
 			<mapping>
-				<identity value="" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
@@ -1799,10 +1795,6 @@
 				<map value="effectiveTime" />
 			</mapping>
 			<mapping>
-				<identity value="" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="DR" />
 			</mapping>
@@ -1831,10 +1823,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="player[classCode=ANM]" />
-			</mapping>
-			<mapping>
-				<identity value="" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -1980,10 +1968,6 @@
 				<map value="LanguageCommunication" />
 			</mapping>
 			<mapping>
-				<identity value="" />
-				<map value="patient.languageCommunication" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
@@ -2124,10 +2108,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="outboundLink" />
-			</mapping>
-			<mapping>
-				<identity value="" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
