@@ -1,9 +1,8 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
 	<url value="http://example.com/fhir/SD/patient-name-slice" />
 	<name value="patient-name-slice" />
-	<status value="draft" />
-	<publisher value="Analysts (analysts.com)" />
 	<description value="Slice Patient.name by a single fixed value." />
+	<status value="draft" />
 	<fhirVersion value="0.5" />
 	<type value="constraint" />
 	<abstract value="false" />
@@ -21,15 +20,15 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="Entity. Role, or Act" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="Entity. Role, or Act" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
 				<map value="Patient[classCode=PAT]" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="Entity. Role, or Act" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="Entity. Role, or Act" />
 			</mapping>
 		</element>
 		<element>
@@ -89,6 +88,7 @@
 				<code value="code" />
 			</type>
 			<binding>
+				<name value="Language" />
 				<strength value="required" />
 				<description value="A human language" />
 				<valueSetUri value="http://tools.ietf.org/html/bcp47" />
@@ -115,7 +115,7 @@
 			<condition value="dom-1" />
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="Act.text?" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -123,7 +123,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="Act.text?" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -141,11 +141,11 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="Entity. Role, or Act" />
+				<map value="N/A" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="N/A" />
+				<map value="Entity. Role, or Act" />
 			</mapping>
 		</element>
 		<element>
@@ -161,11 +161,15 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="N/A" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -176,11 +180,15 @@
 			<comments value="Comments for do not call flag root element." />
 			<requirements value="Requirements for do not call flag root element." />
 			<min value="1" />
-			<max value="1" />
+			<max value="*" />
 			<type>
 				<code value="Extension" />
 				<profile value="http://example.com/fhir/StructureDefinition/patient-do-not-call" />
 			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -198,11 +206,15 @@
 			<definition value="A flag indicating that a patient is involved in a legal dispute with the enterprise." />
 			<requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
 			<min value="1" />
-			<max value="1" />
+			<max value="*" />
 			<type>
 				<code value="Extension" />
 				<profile value="http://example.com/fhir/StructureDefinition/patient-legal-case" />
 			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -224,11 +236,11 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="N/A" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="N/A" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -243,11 +255,11 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="N/A" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="N/A" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -256,7 +268,6 @@
 			<short value="Additional Content defined by implementations" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
-			<requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
 			<min value="0" />
 			<max value="*" />
 			<type>
@@ -265,10 +276,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="N/A" />
 			</mapping>
 		</element>
 		<element>
@@ -286,11 +293,11 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="N/A" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="N/A" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -301,11 +308,15 @@
 			<definition value="A code classifying a person&#39;s professed religion." />
 			<requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
 			<min value="0" />
-			<max value="1" />
+			<max value="*" />
 			<type>
 				<code value="Extension" />
 				<profile value="http://hl7.org/fhir/StructureDefinition/us-core-religion" />
 			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -322,11 +333,15 @@
 			<definition value="Record of the patients general research authorization status." />
 			<requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
 			<min value="1" />
-			<max value="1" />
+			<max value="*" />
 			<type>
 				<code value="Extension" />
 				<profile value="http://example.com/fhir/StructureDefinition/patient-research-authorization" />
 			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -352,15 +367,15 @@
 			<isModifier value="true" />
 			<mapping>
 				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
 				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="N/A" />
 			</mapping>
 		</element>
 		<element>
@@ -375,8 +390,12 @@
 			</type>
 			<isSummary value="true" />
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-3" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="id" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -391,12 +410,8 @@
 				<map value="Identifier" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-3" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="id" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -415,11 +430,11 @@
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="statusCode" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="statusCode" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -439,8 +454,12 @@
 			</type>
 			<isSummary value="true" />
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-5, PID-9" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="name" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -455,12 +474,8 @@
 				<map value="ProviderName" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-5, PID-9" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="name" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -477,8 +492,12 @@
 			</type>
 			<isSummary value="true" />
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-5, PID-9" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="name" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -493,12 +512,8 @@
 				<map value="ProviderName" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-5, PID-9" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="name" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -516,14 +531,11 @@
 			<fixedCode value="official" />
 			<isModifier value="true" />
 			<binding>
+				<name value="NameUse" />
 				<strength value="required" />
 				<description value="The use of a human name" />
 				<valueSetUri value="http://hl7.org/fhir/vs/name-use" />
 			</binding>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="XPN.7, but often indicated by which field contains the name" />
@@ -535,6 +547,10 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="./NamePurpose" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -550,16 +566,16 @@
 				<code value="string" />
 			</type>
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="implied by XPN.11" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="./formatted" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -574,10 +590,6 @@
 				<code value="string" />
 			</type>
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="XPN.1" />
 			</mapping>
@@ -588,6 +600,10 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="./FamilyName" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -602,10 +618,6 @@
 				<code value="string" />
 			</type>
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="XPN.2 + XPN.3" />
 			</mapping>
@@ -616,6 +628,10 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="./GivenNames" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -632,8 +648,12 @@
 			</type>
 			<isSummary value="true" />
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-5, PID-9" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="name" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -648,12 +668,8 @@
 				<map value="ProviderName" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-5, PID-9" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="name" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -671,14 +687,11 @@
 			<fixedCode value="maiden" />
 			<isModifier value="true" />
 			<binding>
+				<name value="NameUse" />
 				<strength value="required" />
 				<description value="The use of a human name" />
 				<valueSetUri value="http://hl7.org/fhir/vs/name-use" />
 			</binding>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="XPN.7, but often indicated by which field contains the name" />
@@ -690,6 +703,10 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="./NamePurpose" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -704,10 +721,6 @@
 				<code value="string" />
 			</type>
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="XPN.1" />
 			</mapping>
@@ -718,6 +731,10 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="./FamilyName" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -734,8 +751,12 @@
 			</type>
 			<isSummary value="true" />
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-13, PID-14, PID-40" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="telecom" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -750,12 +771,8 @@
 				<map value="ContactPoint" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-13, PID-14, PID-40" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="telecom" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -772,14 +789,11 @@
 			</type>
 			<isSummary value="true" />
 			<binding>
+				<name value="AdministrativeGender" />
 				<strength value="required" />
 				<description value="The gender of a person used for administrative purposes" />
 				<valueSetUri value="http://hl7.org/fhir/vs/administrative-gender" />
 			</binding>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="PID-8" />
@@ -787,6 +801,10 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/administrativeGender" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -802,10 +820,6 @@
 			</type>
 			<isSummary value="true" />
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="PID-7" />
 			</mapping>
@@ -816,6 +830,10 @@
 			<mapping>
 				<identity value="loinc" />
 				<map value="21112-8" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -852,8 +870,12 @@
 			</type>
 			<isSummary value="true" />
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-11" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="addr" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -868,12 +890,8 @@
 				<map value="Address" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-11" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="addr" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -888,13 +906,18 @@
 				<code value="CodeableConcept" />
 			</type>
 			<binding>
+				<name value="MaritalStatus" />
 				<strength value="required" />
 				<description value="The domestic partnership status of a person" />
 				<valueSetUri value="http://hl7.org/fhir/vs/marital-status" />
 			</binding>
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-16" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="player[classCode=PSN]/maritalStatusCode" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -905,12 +928,8 @@
 				<map value="CD" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-16" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="player[classCode=PSN]/maritalStatusCode" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -930,12 +949,12 @@
 				<code value="integer" />
 			</type>
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="PID-24 (bool), PID-25 (integer)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -950,8 +969,12 @@
 				<code value="Attachment" />
 			</type>
 			<mapping>
+				<identity value="v2" />
+				<map value="OBX-5 - needs a profile" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/desc" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -962,12 +985,8 @@
 				<map value="ED" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="OBX-5 - needs a profile" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/desc" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -990,18 +1009,18 @@
 			</constraint>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
 				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/scopedRole[classCode=CON]" />
 			</mapping>
 			<mapping>
 				<identity value="" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
 		</element>
@@ -1017,13 +1036,18 @@
 				<code value="CodeableConcept" />
 			</type>
 			<binding>
+				<name value="ContactRelationship" />
 				<strength value="required" />
 				<description value="The nature of the relationship between a patient and a contact person for that patient" />
 				<valueSetUri value="http://hl7.org/fhir/vs/patient-contact-relationship" />
 			</binding>
 			<mapping>
+				<identity value="v2" />
+				<map value="NK1-7, NK1-3" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="code" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -1034,12 +1058,8 @@
 				<map value="CD" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="NK1-7, NK1-3" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="code" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1054,8 +1074,12 @@
 				<code value="HumanName" />
 			</type>
 			<mapping>
+				<identity value="v2" />
+				<map value="NK1-2" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="name" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -1070,12 +1094,8 @@
 				<map value="ProviderName" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="NK1-2" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="name" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1091,8 +1111,12 @@
 				<code value="ContactPoint" />
 			</type>
 			<mapping>
+				<identity value="v2" />
+				<map value="NK1-5, NK1-6, NK1-40" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="telecom" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -1107,12 +1131,8 @@
 				<map value="ContactPoint" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="NK1-5, NK1-6, NK1-40" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="telecom" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1127,8 +1147,12 @@
 				<code value="Address" />
 			</type>
 			<mapping>
+				<identity value="v2" />
+				<map value="NK1-4" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="addr" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -1143,12 +1167,8 @@
 				<map value="Address" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="NK1-4" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="addr" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1163,14 +1183,11 @@
 				<code value="code" />
 			</type>
 			<binding>
+				<name value="AdministrativeGender" />
 				<strength value="required" />
 				<description value="The gender of a person used for administrative purposes" />
 				<valueSetUri value="http://hl7.org/fhir/vs/administrative-gender" />
 			</binding>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="NK1-15" />
@@ -1178,6 +1195,10 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/administrativeGender" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1193,20 +1214,20 @@
 			</type>
 			<condition value="pat-1" />
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="NK1-13, NK1-30, NK1-31, NK1-32, NK1-41" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="scoper" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1221,6 +1242,10 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
+				<map value="effectiveTime" />
+			</mapping>
+			<mapping>
+				<identity value="" />
 				<map value="n/a" />
 			</mapping>
 			<mapping>
@@ -1233,10 +1258,6 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="effectiveTime" />
-			</mapping>
-			<mapping>
-				<identity value="" />
 				<map value="n/a" />
 			</mapping>
 		</element>
@@ -1255,18 +1276,18 @@
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
 				<map value="player[classCode=ANM]" />
 			</mapping>
 			<mapping>
 				<identity value="" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
 		</element>
@@ -1283,13 +1304,18 @@
 			</type>
 			<isSummary value="true" />
 			<binding>
+				<name value="AnimalSpecies" />
 				<strength value="example" />
 				<description value="The species of an animal" />
 				<valueSetUri value="http://hl7.org/fhir/vs/animal-species" />
 			</binding>
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-35" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="code" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -1300,12 +1326,8 @@
 				<map value="CD" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-35" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="code" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1321,13 +1343,18 @@
 			</type>
 			<isSummary value="true" />
 			<binding>
+				<name value="AnimalBreed" />
 				<strength value="example" />
 				<description value="The breed of an animal" />
 				<valueSetUri value="http://hl7.org/fhir/vs/animal-breeds" />
 			</binding>
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-37" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="playedRole[classCode=GEN]/scoper[classCode=ANM, determinerCode=KIND]/code" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -1338,12 +1365,8 @@
 				<map value="CD" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-37" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="playedRole[classCode=GEN]/scoper[classCode=ANM, determinerCode=KIND]/code" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1359,13 +1382,18 @@
 			</type>
 			<isSummary value="true" />
 			<binding>
+				<name value="AnimalGenderStatus" />
 				<strength value="example" />
 				<description value="The state of the animal&#39;s reproductive organs" />
 				<valueSetUri value="http://hl7.org/fhir/vs/animal-genderstatus" />
 			</binding>
 			<mapping>
+				<identity value="v2" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="genderStatusCode" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -1376,12 +1404,8 @@
 				<map value="CD" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="N/A" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="genderStatusCode" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1399,19 +1423,19 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
 				<map value="LanguageCommunication" />
 			</mapping>
 			<mapping>
 				<identity value="" />
 				<map value="patient.languageCommunication" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1426,13 +1450,18 @@
 				<code value="CodeableConcept" />
 			</type>
 			<binding>
+				<name value="Language" />
 				<strength value="required" />
 				<description value="A human language" />
 				<valueSetUri value="http://tools.ietf.org/html/bcp47" />
 			</binding>
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-15, LAN-2" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/languageCommunication/code" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -1443,12 +1472,8 @@
 				<map value="CD" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-15, LAN-2" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/languageCommunication/code" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1463,16 +1488,16 @@
 				<code value="boolean" />
 			</type>
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="PID-15" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="preferenceInd" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1493,7 +1518,7 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="subjectOf.CareEvent.performer.AssignedEntity" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -1501,7 +1526,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="subjectOf.CareEvent.performer.AssignedEntity" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1519,7 +1544,7 @@
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="scoper" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -1527,7 +1552,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="scoper" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1544,18 +1569,18 @@
 			<isModifier value="true" />
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
 				<map value="outboundLink" />
 			</mapping>
 			<mapping>
 				<identity value="" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
 		</element>
@@ -1571,20 +1596,20 @@
 			</type>
 			<isModifier value="true" />
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="PID-3, MRG-1" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="id" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1599,24 +1624,22 @@
 			</type>
 			<isModifier value="true" />
 			<binding>
+				<name value="LinkType" />
 				<strength value="required" />
 				<description value="The type of link between this patient resource and another patient resource." />
 				<valueSetUri value="http://hl7.org/fhir/vs/link-type" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="typeCode" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="typeCode" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 	</snapshot>
 	<differential>
-		<element>
-			<path value="Patient" />
-		</element>
 		<element>
 			<path value="Patient.name" />
 			<slicing>

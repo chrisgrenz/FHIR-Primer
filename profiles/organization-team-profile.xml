@@ -1,8 +1,8 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
 	<url value="http://example.com/fhir/SD/organization-team" />
 	<name value="organization-team" />
-	<status value="draft" />
 	<description value="An organization of type &quot;team&quot;." />
+	<status value="draft" />
 	<fhirVersion value="0.5" />
 	<type value="constraint" />
 	<abstract value="false" />
@@ -18,14 +18,6 @@
 				<code value="DomainResource" />
 			</type>
 			<mapping>
-				<identity value="rim" />
-				<map value="Entity. Role, or Act" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="Entity. Role, or Act" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="(also see master files messages)" />
 			</mapping>
@@ -36,6 +28,14 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="Organization" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="Entity. Role, or Act" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="Entity. Role, or Act" />
 			</mapping>
 		</element>
 		<element>
@@ -95,6 +95,7 @@
 				<code value="code" />
 			</type>
 			<binding>
+				<name value="Language" />
 				<strength value="required" />
 				<description value="A human language" />
 				<valueSetUri value="http://tools.ietf.org/html/bcp47" />
@@ -121,7 +122,7 @@
 			<condition value="dom-1" />
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="Act.text?" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -129,7 +130,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="Act.text?" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -147,11 +148,11 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="Entity. Role, or Act" />
+				<map value="N/A" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="N/A" />
+				<map value="Entity. Role, or Act" />
 			</mapping>
 		</element>
 		<element>
@@ -169,11 +170,15 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="N/A" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -192,15 +197,15 @@
 			<isModifier value="true" />
 			<mapping>
 				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
 				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="N/A" />
 			</mapping>
 		</element>
 		<element>
@@ -217,7 +222,15 @@
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".scopes[Role](classCode=IDENT)" />
+			</mapping>
+			<mapping>
+				<identity value="servd" />
+				<map value="./Identifiers" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="XON.10 Organization Identifier / XON.3 ID Number" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -233,15 +246,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".scopes[Role](classCode=IDENT)" />
-			</mapping>
-			<mapping>
-				<identity value="servd" />
-				<map value="./Identifiers" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="XON.10 Organization Identifier / XON.3 ID Number" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -260,10 +265,6 @@
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
 				<map value=".status" />
 			</mapping>
 			<mapping>
@@ -273,6 +274,10 @@
 			<mapping>
 				<identity value="v2" />
 				<map value="No equivalent in V2.x" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -286,20 +291,23 @@
 			<type>
 				<code value="CodeableConcept" />
 			</type>
-			<patternCodeableConcept>
-				<coding>
-					<system value="http://hl7.org/fhir/organization-type" />
-					<code value="team" />
-				</coding>
-			</patternCodeableConcept>
 			<isSummary value="true" />
 			<binding>
+				<name value="OrganizationType" />
 				<strength value="example" />
 				<description value="Used to categorize the organization" />
 				<valueSetUri value="http://hl7.org/fhir/vs/organization-type" />
 			</binding>
 			<mapping>
+				<identity value="v2" />
+				<map value="No equivalent in v2" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
+				<map value=".code" />
+			</mapping>
+			<mapping>
+				<identity value="servd" />
 				<map value="n/a" />
 			</mapping>
 			<mapping>
@@ -311,15 +319,7 @@
 				<map value="CD" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="No equivalent in v2" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value=".code" />
-			</mapping>
-			<mapping>
-				<identity value="servd" />
 				<map value="n/a" />
 			</mapping>
 		</element>
@@ -338,10 +338,6 @@
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
 				<map value=".name" />
 			</mapping>
 			<mapping>
@@ -351,6 +347,10 @@
 			<mapping>
 				<identity value="v2" />
 				<map value="XON.1 Organization Name" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -374,7 +374,15 @@
 			</constraint>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".telecom" />
+			</mapping>
+			<mapping>
+				<identity value="servd" />
+				<map value="./ContactPoints" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="No authoritative equivalent in V2.x" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -390,15 +398,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".telecom" />
-			</mapping>
-			<mapping>
-				<identity value="servd" />
-				<map value="./ContactPoints" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="No authoritative equivalent in V2.x" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -422,7 +422,15 @@
 			</constraint>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".address" />
+			</mapping>
+			<mapping>
+				<identity value="servd" />
+				<map value="./PrimaryAddress and ./OtherAddresses" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="No authoritative equivalent in V2.x; some V2.x segments such as OBX might provide a serialized instance value" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -438,15 +446,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".address" />
-			</mapping>
-			<mapping>
-				<identity value="servd" />
-				<map value="./PrimaryAddress and ./OtherAddresses" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="No authoritative equivalent in V2.x; some V2.x segments such as OBX might provide a serialized instance value" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -463,14 +463,6 @@
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
 				<map value=".playedBy[classCode=Part].scoper" />
 			</mapping>
 			<mapping>
@@ -480,6 +472,14 @@
 			<mapping>
 				<identity value="v2" />
 				<map value="No equivalent in V2.x" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -495,15 +495,15 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
 				<map value=".contactParty" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -518,13 +518,14 @@
 				<code value="CodeableConcept" />
 			</type>
 			<binding>
+				<name value="ContactPartyType" />
 				<strength value="required" />
 				<description value="The purpose for which you would contact a contact party" />
 				<valueSetUri value="http://hl7.org/fhir/vs/contactentity-type" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="./type" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -536,7 +537,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="./type" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -551,8 +552,12 @@
 				<code value="HumanName" />
 			</type>
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-5, PID-9" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="./name" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -567,12 +572,8 @@
 				<map value="ProviderName" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-5, PID-9" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="./name" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -586,8 +587,12 @@
 				<code value="ContactPoint" />
 			</type>
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-13, PID-14" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="./telecom" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -602,12 +607,8 @@
 				<map value="ContactPoint" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-13, PID-14" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="./telecom" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -622,8 +623,12 @@
 				<code value="Address" />
 			</type>
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-11" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="./addr" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -638,28 +643,15 @@
 				<map value="Address" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-11" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="./addr" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 	</snapshot>
 	<differential>
 		<element>
-			<path value="Organization" />
-		</element>
-		<element>
 			<path value="Organization.type" />
 			<min value="1" />
-			<patternCodeableConcept>
-				<coding>
-					<system value="http://hl7.org/fhir/organization-type" />
-					<code value="team" />
-				</coding>
-			</patternCodeableConcept>
 		</element>
 	</differential>
 </StructureDefinition>

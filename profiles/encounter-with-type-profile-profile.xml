@@ -18,15 +18,15 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="Entity. Role, or Act" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="Entity. Role, or Act" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
 				<map value="Encounter[moodCode=EVN]" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="Entity. Role, or Act" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="Entity. Role, or Act" />
 			</mapping>
 		</element>
 		<element>
@@ -86,6 +86,7 @@
 				<code value="code" />
 			</type>
 			<binding>
+				<name value="Language" />
 				<strength value="required" />
 				<description value="A human language" />
 				<valueSetUri value="http://tools.ietf.org/html/bcp47" />
@@ -112,7 +113,7 @@
 			<condition value="dom-1" />
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="Act.text?" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -120,7 +121,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="Act.text?" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -138,11 +139,11 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="Entity. Role, or Act" />
+				<map value="N/A" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="N/A" />
+				<map value="Entity. Role, or Act" />
 			</mapping>
 		</element>
 		<element>
@@ -160,11 +161,15 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="N/A" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -183,15 +188,15 @@
 			<isModifier value="true" />
 			<mapping>
 				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
 				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="N/A" />
 			</mapping>
 		</element>
 		<element>
@@ -207,7 +212,11 @@
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".id" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="PV1-19-visit number" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -223,11 +232,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".id" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="PV1-19-visit number" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -243,14 +248,11 @@
 			<isModifier value="true" />
 			<isSummary value="true" />
 			<binding>
+				<name value="EncounterState" />
 				<strength value="required" />
 				<description value="Current state of the encounter" />
 				<valueSetUri value="http://hl7.org/fhir/vs/encounter-state" />
 			</binding>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value=".statusCode" />
@@ -258,6 +260,10 @@
 			<mapping>
 				<identity value="v2" />
 				<map value="No clear equivalent in V2.x; active/finished could be inferred from PV1-44, PV1-45, PV2-24; inactive could be inferred from PV2-16" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -290,6 +296,7 @@
 				<code value="code" />
 			</type>
 			<binding>
+				<name value="EncounterState" />
 				<strength value="required" />
 				<description value="Current state of the encounter" />
 				<valueSetUri value="http://hl7.org/fhir/vs/encounter-state" />
@@ -310,16 +317,16 @@
 				<code value="Period" />
 			</type>
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="DR" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="IVL&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;] or URG&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -334,14 +341,11 @@
 			</type>
 			<isSummary value="true" />
 			<binding>
+				<name value="EncounterClass" />
 				<strength value="required" />
 				<description value="Classification of the encounter" />
 				<valueSetUri value="http://hl7.org/fhir/vs/encounter-class" />
 			</binding>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value=".inboundRelationship[typeCode=SUBJ].source[classCode=LIST].code" />
@@ -350,23 +354,30 @@
 				<identity value="v2" />
 				<map value="PV1-2-patient class" />
 			</mapping>
-		</element>
-		<element>
-			<path value="Encounter.type" />
-			<short value="Concept - reference to a terminology or just  text" />
-			<definition value="A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text." />
-			<comments value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination." />
-			<requirements value="This is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED CT, and/or defined by the provision of text that captures a human sense of the concept." />
-			<min value="1" />
-			<max value="1" />
-			<type>
-				<code value="CodeableConcept" />
-				<profile value="http://example.com/fhir/SD/codeable-with-systems" />
-			</type>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
+		</element>
+		<element>
+			<path value="Encounter.type" />
+			<short value="Specific type of encounter" />
+			<definition value="Specific type of encounter (e.g. e-mail consultation, surgical day-care, skilled nursing, rehabilitation)." />
+			<comments value="Since there are many ways to further classify encounters, this element is 0..*." />
+			<requirements value="This is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED CT, and/or defined by the provision of text that captures a human sense of the concept." />
+			<min value="1" />
+			<max value="*" />
+			<type>
+				<code value="CodeableConcept" />
+				<profile value="http://example.com/fhir/SD/codeable-with-systems" />
+			</type>
+			<isSummary value="true" />
+			<binding>
+				<name value="EncounterType" />
+				<strength value="example" />
+				<description value="The type of encounter" />
+				<valueSetUri value="http://hl7.org/fhir/vs/encounter-type" />
+			</binding>
 			<mapping>
 				<identity value="v2" />
 				<map value="CE/CNE/CWE" />
@@ -374,12 +385,24 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="CD" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value=".code" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="PV1-4-admission type" />
 			</mapping>
 		</element>
 		<element>
 			<path value="Encounter.priority" />
-			<short value="Concept - reference to a terminology or just  text" />
-			<definition value="A concept that may be defined by a formal reference to a terminology or ontology or may be provided by text." />
+			<short value="Indicates the urgency of the encounter" />
+			<definition value="Indicates the urgency of the encounter." />
 			<comments value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination." />
 			<requirements value="This is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED CT, and/or defined by the provision of text that captures a human sense of the concept." />
 			<min value="1" />
@@ -388,10 +411,12 @@
 				<code value="CodeableConcept" />
 				<profile value="http://example.com/fhir/SD/codeable-with-systems" />
 			</type>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
+			<binding>
+				<name value="Priority" />
+				<strength value="example" />
+				<description value="Indicates the urgency of the encounter" />
+				<valueSetUri value="http://hl7.org/fhir/vs/encounter-priority" />
+			</binding>
 			<mapping>
 				<identity value="v2" />
 				<map value="CE/CNE/CWE" />
@@ -399,6 +424,18 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="CD" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value=".priorityCode" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="PV2-25-visit priority code" />
 			</mapping>
 		</element>
 		<element>
@@ -416,7 +453,11 @@
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".participation[typeCode=SBJ]/role[classCode=PAT]" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="PID-3-patient ID list" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -424,11 +465,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".participation[typeCode=SBJ]/role[classCode=PAT]" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="PID-3-patient ID list" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -443,16 +480,16 @@
 			</type>
 			<isSummary value="true" />
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
+				<identity value="v2" />
+				<map value="PV1-54, PV1-53" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PV1-54, PV1-53" />
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -466,20 +503,20 @@
 			</type>
 			<isSummary value="true" />
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="ROL" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value=".participation[typeCode=PFM]" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -495,13 +532,18 @@
 			</type>
 			<isSummary value="true" />
 			<binding>
+				<name value="ParticipantType" />
 				<strength value="required" />
 				<description value="Role of participant in encounter" />
 				<valueSetUri value="http://hl7.org/fhir/vs/encounter-participant-type" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".functionCode" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="ROL-3" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -513,11 +555,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".functionCode" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="ROL-3" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -531,8 +569,8 @@
 				<code value="Period" />
 			</type>
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
+				<identity value="v2" />
+				<map value="ROL-5, ROL-6" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -543,8 +581,8 @@
 				<map value="IVL&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;] or URG&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="ROL-5, ROL-6" />
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -563,20 +601,20 @@
 			</type>
 			<isSummary value="true" />
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="ROL-4" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value=".role" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -590,8 +628,8 @@
 				<code value="Period" />
 			</type>
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
+				<identity value="v2" />
+				<map value="PV1-44, PV1-45" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -602,8 +640,8 @@
 				<map value="IVL&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;] or URG&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PV1-44, PV1-45" />
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -618,8 +656,12 @@
 				<code value="Duration" />
 			</type>
 			<mapping>
+				<identity value="v2" />
+				<map value="(PV1-45 less PV1-44) iff ( (PV1-44 not empty) and (PV1-45 not empty) ); units in minutes" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".lengthOfStayQuantity" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -630,12 +672,8 @@
 				<map value="PQ, IVL&lt;PQ&gt;, MO, CO, depending on the values" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="(PV1-45 less PV1-44) iff ( (PV1-44 not empty) and (PV1-45 not empty) ); units in minutes" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value=".lengthOfStayQuantity" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -651,13 +689,14 @@
 			</type>
 			<isSummary value="true" />
 			<binding>
+				<name value="EncounterReason" />
 				<strength value="example" />
 				<description value="Reason why the encounter takes place" />
 				<valueSetUri value="http://hl7.org/fhir/vs/encounter-reason" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".reasonCode" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -669,29 +708,22 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".reasonCode" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
 			<path value="Encounter.indication" />
 			<short value="Reason the encounter takes place (resource)" />
 			<definition value="Reason the encounter takes place, as specified using information from another resource. For admissions, this is the admission diagnosis.
-      The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure" />
+      The indication will typically be a Condition (with other resources referenced in the evidence.detail), or a Procedure." />
 			<comments value="For systems that need to know which was the primary diagnosis, these will be marked with the standard extension primaryDiagnosis (which is a sequence value rather than a flag, 1 = primary diagnosis)." />
-			<min value="1" />
-			<max value="1" />
+			<alias value="Admission diagnosis" />
+			<min value="0" />
+			<max value="*" />
 			<type>
 				<code value="Reference" />
 				<profile value="http://hl7.org/fhir/StructureDefinition/Resource" />
 			</type>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="Resources that would commonly referenced at Encounter.indication would be Condition and/or Procedure. These most closely align with DG1/PRB and PR1 respectively." />
@@ -699,6 +731,14 @@
 			<mapping>
 				<identity value="rim" />
 				<map value=".outboundRelationship[typeCode=RSON].target" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -714,15 +754,15 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
 				<map value=".outboundRelationship[typeCode=COMP].target[classCode=ENC, moodCode=EVN]" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -737,7 +777,11 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".id" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="PV1-5-preadmit number" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -753,11 +797,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".id" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="PV1-5-preadmit number" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -772,7 +812,7 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".participation[typeCode=ORG].role" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -780,7 +820,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".participation[typeCode=ORG].role" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -795,22 +835,11 @@
 				<code value="CodeableConcept" />
 			</type>
 			<binding>
+				<name value="AdmitSource" />
 				<strength value="required" />
 				<description value="From where the patient was admitted" />
 				<valueSetUri value="http://hl7.org/fhir/vs/encounter-admit-source" />
 			</binding>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="CE/CNE/CWE" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="CD" />
-			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value=".admissionReferralSourceCode" />
@@ -819,22 +848,6 @@
 				<identity value="v2" />
 				<map value="PV1-14-admit source" />
 			</mapping>
-		</element>
-		<element>
-			<path value="Encounter.hospitalization.reAdmission" />
-			<short value="Is this hospitalization a readmission?" />
-			<definition value="Whether this hospitalization is a readmission." />
-			<comments value="Not all terminology uses fit this general pattern. In some cases, models should not use CodeableConcept and use Coding directly and provide their own structure for managing text, codings, translations and the relationship between elements and pre- and post-coordination." />
-			<requirements value="This is a common pattern in healthcare - a concept that may be defined by one or more codes from formal definitions including LOINC and SNOMED CT, and/or defined by the provision of text that captures a human sense of the concept." />
-			<min value="0" />
-			<max value="1" />
-			<type>
-				<code value="boolean" />
-			</type>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="CE/CNE/CWE" />
@@ -845,11 +858,29 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="Encounter.hospitalization.reAdmission" />
+			<short value="Is this hospitalization a readmission?" />
+			<definition value="Whether this hospitalization is a readmission." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="boolean" />
+			</type>
+			<mapping>
+				<identity value="rim" />
 				<map value="Propose at harmonization" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="PV1-13-re-admission indicator" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -864,13 +895,18 @@
 				<code value="CodeableConcept" />
 			</type>
 			<binding>
+				<name value="PatientDiet" />
 				<strength value="example" />
 				<description value="Medical, cultural or ethical food preferences to help with catering requirements" />
 				<valueSetUri value="http://hl7.org/fhir/vs/encounter-diet" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".outboundRelationship[typeCode=COMP].target[classCode=SBADM, moodCode=EVN, code=&quot;diet&quot;]" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="PV1-38-diet type" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -882,11 +918,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".outboundRelationship[typeCode=COMP].target[classCode=SBADM, moodCode=EVN, code=&quot;diet&quot;]" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="PV1-38-diet type" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -901,13 +933,18 @@
 				<code value="CodeableConcept" />
 			</type>
 			<binding>
+				<name value="Courtesies" />
 				<strength value="required" />
 				<description value="Special courtesies" />
 				<valueSetUri value="http://hl7.org/fhir/vs/encounter-special-courtesy" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".specialCourtesiesCode" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="PV1-16-VIP indicator" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -919,11 +956,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".specialCourtesiesCode" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="PV1-16-VIP indicator" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -938,13 +971,18 @@
 				<code value="CodeableConcept" />
 			</type>
 			<binding>
+				<name value="Arrangements" />
 				<strength value="required" />
 				<description value="Special arrangements" />
 				<valueSetUri value="http://hl7.org/fhir/vs/encounter-special-arrangements" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".specialArrangementCode" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="PV1-15-ambulatory status / OBR-30-transportation mode / OBR-43-planned patient transport comment" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -956,11 +994,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".specialArrangementCode" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="PV1-15-ambulatory status / OBR-30-transportation mode / OBR-43-planned patient transport comment" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -974,20 +1008,20 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/Location" />
 			</type>
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="PV1-37" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value=".participation[typeCode=DST]" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1002,13 +1036,18 @@
 				<code value="CodeableConcept" />
 			</type>
 			<binding>
+				<name value="DischargeDisp" />
 				<strength value="required" />
 				<description value="Discharge Disposition" />
 				<valueSetUri value="http://hl7.org/fhir/vs/encounter-discharge-disposition" />
 			</binding>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".dischargeDispositionCode" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="PV1-36-discharge disposition" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -1020,11 +1059,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".dischargeDispositionCode" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="PV1-36-discharge disposition" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1039,7 +1074,7 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".outboundRelationship[typeCode=OUT].target[classCode=OBS, moodCode=EVN, code=ASSERTION].value" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -1047,7 +1082,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".outboundRelationship[typeCode=OUT].target[classCode=OBS, moodCode=EVN, code=ASSERTION].value" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1062,15 +1097,15 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
 				<map value=".participation[typeCode=LOC]" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1085,7 +1120,11 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".role" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="PV1-3-assigned patient location / PV1-6-prior patient location / PV1-11-temporary location / PV1-42-pending location / PV1-43-prior temporary location" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -1093,11 +1132,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".role" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="PV1-3-assigned patient location / PV1-6-prior patient location / PV1-11-temporary location / PV1-42-pending location / PV1-43-prior temporary location" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1111,6 +1146,7 @@
 				<code value="code" />
 			</type>
 			<binding>
+				<name value="EncounterLocationStatus" />
 				<strength value="required" />
 				<description value="The status of the location" />
 				<valueSetUri value="http://hl7.org/fhir/vs/encounter-location-status" />
@@ -1132,7 +1168,7 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".time" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -1144,7 +1180,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".time" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1159,7 +1195,11 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".particiaption[typeCode=PFM].role" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="PV1-10-hospital service / PL.6 Person Location Type &amp; PL.1 Point of Care (note: V2.x definition is &quot;the treatment or type of surgery that the patient is scheduled to receive&quot;; seems slightly out of alignment with the concept name &#39;hospital service&#39;. Would not trust that implementations apply this semantic by default)" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -1167,11 +1207,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".particiaption[typeCode=PFM].role" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="PV1-10-hospital service / PL.6 Person Location Type &amp; PL.1 Point of Care (note: V2.x definition is &quot;the treatment or type of surgery that the patient is scheduled to receive&quot;; seems slightly out of alignment with the concept name &#39;hospital service&#39;. Would not trust that implementations apply this semantic by default)" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1186,7 +1222,7 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value=".inboundRelationship[typeCode=COMP].source[classCode=COMP, moodCode=EVN]" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -1194,7 +1230,7 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value=".inboundRelationship[typeCode=COMP].source[classCode=COMP, moodCode=EVN]" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -1207,6 +1243,14 @@
 				<code value="Reference" />
 				<profile value="http://hl7.org/fhir/StructureDefinition/ReferralRequest" />
 			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
 		<element>
 			<path value="Encounter.fulfills" />
@@ -1227,12 +1271,17 @@
 				<identity value="rim" />
 				<map value=".outboundRelationship[typeCode=FLFS].target[classCode=ENC, moodCode=APT]" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
 	</snapshot>
 	<differential>
-		<element>
-			<path value="Encounter" />
-		</element>
 		<element>
 			<path value="Encounter.type" />
 			<type>

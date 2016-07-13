@@ -1,10 +1,8 @@
 <StructureDefinition xmlns="http://hl7.org/fhir">
 	<url value="http://example.com/fhir/SD/patient-mrn-id" />
 	<name value="patient-mrn-id" />
-	<status value="draft" />
-	<publisher value="Analysts International" />
-	<date value="2016-05-02T15:00:00-06:00" />
 	<description value="An example type profile constraining the Identifier type. For use in slicing by profile examples." />
+	<status value="draft" />
 	<fhirVersion value="0.5" />
 	<type value="type" />
 	<abstract value="false" />
@@ -21,10 +19,6 @@
 				<code value="Identifier" />
 			</type>
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="CX / EI (occasionally, more often EI maps to a resource id or a URL)" />
 			</mapping>
@@ -36,22 +30,21 @@
 				<identity value="servd" />
 				<map value="Identifier" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
 		<element>
 			<path value="Identifier.id" />
 			<representation value="xmlAttr" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references)." />
-			<comments value="RFC 4122" />
 			<min value="0" />
 			<max value="1" />
 			<type>
 				<code value="id" />
 			</type>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -62,7 +55,6 @@
 			<short value="Additional Content defined by implementations" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
-			<requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
 			<alias value="extensions" />
 			<alias value="user content" />
 			<min value="0" />
@@ -73,10 +65,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="N/A" />
 			</mapping>
 		</element>
 		<element>
@@ -92,14 +80,11 @@
 			</type>
 			<isModifier value="true" />
 			<binding>
+				<name value="IdentifierUse" />
 				<strength value="required" />
 				<description value="Identifies the purpose for this identifier, if known" />
 				<valueSetUri value="http://hl7.org/fhir/vs/identifier-use" />
 			</binding>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="N/A" />
@@ -107,6 +92,10 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="Role.code or implied by context" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -121,13 +110,18 @@
 				<code value="CodeableConcept" />
 			</type>
 			<binding>
+				<name value="IdentifierType" />
 				<strength value="extensible" />
 				<description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose" />
 				<valueSetUri value="http://hl7.org/fhir/vs/identifier-type" />
 			</binding>
 			<mapping>
+				<identity value="v2" />
+				<map value="CX.5" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="Role.code or implied by context" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -138,12 +132,8 @@
 				<map value="CD" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="CX.5" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="Role.code or implied by context" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -160,10 +150,6 @@
 			<fixedUri value="http://example.com/fhir/localsystems/PATIENT-ID-MRN" />
 			<exampleUri value="http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the id itself is a full uri" />
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="CX.4 / EI-2-4" />
 			</mapping>
@@ -174,6 +160,10 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="./IdentifierType" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -188,10 +178,6 @@
 			</type>
 			<exampleString value="123456" />
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="CX.1 / EI.1" />
 			</mapping>
@@ -202,6 +188,10 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="./Value" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -215,18 +205,6 @@
 				<code value="Period" />
 			</type>
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="DR" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="IVL&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;] or URG&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="CX.7 + CX.8" />
 			</mapping>
@@ -237,6 +215,18 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="./StartDate and ./EndDate" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="DR" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="IVL&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;] or URG&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -251,14 +241,6 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
 			</type>
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="CX.4 / (CX.4,CX.9,CX.10)" />
 			</mapping>
@@ -269,6 +251,14 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="./IdentifierIssuingAuthority" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 	</snapshot>

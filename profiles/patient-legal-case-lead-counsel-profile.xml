@@ -2,8 +2,6 @@
 	<url value="http://example.com/fhir/StructureDefinition/patient-legal-case-lead-counsel" />
 	<name value="patient-legal-case-lead-counsel" />
 	<status value="draft" />
-	<publisher value="Analysts (analysts.com)" />
-	<date value="2016-05-02T15:00:00-06:00" />
 	<fhirVersion value="0.5" />
 	<type value="extension" />
 	<abstract value="false" />
@@ -23,11 +21,11 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="N/A" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="N/A" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -35,16 +33,11 @@
 			<representation value="xmlAttr" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references)." />
-			<comments value="RFC 4122" />
 			<min value="0" />
 			<max value="1" />
 			<type>
 				<code value="id" />
 			</type>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -55,7 +48,6 @@
 			<short value="Additional Content defined by implementations" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
-			<requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
 			<alias value="extensions" />
 			<alias value="user content" />
 			<min value="0" />
@@ -66,10 +58,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="N/A" />
 			</mapping>
 		</element>
 		<element>
@@ -86,11 +74,11 @@
 			<fixedUri value="http://example.com/fhir/StructureDefinition/patient-legal-case-lead-counsel" />
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="N/A" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="N/A" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element>
@@ -176,11 +164,11 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="N/A" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="N/A" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 	</snapshot>
