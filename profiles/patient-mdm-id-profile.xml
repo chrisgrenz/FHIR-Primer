@@ -4,6 +4,21 @@
 	<description value="An example type profile constraining the Identifier type. For use in slicing by profile examples." />
 	<status value="draft" />
 	<fhirVersion value="0.5" />
+	<mapping>
+		<identity value="v2" />
+		<uri value="http://hl7.org/v2" />
+		<name value="HL7 v2" />
+	</mapping>
+	<mapping>
+		<identity value="rim" />
+		<uri value="http://hl7.org/v3" />
+		<name value="RIM" />
+	</mapping>
+	<mapping>
+		<identity value="servd" />
+		<uri value="http://www.omg.org/spec/ServD/1.0/" />
+		<name value="ServD" />
+	</mapping>
 	<type value="type" />
 	<abstract value="false" />
 	<base value="http://hl7.org/fhir/StructureDefinition/Identifier" />

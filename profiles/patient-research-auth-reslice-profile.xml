@@ -3,6 +3,21 @@
 	<name value="patient-research-auth-reslice" />
 	<status value="draft" />
 	<fhirVersion value="0.5" />
+	<mapping>
+		<identity value="rim" />
+		<uri value="http://hl7.org/v3" />
+		<name value="RIM" />
+	</mapping>
+	<mapping>
+		<identity value="v2" />
+		<uri value="http://hl7.org/v2" />
+		<name value="HL7 v2" />
+	</mapping>
+	<mapping>
+		<identity value="loinc" />
+		<uri value="http://loinc.org" />
+		<name value="LOINC" />
+	</mapping>
 	<type value="constraint" />
 	<abstract value="false" />
 	<base value="http://example.com/fhir/SD/patient-identifier-subslice" />

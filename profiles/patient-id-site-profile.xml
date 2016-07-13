@@ -5,6 +5,11 @@
 	<description value="Coding for the authority who issued with patient identifier." />
 	<status value="draft" />
 	<fhirVersion value="0.5" />
+	<mapping>
+		<identity value="rim" />
+		<uri value="http://hl7.org/v3" />
+		<name value="RIM" />
+	</mapping>
 	<type value="extension" />
 	<abstract value="false" />
 	<contextType value="resource" />
