@@ -3,7 +3,7 @@
 	<id value="test-prac-1" />
 	<identifier>
 		<system value="http://example.com/fhir/localsystems/practitioner-id" />
-		<value value="ExamplePracitioner1" />
+		<value value="ExamplePractitioner1" />
 	</identifier>
 	<active value="true" />
 	<name>
