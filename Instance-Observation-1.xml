@@ -1,0 +1,24 @@
+<Observation xmlns="http://hl7.org/fhir">
+	<code>
+		<coding>
+			<system value="http://loinc.org"/>
+			<code value="2160-0"/>
+			<display value="Creatinine [Mass/volume] in Serum or Plasma"/>
+		</coding>
+	</code>
+	<valueQuantity>
+		<value value="0.8"/>
+		<units value="mg/dL"/>
+	</valueQuantity>
+	<appliesDateTime value="2015-01-01T12:00:00-06:00"/>
+	<issued value="2015-01-02T12:00:00.123-06:00"/>
+	<status value="final"/>
+	<identifier>
+		<use value="official"/>
+		<system value="http://example.com/fhir/localsystems/LABRESULTID"/>
+		<value value="135792468029384756"/>
+	</identifier>
+	<subject>
+		<reference value="Patient/test-patient-1"/>
+	</subject>
+</Observation>
