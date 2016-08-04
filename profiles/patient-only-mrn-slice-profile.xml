@@ -4,6 +4,31 @@
 	<status value="draft" />
 	<description value="A profile with all elements removed _except_ one slice of identifer (mrn). Closed slicing." />
 	<fhirVersion value="1.4.0" />
+	<mapping>
+		<identity value="rim" />
+		<uri value="http://hl7.org/v3" />
+		<name value="RIM Mapping" />
+	</mapping>
+	<mapping>
+		<identity value="cda" />
+		<uri value="http://hl7.org/v3/cda" />
+		<name value="CDA (R2)" />
+	</mapping>
+	<mapping>
+		<identity value="w5" />
+		<uri value="http://hl7.org/fhir/w5" />
+		<name value="W5 Mapping" />
+	</mapping>
+	<mapping>
+		<identity value="v2" />
+		<uri value="http://hl7.org/v2" />
+		<name value="HL7 v2 Mapping" />
+	</mapping>
+	<mapping>
+		<identity value="loinc" />
+		<uri value="http://loinc.org" />
+		<name value="LOINC code for the element" />
+	</mapping>
 	<kind value="resource" />
 	<abstract value="false" />
 	<baseType value="Patient" />
@@ -21,17 +46,34 @@
 				<min value="0" />
 				<max value="*" />
 			</base>
-			<type>
-				<code value="DomainResource" />
-			</type>
-			<mapping>
-				<identity value="rim" />
-				<map value="Entity. Role, or Act" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="Entity. Role, or Act" />
-			</mapping>
+			<constraint>
+				<key value="dom-2" />
+				<severity value="error" />
+				<human value="If the resource is contained in another resource, it SHALL NOT contain nested Resources" />
+				<expression value="contained.contained.empty()" />
+				<xpath value="not(parent::f:contained and f:contained)" />
+			</constraint>
+			<constraint>
+				<key value="dom-1" />
+				<severity value="error" />
+				<human value="If the resource is contained in another resource, it SHALL NOT contain any narrative" />
+				<expression value="contained.text.empty()" />
+				<xpath value="not(parent::f:contained and f:text)" />
+			</constraint>
+			<constraint>
+				<key value="dom-4" />
+				<severity value="error" />
+				<human value="If a resource is contained in another resource, it SHALL NOT have a meta.versionId or a meta.lastUpdated" />
+				<expression value="contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()" />
+				<xpath value="not(exists(f:contained/*/f:meta/f:versionId)) and not(exists(f:contained/*/f:meta/f:lastUpdated))" />
+			</constraint>
+			<constraint>
+				<key value="dom-3" />
+				<severity value="error" />
+				<human value="If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource" />
+				<expression value="contained.where((&#39;#&#39;+id in %resource.descendents().reference).not()).empty()" />
+				<xpath value="not(exists(for $id in f:contained/*/@id return $id[not(ancestor::f:contained/parent::*/descendant::f:reference/@value=concat(&#39;#&#39;, $id))]))" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="Patient[classCode=PAT]" />
@@ -44,12 +86,24 @@
 				<identity value="w5" />
 				<map value="administrative.individual" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="Entity. Role, or Act" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="Entity. Role, or Act" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="Entity. Role, or Act" />
+			</mapping>
 		</element>
-		<element id="id">
+		<element id="Patient.id">
 			<path value="Patient.id" />
 			<short value="Logical id of this artifact" />
 			<definition value="The logical id of the resource, as used in the URL for the resource. Once assigned, this value never changes." />
-			<comments value="The only time that a resource does not have an id is when it is being submitted to the server using a create operation. Bundles always have an id, though it is usually a generated UUID." />
+			<comments value="The only time that a resource does not have an id is when it is being submitted to the server using a create operation." />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -60,14 +114,9 @@
 			<type>
 				<code value="id" />
 			</type>
-			<condition value="ele-1" />
 			<isSummary value="true" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="meta">
+		<element id="Patient.meta">
 			<path value="Patient.meta" />
 			<short value="Metadata about the resource" />
 			<definition value="The metadata about the resource. This is content that is maintained by the infrastructure. Changes to the content may not always be associated with version changes to the resource." />
@@ -82,13 +131,24 @@
 				<code value="Meta" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="implicitRules">
+		<element id="Patient.implicitRules">
 			<path value="Patient.implicitRules" />
 			<short value="A set of rules under which this content was created" />
 			<definition value="A reference to a set of rules that were followed when the resource was constructed, and which must be understood when processing the content." />
@@ -104,6 +164,13 @@
 				<code value="uri" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isModifier value="true" />
 			<isSummary value="true" />
 			<mapping>
@@ -111,7 +178,7 @@
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="language">
+		<element id="Patient.language">
 			<path value="Patient.language" />
 			<short value="Language of the resource content" />
 			<definition value="The base language in which the resource is written." />
@@ -126,22 +193,17 @@
 			<type>
 				<code value="code" />
 			</type>
-			<condition value="ele-1" />
 			<binding>
-				<strength value="required" />
+				<strength value="extensible" />
 				<description value="A human language." />
-				<valueSetUri value="http://tools.ietf.org/html/bcp47" />
+				<valueSetUri value="http://hl7.org/fhir/ValueSet/languages" />
 			</binding>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="text">
+		<element id="Patient.text">
 			<path value="Patient.text" />
 			<short value="Text summary of the resource, for human interpretation" />
 			<definition value="A human-readable narrative that contains a summary of the resource, and may be used to represent the content of the resource to a human. The narrative need not encode all the structured data, but is required to contain sufficient detail to make it &quot;clinically safe&quot; for a human to just read the narrative. Resource definitions may define what content should be represented in the narrative to ensure clinical safety." />
-			<comments value="Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative." />
+			<comments value="Contained resources do not have narrative. Resources that are not contained SHOULD have a narrative. In some cases, a resource may only have text with little or no additional discrete data (as long as all minOccurs=1 elements are satisfied).  This may be necessary for data from legacy systems where information is captured as a &quot;text blob&quot; or where text is additionally entered raw or narrated and encoded in formation is added later." />
 			<alias value="narrative" />
 			<alias value="html" />
 			<alias value="xhtml" />
@@ -157,9 +219,17 @@
 				<code value="Narrative" />
 			</type>
 			<condition value="dom-1" />
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="Act.text?" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -167,10 +237,14 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="Act.text?" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="contained">
+		<element id="Patient.contained">
 			<path value="Patient.contained" />
 			<short value="Contained, inline Resources" />
 			<definition value="These resources do not have an independent existence apart from the resource that contains them - they cannot be identified independently, and nor can they have their own independent transaction scope." />
@@ -190,14 +264,14 @@
 			</type>
 			<mapping>
 				<identity value="rim" />
-				<map value="Entity. Role, or Act" />
+				<map value="N/A" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="N/A" />
+				<map value="Entity. Role, or Act" />
 			</mapping>
 		</element>
-		<element id="extension">
+		<element id="Patient.extension">
 			<path value="Patient.extension" />
 			<short value="Additional Content defined by implementations" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the resource. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
@@ -215,16 +289,38 @@
 				<code value="Extension" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="N/A" />
+				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="modifierExtension">
+		<element id="Patient.modifierExtension">
 			<path value="Patient.modifierExtension" />
 			<short value="Extensions that cannot be ignored" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the resource, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions." />
@@ -242,21 +338,39 @@
 				<code value="Extension" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
 			<isModifier value="true" />
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="N/A" />
+				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="identifier">
+		<element id="Patient.identifier">
 			<path value="Patient.identifier" />
 			<slicing>
 				<discriminator value="@profile" />
@@ -276,10 +390,29 @@
 				<code value="Identifier" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-3" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="id" />
+			</mapping>
+			<mapping>
+				<identity value="cda" />
+				<map value=".id" />
+			</mapping>
+			<mapping>
+				<identity value="w5" />
+				<map value="id" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -292,6 +425,424 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="Identifier" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.identifier.id">
+			<path value="Patient.identifier.id" />
+			<representation value="xmlAttr" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="string" />
+			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.identifier.extension">
+			<path value="Patient.identifier.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.identifier.use">
+			<path value="Patient.identifier.use" />
+			<short value="usual | official | temp | secondary (If known)" />
+			<definition value="The purpose of this identifier." />
+			<comments value="This is labeled as &quot;Is Modifier&quot; because applications should not mistake a temporary id for a permanent one. Applications can assume that an identifier is permanent unless it explicitly says that it is temporary." />
+			<requirements value="Allows the appropriate identifier for a particular context of use to be selected from among a set of identifiers." />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Identifier.use" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="code" />
+			</type>
+			<isModifier value="true" />
+			<isSummary value="true" />
+			<binding>
+				<strength value="required" />
+				<description value="Identifies the purpose for this identifier, if known ." />
+				<valueSetUri value="http://hl7.org/fhir/ValueSet/identifier-use" />
+			</binding>
+			<mapping>
+				<identity value="v2" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="Role.code or implied by context" />
+			</mapping>
+		</element>
+		<element id="Patient.identifier.type">
+			<path value="Patient.identifier.type" />
+			<short value="Description of identifier" />
+			<definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
+			<comments value="This element deals only with general categories of identifiers.  It SHOULD not be used for codes that correspond 1..1 with the Identifier.system. Some identifiers may fall into multiple categories due to common usage. 
+      Where the system is known, a type is unnecessary because the type is always part of the system definition. However systems often need to handle identifiers where the system is not known. There is not a 1:1 relationship between type and system, since many different systems have the same type." />
+			<requirements value="Allows users to make use of identifiers when the identifier system is not known." />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Identifier.type" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="CodeableConcept" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<isSummary value="true" />
+			<binding>
+				<strength value="extensible" />
+				<description value="A coded type for an identifier that can be used to determine which identifier to use for a specific purpose." />
+				<valueSetUri value="http://hl7.org/fhir/ValueSet/identifier-type" />
+			</binding>
+			<mapping>
+				<identity value="v2" />
+				<map value="CX.5" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="Role.code or implied by context" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="CE/CNE/CWE" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="CD" />
+			</mapping>
+			<mapping>
+				<identity value="orim" />
+				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.identifier.system">
+			<path value="Patient.identifier.system" />
+			<short value="The namespace for the identifier" />
+			<definition value="Establishes the namespace in which set of possible id values is unique." />
+			<comments value="see http://en.wikipedia.org/wiki/Uniform_resource_identifier" />
+			<requirements value="There are many sequences of identifiers.  To perform matching, we need to know what sequence we&#39;re dealing with. The system identifies a particular sequence or set of unique identifiers." />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Identifier.system" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="uri" />
+			</type>
+			<exampleUri value="http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri" />
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<isSummary value="true" />
+			<mapping>
+				<identity value="v2" />
+				<map value="CX.4 / EI-2-4" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="II.root or Role.id.root" />
+			</mapping>
+			<mapping>
+				<identity value="servd" />
+				<map value="./IdentifierType" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.identifier.value">
+			<path value="Patient.identifier.value" />
+			<short value="The value that is unique" />
+			<definition value="The portion of the identifier typically relevant to the user and which is unique within the context of the system." />
+			<comments value="If the value is a full URI, then the system SHALL be urn:ietf:rfc:3986.  The value&#39;s primary purpose is computational mapping.  As a result, it may be normalized for comparison purposes (e.g. removing non-significant whitespace, dashes, etc.)  A value formatted for human display can be conveyed using the [Rendered Value extension](extension-rendered-value.html)." />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Identifier.value" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="string" />
+			</type>
+			<exampleString value="123456" />
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<isSummary value="true" />
+			<mapping>
+				<identity value="v2" />
+				<map value="CX.1 / EI.1" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="II.extension or II.root if system indicates OID or GUID (Or Role.id.extension or root)" />
+			</mapping>
+			<mapping>
+				<identity value="servd" />
+				<map value="./Value" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.identifier.period">
+			<path value="Patient.identifier.period" />
+			<short value="Time period when id is/was valid for use" />
+			<definition value="Time period during which identifier is/was valid for use." />
+			<comments value="This is not a duration - that&#39;s a measure of time (a separate type), but a duration that occurs at a fixed value of time. A Period specifies a range of time; the context of use will specify whether the entire range applies (e.g. &quot;the patient was an inpatient of the hospital for this time range&quot;) or one value from the range applies (e.g. &quot;give to the patient between these two times&quot;). If duration is required, specify the type as Interval|Duration." />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Identifier.period" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="Period" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="per-1" />
+				<severity value="error" />
+				<human value="If present, start SHALL have a lower value than end" />
+				<expression value="start.empty() or end.empty() or (start &lt;= end)" />
+				<xpath value="not(exists(f:start)) or not(exists(f:end)) or (f:start/@value &lt;= f:end/@value)" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<isSummary value="true" />
+			<mapping>
+				<identity value="v2" />
+				<map value="CX.7 + CX.8" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="Role.effectiveTime or implied by context" />
+			</mapping>
+			<mapping>
+				<identity value="servd" />
+				<map value="./StartDate and ./EndDate" />
+			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="DR" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="IVL&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;] or URG&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.identifier.assigner">
+			<path value="Patient.identifier.assigner" />
+			<short value="Organization that issued id (may be just text)" />
+			<definition value="Organization that issued/manages the identifier." />
+			<comments value="The Identifier.assigner may omit the .reference element and only contain a .display element reflecting the name or other textual information about the assigning organization." />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Identifier.assigner" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="Reference" />
+				<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ref-1" />
+				<severity value="error" />
+				<human value="SHALL have a local reference if the resource is provided inline" />
+				<expression value="reference.startsWith(&#39;#&#39;).not() or (reference.substring(1).trace(&#39;url&#39;) in %resource.contained.id.trace(&#39;ids&#39;))" />
+				<xpath value="not(starts-with(f:reference/@value, &#39;#&#39;)) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<isSummary value="true" />
+			<mapping>
+				<identity value="v2" />
+				<map value="CX.4 / (CX.4,CX.9,CX.10)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="II.assigningAuthorityName but note that this is an improper use by the definition of the field.  Also Role.scoper" />
+			</mapping>
+			<mapping>
+				<identity value="servd" />
+				<map value="./IdentifierIssuingAuthority" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.identifier:mrn">
+			<path value="Patient.identifier" />
+			<name value="mrn" />
+			<short value="An identifier for this patient" />
+			<definition value="An identifier for this patient." />
+			<requirements value="Patients are almost always assigned specific numerical identifiers." />
+			<min value="1" />
+			<max value="*" />
+			<base>
+				<path value="Patient.identifier" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Identifier" />
+				<profile value="http://example.com/fhir/SD/patient-mrn-id" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<isSummary value="true" />
+			<mapping>
+				<identity value="v2" />
+				<map value="CX / EI (occasionally, more often EI maps to a resource id or a URL)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="II - see see identifier pattern at http://wiki.hl7.org/index.php?title=Common_Design_Patterns#Identifier_Pattern for relevant discussion. The Identifier class is a little looser than the v3 type II because it allows URIs as well as registered OIDs or GUIDs.  Also maps to Role[classCode=IDENT]" />
+			</mapping>
+			<mapping>
+				<identity value="servd" />
+				<map value="Identifier" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -310,41 +861,7 @@
 				<map value="id" />
 			</mapping>
 		</element>
-		<element id="mrn">
-			<path value="Patient.identifier" />
-			<name value="mrn" />
-			<short value="A medical record number." />
-			<definition value="A technical identifier - identifies some entity uniquely and unambiguously." />
-			<min value="1" />
-			<max value="*" />
-			<base>
-				<path value="Identifier" />
-				<min value="0" />
-				<max value="*" />
-			</base>
-			<type>
-				<code value="Identifier" />
-				<profile value="http://example.com/fhir/SD/patient-mrn-id" />
-			</type>
-			<condition value="ele-1" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="CX / EI (occasionally, more often EI maps to a resource id or a URL)" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="II - see see identifier pattern at http://wiki.hl7.org/index.php?title=Common_Design_Patterns#Identifier_Pattern for relevant discussion. The Identifier class is a little looser than the v3 type II because it allows URIs as well as registered OIDs or GUIDs.  Also maps to Role[classCode=IDENT]" />
-			</mapping>
-			<mapping>
-				<identity value="servd" />
-				<map value="Identifier" />
-			</mapping>
-		</element>
-		<element id="active">
+		<element id="Patient.active">
 			<path value="Patient.active" />
 			<short value="Whether this patient&#39;s record is in active use" />
 			<definition value="Whether this patient record is in active use." />
@@ -362,12 +879,15 @@
 			</type>
 			<defaultValueBoolean value="true" />
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isModifier value="true" />
 			<isSummary value="true" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="statusCode" />
@@ -380,8 +900,12 @@
 				<identity value="w5" />
 				<map value="status" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="name">
+		<element id="Patient.name">
 			<path value="Patient.name" />
 			<short value="A name associated with the patient" />
 			<definition value="A name associated with the individual." />
@@ -398,10 +922,25 @@
 				<code value="HumanName" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-5, PID-9" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="name" />
+			</mapping>
+			<mapping>
+				<identity value="cda" />
+				<map value=".patient.name" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -416,19 +955,15 @@
 				<map value="ProviderName" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-5, PID-9" />
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="name" />
-			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".patient.name" />
+				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="telecom">
+		<element id="Patient.telecom">
 			<path value="Patient.telecom" />
 			<short value="A contact detail for the individual" />
 			<definition value="A contact detail (e.g. a telephone number or an email address) by which the individual may be contacted." />
@@ -445,10 +980,32 @@
 				<code value="ContactPoint" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="cpt-2" />
+				<severity value="error" />
+				<human value="A system is required if a value is provided." />
+				<expression value="value.empty() or system.exists()" />
+				<xpath value="not(exists(f:value)) or exists(f:system)" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-13, PID-14, PID-40" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="telecom" />
+			</mapping>
+			<mapping>
+				<identity value="cda" />
+				<map value=".telecom" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -463,19 +1020,15 @@
 				<map value="ContactPoint" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-13, PID-14, PID-40" />
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="telecom" />
-			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".telecom" />
+				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="gender">
+		<element id="Patient.gender">
 			<path value="Patient.gender" />
 			<short value="male | female | other | unknown" />
 			<definition value="Administrative Gender - the gender that the patient is considered to have for administration and record keeping purposes." />
@@ -492,16 +1045,19 @@
 				<code value="code" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<binding>
 				<strength value="required" />
 				<description value="The gender of a person used for administrative purposes." />
 				<valueSetUri value="http://hl7.org/fhir/ValueSet/administrative-gender" />
 			</binding>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="PID-8" />
@@ -514,8 +1070,12 @@
 				<identity value="cda" />
 				<map value=".patient.administrativeGenderCode" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="birthDate">
+		<element id="Patient.birthDate">
 			<path value="Patient.birthDate" />
 			<short value="The date of birth for the individual" />
 			<definition value="The date of birth for the individual." />
@@ -532,11 +1092,14 @@
 				<code value="date" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="PID-7" />
@@ -553,8 +1116,12 @@
 				<identity value="loinc" />
 				<map value="21112-8" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="deceasedx">
+		<element id="Patient.deceased[x]">
 			<path value="Patient.deceased[x]" />
 			<short value="Indicates if the individual is deceased or not" />
 			<definition value="Indicates if the individual is deceased or not." />
@@ -574,12 +1141,15 @@
 				<code value="dateTime" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isModifier value="true" />
 			<isSummary value="true" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="PID-30  (bool) and PID-29 (datetime)" />
@@ -592,8 +1162,12 @@
 				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="address">
+		<element id="Patient.address">
 			<path value="Patient.address" />
 			<short value="Addresses for the individual" />
 			<definition value="Addresses for the individual." />
@@ -610,10 +1184,25 @@
 				<code value="Address" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-11" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="addr" />
+			</mapping>
+			<mapping>
+				<identity value="cda" />
+				<map value=".addr" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -628,19 +1217,15 @@
 				<map value="Address" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-11" />
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="addr" />
-			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".addr" />
+				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="maritalStatus">
+		<element id="Patient.maritalStatus">
 			<path value="Patient.maritalStatus" />
 			<short value="Marital (civil) status of a patient" />
 			<definition value="This field contains a patient&#39;s most recent marital (civil) status." />
@@ -657,14 +1242,29 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<binding>
 				<strength value="required" />
 				<description value="The domestic partnership status of a person." />
 				<valueSetUri value="http://hl7.org/fhir/ValueSet/marital-status" />
 			</binding>
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-16" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="player[classCode=PSN]/maritalStatusCode" />
+			</mapping>
+			<mapping>
+				<identity value="cda" />
+				<map value=".patient.maritalStatusCode" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -679,19 +1279,15 @@
 				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-16" />
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="player[classCode=PSN]/maritalStatusCode" />
-			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".patient.maritalStatusCode" />
+				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="multipleBirthx">
+		<element id="Patient.multipleBirth[x]">
 			<path value="Patient.multipleBirth[x]" />
 			<short value="Whether patient is part of a multiple birth" />
 			<definition value="Indicates whether the patient is part of a multiple (bool) or indicates the actual birth order (integer)." />
@@ -713,10 +1309,13 @@
 				<code value="integer" />
 			</type>
 			<condition value="ele-1" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="v2" />
 				<map value="PID-24 (bool), PID-25 (integer)" />
@@ -729,8 +1328,12 @@
 				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="photo">
+		<element id="Patient.photo">
 			<path value="Patient.photo" />
 			<short value="Image of the patient" />
 			<definition value="Image of the patient." />
@@ -747,18 +1350,20 @@
 				<code value="Attachment" />
 			</type>
 			<condition value="ele-1" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="ED/RP" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="ED" />
-			</mapping>
+			<constraint>
+				<key value="att-1" />
+				<severity value="error" />
+				<human value="It the Attachment has data, it SHALL have a contentType" />
+				<expression value="data.empty() or contentType.exists()" />
+				<xpath value="not(exists(f:data)) or exists(f:contentType)" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="v2" />
 				<map value="OBX-5 - needs a profile" />
@@ -771,8 +1376,27 @@
 				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="ED/RP" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="ED" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="contact">
+		<element id="Patient.contact">
+			<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name">
+				<valueString value="Contact" />
+			</extension>
 			<path value="Patient.contact" />
 			<short value="A contact party (e.g. guardian, partner, friend) for the patient" />
 			<definition value="A contact party (e.g. guardian, partner, friend) for the patient." />
@@ -796,14 +1420,13 @@
 				<expression value="name.exists() or telecom.exists() or address.exists() or organization.exists()" />
 				<xpath value="exists(f:name) or exists(f:telecom) or exists(f:address) or exists(f:organization)" />
 			</constraint>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/scopedRole[classCode=CON]" />
@@ -812,8 +1435,137 @@
 				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="contact.relationship">
+		<element id="Patient.contact.id">
+			<path value="Patient.contact.id" />
+			<representation value="xmlAttr" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="string" />
+			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.contact.extension">
+			<path value="Patient.contact.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.contact.modifierExtension">
+			<path value="Patient.contact.modifierExtension" />
+			<short value="Extensions that cannot be ignored" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<alias value="modifiers" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="BackboneElement.modifierExtension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<isModifier value="true" />
+			<isSummary value="true" />
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.contact.relationship">
 			<path value="Patient.contact.relationship" />
 			<short value="The kind of relationship" />
 			<definition value="The nature of the relationship between the patient and the contact person." />
@@ -830,13 +1582,28 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<binding>
 				<strength value="extensible" />
 				<description value="The nature of the relationship between a patient and a contact person for that patient." />
-				<valueSetUri value="http://hl7.org/fhir/ValueSet/patient-contact-relationship" />
+				<valueSetUri value="http://hl7.org/fhir/ValueSet/v2-0131" />
 			</binding>
 			<mapping>
+				<identity value="v2" />
+				<map value="NK1-7, NK1-3" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
+				<map value="code" />
+			</mapping>
+			<mapping>
+				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
 			<mapping>
@@ -852,19 +1619,15 @@
 				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="NK1-7, NK1-3" />
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="code" />
-			</mapping>
-			<mapping>
-				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="contact.name">
+		<element id="Patient.contact.name">
 			<path value="Patient.contact.name" />
 			<short value="A name associated with the contact person" />
 			<definition value="A name associated with the contact person." />
@@ -881,8 +1644,23 @@
 				<code value="HumanName" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="NK1-2" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
+				<map value="name" />
+			</mapping>
+			<mapping>
+				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
 			<mapping>
@@ -898,19 +1676,15 @@
 				<map value="ProviderName" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="NK1-2" />
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="name" />
-			</mapping>
-			<mapping>
-				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="contact.telecom">
+		<element id="Patient.contact.telecom">
 			<path value="Patient.contact.telecom" />
 			<short value="A contact detail for the person" />
 			<definition value="A contact detail for the person, e.g. a telephone number or an email address." />
@@ -927,8 +1701,30 @@
 				<code value="ContactPoint" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="cpt-2" />
+				<severity value="error" />
+				<human value="A system is required if a value is provided." />
+				<expression value="value.empty() or system.exists()" />
+				<xpath value="not(exists(f:value)) or exists(f:system)" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="NK1-5, NK1-6, NK1-40" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
+				<map value="telecom" />
+			</mapping>
+			<mapping>
+				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
 			<mapping>
@@ -944,19 +1740,15 @@
 				<map value="ContactPoint" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="NK1-5, NK1-6, NK1-40" />
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="telecom" />
-			</mapping>
-			<mapping>
-				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="contact.address">
+		<element id="Patient.contact.address">
 			<path value="Patient.contact.address" />
 			<short value="Address for the contact person" />
 			<definition value="Address for the contact person." />
@@ -973,8 +1765,23 @@
 				<code value="Address" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="NK1-4" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
+				<map value="addr" />
+			</mapping>
+			<mapping>
+				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
 			<mapping>
@@ -990,19 +1797,15 @@
 				<map value="Address" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="NK1-4" />
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="addr" />
-			</mapping>
-			<mapping>
-				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="contact.gender">
+		<element id="Patient.contact.gender">
 			<path value="Patient.contact.gender" />
 			<short value="male | female | other | unknown" />
 			<definition value="Administrative Gender - the gender that the contact person is considered to have for administration and record keeping purposes." />
@@ -1019,15 +1822,18 @@
 				<code value="code" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<binding>
 				<strength value="required" />
 				<description value="The gender of a person used for administrative purposes." />
 				<valueSetUri value="http://hl7.org/fhir/ValueSet/administrative-gender" />
 			</binding>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="NK1-15" />
@@ -1040,8 +1846,12 @@
 				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="contact.organization">
+		<element id="Patient.contact.organization">
 			<path value="Patient.contact.organization" />
 			<short value="Organization that is associated with the contact" />
 			<definition value="Organization on behalf of which the contact is acting or for which the contact is working." />
@@ -1058,14 +1868,21 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
 			</type>
 			<condition value="pat-1" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-			</mapping>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ref-1" />
+				<severity value="error" />
+				<human value="SHALL have a local reference if the resource is provided inline" />
+				<expression value="reference.startsWith(&#39;#&#39;).not() or (reference.substring(1).trace(&#39;url&#39;) in %resource.contained.id.trace(&#39;ids&#39;))" />
+				<xpath value="not(starts-with(f:reference/@value, &#39;#&#39;)) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="v2" />
 				<map value="NK1-13, NK1-30, NK1-31, NK1-32, NK1-41" />
@@ -1078,8 +1895,20 @@
 				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="contact.period">
+		<element id="Patient.contact.period">
 			<path value="Patient.contact.period" />
 			<short value="The period during which this contact person or organization is valid to be contacted relating to this patient" />
 			<definition value="The period during which this contact person or organization is valid to be contacted relating to this patient." />
@@ -1095,8 +1924,26 @@
 				<code value="Period" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="per-1" />
+				<severity value="error" />
+				<human value="If present, start SHALL have a lower value than end" />
+				<expression value="start.empty() or end.empty() or (start &lt;= end)" />
+				<xpath value="not(exists(f:start)) or not(exists(f:end)) or (f:start/@value &lt;= f:end/@value)" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
+				<map value="effectiveTime" />
+			</mapping>
+			<mapping>
+				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
 			<mapping>
@@ -1109,14 +1956,17 @@
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="effectiveTime" />
+				<map value="n/a" />
 			</mapping>
 			<mapping>
-				<identity value="cda" />
+				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="animal">
+		<element id="Patient.animal">
+			<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name">
+				<valueString value="Animal" />
+			</extension>
 			<path value="Patient.animal" />
 			<short value="This patient is known to be an animal (non-human)" />
 			<definition value="This patient is known to be an animal." />
@@ -1133,16 +1983,15 @@
 				<code value="BackboneElement" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isModifier value="true" />
 			<isSummary value="true" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="player[classCode=ANM]" />
@@ -1151,8 +2000,137 @@
 				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="animal.species">
+		<element id="Patient.animal.id">
+			<path value="Patient.animal.id" />
+			<representation value="xmlAttr" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="string" />
+			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.animal.extension">
+			<path value="Patient.animal.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.animal.modifierExtension">
+			<path value="Patient.animal.modifierExtension" />
+			<short value="Extensions that cannot be ignored" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<alias value="modifiers" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="BackboneElement.modifierExtension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<isModifier value="true" />
+			<isSummary value="true" />
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.animal.species">
 			<path value="Patient.animal.species" />
 			<short value="E.g. Dog, Cow" />
 			<definition value="Identifies the high level taxonomic categorization of the kind of animal." />
@@ -1169,6 +2147,13 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<binding>
 				<strength value="example" />
@@ -1176,7 +2161,15 @@
 				<valueSetUri value="http://hl7.org/fhir/ValueSet/animal-species" />
 			</binding>
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-35" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
+				<map value="code" />
+			</mapping>
+			<mapping>
+				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
 			<mapping>
@@ -1192,19 +2185,15 @@
 				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-35" />
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="code" />
-			</mapping>
-			<mapping>
-				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="animal.breed">
+		<element id="Patient.animal.breed">
 			<path value="Patient.animal.breed" />
 			<short value="E.g. Poodle, Angus" />
 			<definition value="Identifies the detailed categorization of the kind of animal." />
@@ -1221,6 +2210,13 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<binding>
 				<strength value="example" />
@@ -1228,7 +2224,15 @@
 				<valueSetUri value="http://hl7.org/fhir/ValueSet/animal-breeds" />
 			</binding>
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-37" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
+				<map value="playedRole[classCode=GEN]/scoper[classCode=ANM, determinerCode=KIND]/code" />
+			</mapping>
+			<mapping>
+				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
 			<mapping>
@@ -1244,19 +2248,15 @@
 				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-37" />
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="playedRole[classCode=GEN]/scoper[classCode=ANM, determinerCode=KIND]/code" />
-			</mapping>
-			<mapping>
-				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="animal.genderStatus">
+		<element id="Patient.animal.genderStatus">
 			<path value="Patient.animal.genderStatus" />
 			<short value="E.g. Neutered, Intact" />
 			<definition value="Indicates the current state of the animal&#39;s reproductive organs." />
@@ -1273,6 +2273,13 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<binding>
 				<strength value="example" />
@@ -1280,7 +2287,15 @@
 				<valueSetUri value="http://hl7.org/fhir/ValueSet/animal-genderstatus" />
 			</binding>
 			<mapping>
+				<identity value="v2" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
+				<map value="genderStatusCode" />
+			</mapping>
+			<mapping>
+				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
 			<mapping>
@@ -1296,19 +2311,15 @@
 				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="N/A" />
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="genderStatusCode" />
-			</mapping>
-			<mapping>
-				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="communication">
+		<element id="Patient.communication">
 			<path value="Patient.communication" />
 			<short value="A list of Languages which may be used to communicate with the patient about his or her health" />
 			<definition value="Languages which may be used to communicate with the patient about his or her health." />
@@ -1325,14 +2336,13 @@
 				<code value="BackboneElement" />
 			</type>
 			<condition value="ele-1" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="LanguageCommunication" />
@@ -1341,8 +2351,137 @@
 				<identity value="cda" />
 				<map value="patient.languageCommunication" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="communication.language">
+		<element id="Patient.communication.id">
+			<path value="Patient.communication.id" />
+			<representation value="xmlAttr" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="string" />
+			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.communication.extension">
+			<path value="Patient.communication.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.communication.modifierExtension">
+			<path value="Patient.communication.modifierExtension" />
+			<short value="Extensions that cannot be ignored" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<alias value="modifiers" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="BackboneElement.modifierExtension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<isModifier value="true" />
+			<isSummary value="true" />
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.communication.language">
 			<path value="Patient.communication.language" />
 			<short value="The language which can be used to communicate with the patient about his or her health" />
 			<definition value="The ISO-639-1 alpha 2 code in lower case for the language, optionally followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in upper case; e.g. &quot;en&quot; for English, or &quot;en-US&quot; for American English versus &quot;en-EN&quot; for England English." />
@@ -1359,14 +2498,29 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<binding>
-				<strength value="required" />
+				<strength value="extensible" />
 				<description value="A human language." />
-				<valueSetUri value="http://tools.ietf.org/html/bcp47" />
+				<valueSetUri value="http://hl7.org/fhir/ValueSet/languages" />
 			</binding>
 			<mapping>
+				<identity value="v2" />
+				<map value="PID-15, LAN-2" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/languageCommunication/code" />
+			</mapping>
+			<mapping>
+				<identity value="cda" />
+				<map value=".languageCode" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -1381,19 +2535,15 @@
 				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="PID-15, LAN-2" />
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
-				<map value="player[classCode=PSN|ANM and determinerCode=INSTANCE]/languageCommunication/code" />
-			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value=".languageCode" />
+				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="communication.preferred">
+		<element id="Patient.communication.preferred">
 			<path value="Patient.communication.preferred" />
 			<short value="Language preference indicator" />
 			<definition value="Indicates whether or not the patient prefers this language (over other languages he masters up a certain level)." />
@@ -1410,10 +2560,13 @@
 				<code value="boolean" />
 			</type>
 			<condition value="ele-1" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="v2" />
 				<map value="PID-15" />
@@ -1426,51 +2579,12 @@
 				<identity value="cda" />
 				<map value=".preferenceInd" />
 			</mapping>
-		</element>
-		<element id="careProvider">
-			<path value="Patient.careProvider" />
-			<short value="Patient&#39;s nominated primary care provider" />
-			<definition value="Patient&#39;s nominated care provider." />
-			<comments value="This may be the primary care provider (in a GP context), or it may be a patient nominated care manager in a community/disablity setting, or even organization that will provide people to perform the care provider roles.
-      This is not to be used to record Care Teams, these should be recorded on either the CarePlan or EpisodeOfCare resources." />
-			<min value="0" />
-			<max value="*" />
-			<base>
-				<path value="Patient.careProvider" />
-				<min value="0" />
-				<max value="*" />
-			</base>
-			<type>
-				<code value="Reference" />
-				<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
-			</type>
-			<type>
-				<code value="Reference" />
-				<profile value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
-			</type>
-			<condition value="ele-1" />
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="PD1-4" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="subjectOf.CareEvent.performer.AssignedEntity" />
-			</mapping>
-			<mapping>
-				<identity value="cda" />
-				<map value="n/a" />
-			</mapping>
 		</element>
-		<element id="managingOrganization">
+		<element id="Patient.managingOrganization">
 			<path value="Patient.managingOrganization" />
 			<short value="Organization that is the custodian of the patient record" />
 			<definition value="Organization that is the custodian of the patient record." />
@@ -1488,15 +2602,21 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ref-1" />
+				<severity value="error" />
+				<human value="SHALL have a local reference if the resource is provided inline" />
+				<expression value="reference.startsWith(&#39;#&#39;).not() or (reference.substring(1).trace(&#39;url&#39;) in %resource.contained.id.trace(&#39;ids&#39;))" />
+				<xpath value="not(starts-with(f:reference/@value, &#39;#&#39;)) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="scoper" />
@@ -1505,14 +2625,26 @@
 				<identity value="cda" />
 				<map value=".providerOrganization" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="link">
+		<element id="Patient.link">
 			<path value="Patient.link" />
 			<short value="Link to another patient resource that concerns the same actual person" />
 			<definition value="Link to another patient resource that concerns the same actual patient." />
 			<comments value="There is no assumption that linked patient records have mutual links." />
 			<requirements value="There are multiple usecases: 
-      * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple server" />
+      * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple servers." />
 			<min value="0" />
 			<max value="*" />
 			<base>
@@ -1524,14 +2656,15 @@
 				<code value="BackboneElement" />
 			</type>
 			<condition value="ele-1" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<isModifier value="true" />
+			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="outboundLink" />
@@ -1540,11 +2673,141 @@
 				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="link.other">
+		<element id="Patient.link.id">
+			<path value="Patient.link.id" />
+			<representation value="xmlAttr" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="string" />
+			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.link.extension">
+			<path value="Patient.link.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.link.modifierExtension">
+			<path value="Patient.link.modifierExtension" />
+			<short value="Extensions that cannot be ignored" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<alias value="modifiers" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="BackboneElement.modifierExtension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<isModifier value="true" />
+			<isSummary value="true" />
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.link.other">
 			<path value="Patient.link.other" />
-			<short value="The other patient resource that the link refers to" />
+			<short value="The other patient or related person resource that the link refers to" />
 			<definition value="The other patient resource that the link refers to." />
+			<comments value="Referencing a RelatedPerson here removes the need to use a Person record to associate a Patient and RelatedPerson as the same individual." />
 			<min value="1" />
 			<max value="1" />
 			<base>
@@ -1556,16 +2819,27 @@
 				<code value="Reference" />
 				<profile value="http://hl7.org/fhir/StructureDefinition/Patient" />
 			</type>
+			<type>
+				<code value="Reference" />
+				<profile value="http://hl7.org/fhir/StructureDefinition/RelatedPerson" />
+			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ref-1" />
+				<severity value="error" />
+				<human value="SHALL have a local reference if the resource is provided inline" />
+				<expression value="reference.startsWith(&#39;#&#39;).not() or (reference.substring(1).trace(&#39;url&#39;) in %resource.contained.id.trace(&#39;ids&#39;))" />
+				<xpath value="not(starts-with(f:reference/@value, &#39;#&#39;)) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isModifier value="true" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-			</mapping>
+			<isSummary value="true" />
 			<mapping>
 				<identity value="v2" />
 				<map value="PID-3, MRG-1" />
@@ -1578,8 +2852,20 @@
 				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="link.type">
+		<element id="Patient.link.type">
 			<path value="Patient.link.type" />
 			<short value="replace | refer | seealso - type of link" />
 			<definition value="The type of link between this patient resource and another patient resource." />
@@ -1595,16 +2881,20 @@
 				<code value="code" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isModifier value="true" />
+			<isSummary value="true" />
 			<binding>
 				<strength value="required" />
 				<description value="The type of link between this patient resource and another patient resource." />
 				<valueSetUri value="http://hl7.org/fhir/ValueSet/link-type" />
 			</binding>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="typeCode" />
@@ -1613,20 +2903,83 @@
 				<identity value="cda" />
 				<map value="n/a" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.generalPractitioner">
+			<path value="Patient.generalPractitioner" />
+			<short value="Patient&#39;s nominated primary care provider" />
+			<definition value="Patient&#39;s nominated care provider." />
+			<comments value="This may be the primary care provider (in a GP context), or it may be a patient nominated care manager in a community/disablity setting, or even organization that will provide people to perform the care provider roles.
+      It is not to be used to record Care Teams, these should be in a CareTeam resource that may be linked to the CarePlan or EpisodeOfCare resources." />
+			<alias value="careProvider" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="Patient.generalPractitioner" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Reference" />
+				<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
+			</type>
+			<type>
+				<code value="Reference" />
+				<profile value="http://hl7.org/fhir/StructureDefinition/Practitioner" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ref-1" />
+				<severity value="error" />
+				<human value="SHALL have a local reference if the resource is provided inline" />
+				<expression value="reference.startsWith(&#39;#&#39;).not() or (reference.substring(1).trace(&#39;url&#39;) in %resource.contained.id.trace(&#39;ids&#39;))" />
+				<xpath value="not(starts-with(f:reference/@value, &#39;#&#39;)) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="PD1-4" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="subjectOf.CareEvent.performer.AssignedEntity" />
+			</mapping>
+			<mapping>
+				<identity value="cda" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
 	</snapshot>
 	<differential>
-		<element id="Patient">
-			<path value="Patient" />
-		</element>
-		<element id="identifier">
+		<element id="Patient.identifier">
 			<path value="Patient.identifier" />
 			<slicing>
 				<discriminator value="@profile" />
 				<rules value="closed" />
 			</slicing>
 		</element>
-		<element id="mrn">
+		<element id="Patient.identifier:mrn">
 			<path value="Patient.identifier" />
 			<name value="mrn" />
 			<min value="1" />
