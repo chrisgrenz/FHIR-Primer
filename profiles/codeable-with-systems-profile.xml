@@ -29,6 +29,23 @@
 			<type>
 				<code value="CodeableConcept" />
 			</type>
+			<constraint>
+				<key value="ccc-2" />
+				<name value="ccc-2" />
+				<severity value="error" />
+				<human value="Only one coding in a set can be chosen directly by the user" />
+				<xpath value="count(f:coding[f:primary/@value=&#39;true&#39;])&lt;=1" />
+			</constraint>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="v2" />
 				<map value="CE/CNE/CWE" />
@@ -89,6 +106,23 @@
 			<type>
 				<code value="Coding" />
 			</type>
+			<constraint>
+				<key value="cod-1" />
+				<name value="cod-1" />
+				<severity value="error" />
+				<human value="If a valueSet is provided, a system URI Is required" />
+				<xpath value="not (exists(f:valueSet) and exists(f:code)) or exists(f:system)" />
+			</constraint>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="v2" />
 				<map value="C*E.1-8, C*E.10-22" />
@@ -104,6 +138,207 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="CV" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.id" />
+			<representation value="xmlAttr" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references)." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="id" />
+			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<min value="0" />
+			<max value="*" />
+			<type>
+				<code value="Extension" />
+			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.system" />
+			<short value="Identity of the terminology system" />
+			<definition value="The identification of the code system that defines the meaning of the symbol in the code." />
+			<comments value="The URI may be an OID (urn:oid:...) or a UUID (urn:uuid:...).  OIDs and UUIDs SHALL be references to the HL7 OID registry. Otherwise, the URI should come from HL7&#39;s list of FHIR defined special URIs or it should de-reference to some definition that establish the system clearly and unambiguously." />
+			<requirements value="Need to be unambiguous about the source of the definition of the symbol." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="uri" />
+			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="C*E.3" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="./codeSystem" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.version" />
+			<short value="Version of the system - if relevant" />
+			<definition value="The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged." />
+			<comments value="Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="string" />
+			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="C*E.7" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="./codeSystemVersion" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.code" />
+			<short value="Symbol in syntax defined by the system" />
+			<definition value="A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
+			<requirements value="Need to refer to a particular code in the system." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="code" />
+			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="C*E.1" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="./code" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.display" />
+			<short value="Representation defined by the system" />
+			<definition value="A representation of the meaning of the code in the system, following the rules of the system." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
+			<requirements value="Need to be able to carry a human-readable meaning of the code for readers that do not know  the system." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="string" />
+			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="C*E.2 - but note this is not well followed" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="CV.displayName" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.primary" />
+			<short value="If this code was chosen directly by the user" />
+			<definition value="Indicates that this code was chosen by a user directly - i.e. off a pick list of available items (codes or displays)." />
+			<comments value="Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations." />
+			<requirements value="This has been identified as a clinical safety criterium - that this exact code was chosen explicitly, rather than inferred by the system based on some rules or language processing." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="boolean" />
+			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="Sometimes implied by being first" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="CD.codingRationale" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -122,6 +357,23 @@
 			<type>
 				<code value="Coding" />
 			</type>
+			<constraint>
+				<key value="cod-1" />
+				<name value="cod-1" />
+				<severity value="error" />
+				<human value="If a valueSet is provided, a system URI Is required" />
+				<xpath value="not (exists(f:valueSet) and exists(f:code)) or exists(f:system)" />
+			</constraint>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="v2" />
 				<map value="C*E.1-8, C*E.10-22" />
@@ -138,6 +390,40 @@
 				<identity value="rim" />
 				<map value="CV" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.id" />
+			<representation value="xmlAttr" />
+			<name value="LOINC.id" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references)." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="id" />
+			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.extension" />
+			<name value="LOINC.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<min value="0" />
+			<max value="*" />
+			<type>
+				<code value="Extension" />
+			</type>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -156,6 +442,16 @@
 				<code value="uri" />
 			</type>
 			<fixedUri value="http://loinc.org" />
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="v2" />
 				<map value="C*E.3" />
@@ -163,6 +459,145 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="./codeSystem" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.version" />
+			<name value="LOINC.version" />
+			<short value="Version of the system - if relevant" />
+			<definition value="The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged." />
+			<comments value="Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="string" />
+			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="C*E.7" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="./codeSystemVersion" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.code" />
+			<name value="LOINC.code" />
+			<short value="Symbol in syntax defined by the system" />
+			<definition value="A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
+			<requirements value="Need to refer to a particular code in the system." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="code" />
+			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="C*E.1" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="./code" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.display" />
+			<name value="LOINC.display" />
+			<short value="Representation defined by the system" />
+			<definition value="A representation of the meaning of the code in the system, following the rules of the system." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
+			<requirements value="Need to be able to carry a human-readable meaning of the code for readers that do not know  the system." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="string" />
+			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="C*E.2 - but note this is not well followed" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="CV.displayName" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.primary" />
+			<name value="LOINC.primary" />
+			<short value="If this code was chosen directly by the user" />
+			<definition value="Indicates that this code was chosen by a user directly - i.e. off a pick list of available items (codes or displays)." />
+			<comments value="Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations." />
+			<requirements value="This has been identified as a clinical safety criterium - that this exact code was chosen explicitly, rather than inferred by the system based on some rules or language processing." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="boolean" />
+			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="Sometimes implied by being first" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="CD.codingRationale" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -181,6 +616,23 @@
 			<type>
 				<code value="Coding" />
 			</type>
+			<constraint>
+				<key value="cod-1" />
+				<name value="cod-1" />
+				<severity value="error" />
+				<human value="If a valueSet is provided, a system URI Is required" />
+				<xpath value="not (exists(f:valueSet) and exists(f:code)) or exists(f:system)" />
+			</constraint>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="v2" />
 				<map value="C*E.1-8, C*E.10-22" />
@@ -203,6 +655,40 @@
 			</mapping>
 		</element>
 		<element>
+			<path value="CodeableConcept.coding.id" />
+			<representation value="xmlAttr" />
+			<name value="SNOMED.id" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references)." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="id" />
+			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.extension" />
+			<name value="SNOMED.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<min value="0" />
+			<max value="*" />
+			<type>
+				<code value="Extension" />
+			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
 			<path value="CodeableConcept.coding.system" />
 			<name value="SNOMED.system" />
 			<short value="Identity of the terminology system" />
@@ -215,6 +701,16 @@
 				<code value="uri" />
 			</type>
 			<fixedUri value="http://snomed.info/sct" />
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="v2" />
 				<map value="C*E.3" />
@@ -222,6 +718,145 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="./codeSystem" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.version" />
+			<name value="SNOMED.version" />
+			<short value="Version of the system - if relevant" />
+			<definition value="The version of the code system which was used when choosing this code. Note that a well-maintained code system does not need the version reported, because the meaning of codes is consistent across versions. However this cannot consistently be assured. and when the meaning is not guaranteed to be consistent, the version SHOULD be exchanged." />
+			<comments value="Where the terminology does not clearly define what string should be used to identify code system versions, the recommendation is to use the date (expressed in FHIR date format) on which that version was officially published as the version date." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="string" />
+			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="C*E.7" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="./codeSystemVersion" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.code" />
+			<name value="SNOMED.code" />
+			<short value="Symbol in syntax defined by the system" />
+			<definition value="A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
+			<requirements value="Need to refer to a particular code in the system." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="code" />
+			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="C*E.1" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="./code" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.display" />
+			<name value="SNOMED.display" />
+			<short value="Representation defined by the system" />
+			<definition value="A representation of the meaning of the code in the system, following the rules of the system." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
+			<requirements value="Need to be able to carry a human-readable meaning of the code for readers that do not know  the system." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="string" />
+			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="C*E.2 - but note this is not well followed" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="CV.displayName" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="CodeableConcept.coding.primary" />
+			<name value="SNOMED.primary" />
+			<short value="If this code was chosen directly by the user" />
+			<definition value="Indicates that this code was chosen by a user directly - i.e. off a pick list of available items (codes or displays)." />
+			<comments value="Amongst a set of alternatives, a directly chosen code is the most appropriate starting point for new translations." />
+			<requirements value="This has been identified as a clinical safety criterium - that this exact code was chosen explicitly, rather than inferred by the system based on some rules or language processing." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="boolean" />
+			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="v2" />
+				<map value="Sometimes implied by being first" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="CD.codingRationale" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -239,6 +874,16 @@
 			<type>
 				<code value="string" />
 			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="v2" />
 				<map value="C*E.9. But note many systems use C*E.2 for this" />

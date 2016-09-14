@@ -32,6 +32,56 @@
 			<type>
 				<code value="DomainResource" />
 			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="(identifier.count() + name.count()) > 0" />
+				</extension>
+				<key value="org-1" />
+				<name value="org-1" />
+				<severity value="error" />
+				<human value="The organization SHALL at least have a name or an id, and possibly more than one" />
+				<xpath value="count(f:identifier | f:name) &gt; 0" />
+			</constraint>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="contained.contained.empty()" />
+				</extension>
+				<key value="dom-2" />
+				<name value="dom-2" />
+				<severity value="error" />
+				<human value="If the resource is contained in another resource, it SHALL not contain nested Resources" />
+				<xpath value="not(parent::f:contained and f:contained)" />
+			</constraint>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="contained.text.empty()" />
+				</extension>
+				<key value="dom-1" />
+				<name value="dom-1" />
+				<severity value="error" />
+				<human value="If the resource is contained in another resource, it SHALL not contain any narrative" />
+				<xpath value="not(parent::f:contained and f:text)" />
+			</constraint>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="contained.meta.versionId.empty() and contained.meta.lastUpdated.empty()" />
+				</extension>
+				<key value="dom-4" />
+				<name value="dom-4" />
+				<severity value="error" />
+				<human value="If a resource is contained in another resource, it SHALL not have a meta.versionId or a meta.lastUpdated" />
+				<xpath value="not(exists(f:contained/f:meta/f:versionId)) and not(exists(f:contained/f:meta/f:lastUpdated))" />
+			</constraint>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="contained.select(('#'+id in %resource.descendents().reference).not()).empty()" />
+				</extension>
+				<key value="dom-3" />
+				<name value="dom-3" />
+				<severity value="error" />
+				<human value="If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource" />
+				<xpath value="not(exists(for $id in f:contained/*/@id return $id[not(ancestor::f:contained/parent::*/descendant::f:reference/@value=concat(&#39;#&#39;, $id))]))" />
+			</constraint>
 			<mapping>
 				<identity value="v2" />
 				<map value="(also see master files messages)" />
@@ -63,6 +113,16 @@
 			<type>
 				<code value="id" />
 			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -77,6 +137,16 @@
 			<type>
 				<code value="Meta" />
 			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -92,6 +162,16 @@
 			<type>
 				<code value="uri" />
 			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isModifier value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -109,6 +189,16 @@
 			<type>
 				<code value="code" />
 			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<binding>
 				<name value="Language" />
 				<strength value="required" />
@@ -134,7 +224,16 @@
 			<type>
 				<code value="Narrative" />
 			</type>
-			<condition value="dom-1" />
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="Act.text?" />
@@ -183,6 +282,16 @@
 			<type>
 				<code value="Extension" />
 			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
@@ -209,6 +318,16 @@
 			<type>
 				<code value="Extension" />
 			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isModifier value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -233,7 +352,16 @@
 			<type>
 				<code value="Identifier" />
 			</type>
-			<condition value="org-1" />
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -276,6 +404,16 @@
 				<code value="boolean" />
 			</type>
 			<defaultValueBoolean value="true" />
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isModifier value="true" />
 			<isSummary value="true" />
 			<mapping>
@@ -306,6 +444,23 @@
 			<type>
 				<code value="CodeableConcept" />
 			</type>
+			<constraint>
+				<key value="ccc-2" />
+				<name value="ccc-2" />
+				<severity value="error" />
+				<human value="Only one coding in a set can be chosen directly by the user" />
+				<xpath value="count(f:coding[f:primary/@value=&#39;true&#39;])&lt;=1" />
+			</constraint>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<binding>
 				<name value="OrganizationType" />
@@ -349,7 +504,16 @@
 			<type>
 				<code value="string" />
 			</type>
-			<condition value="org-1" />
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -379,13 +543,35 @@
 			<type>
 				<code value="ContactPoint" />
 			</type>
-			<condition value="org-3" />
 			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="select(use = 'home').empty()" />
+				</extension>
 				<key value="org-3" />
 				<name value="org-3" />
 				<severity value="error" />
 				<human value="The telecom of an organization can never be of use &#39;home&#39;" />
 				<xpath value="count(f:use[@value=&#39;home&#39;]) = 0" />
+			</constraint>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="value.empty() or system.exists()" />
+				</extension>
+				<key value="cpt-2" />
+				<name value="cpt-2" />
+				<severity value="error" />
+				<human value="A system is required if a value is provided." />
+				<xpath value="not(exists(f:value)) or exists(f:system)" />
+			</constraint>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -427,13 +613,25 @@
 			<type>
 				<code value="Address" />
 			</type>
-			<condition value="org-2" />
 			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="select(use = 'home').empty()" />
+				</extension>
 				<key value="org-2" />
 				<name value="org-2" />
 				<severity value="error" />
 				<human value="An address of an organization can never be of use &#39;home&#39;" />
 				<xpath value="count(f:use[@value=&#39;home&#39;]) = 0" />
+			</constraint>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -475,6 +673,26 @@
 				<code value="Reference" />
 				<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
 			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="reference.startsWith('#').not() or (reference.substring(1).trace('url') in %resource.contained.id.trace('ids'))" />
+				</extension>
+				<key value="ref-1" />
+				<name value="ref-1" />
+				<severity value="error" />
+				<human value="SHALL have a local reference if the resource is provided inline" />
+				<xpath value="not(starts-with(f:reference/@value, &#39;#&#39;)) or exists(ancestor::f:entry/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)])" />
+			</constraint>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
@@ -508,6 +726,16 @@
 			<type>
 				<code value="BackboneElement" />
 			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value=".contactParty" />
@@ -515,6 +743,76 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="Organization.contact.id" />
+			<representation value="xmlAttr" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references)." />
+			<min value="0" />
+			<max value="1" />
+			<type>
+				<code value="id" />
+			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="Organization.contact.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<min value="0" />
+			<max value="*" />
+			<type>
+				<code value="Extension" />
+			</type>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element>
+			<path value="Organization.contact.modifierExtension" />
+			<short value="Extensions that cannot be ignored" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element, and that modifies the understanding of the element that contains it. Usually modifier elements provide negation or qualification. In order to make the use of extensions safe and manageable, there is a strict set of governance applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension. Applications processing a resource are required to check for modifier extensions." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<requirements value="The ability to add extensions in a structured way is what keeps FHIR resources simple." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<alias value="modifiers" />
+			<min value="0" />
+			<max value="*" />
+			<type>
+				<code value="Extension" />
+			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<isModifier value="true" />
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -532,6 +830,23 @@
 			<type>
 				<code value="CodeableConcept" />
 			</type>
+			<constraint>
+				<key value="ccc-2" />
+				<name value="ccc-2" />
+				<severity value="error" />
+				<human value="Only one coding in a set can be chosen directly by the user" />
+				<xpath value="count(f:coding[f:primary/@value=&#39;true&#39;])&lt;=1" />
+			</constraint>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<binding>
 				<name value="ContactPartyType" />
 				<strength value="required" />
@@ -566,6 +881,16 @@
 			<type>
 				<code value="HumanName" />
 			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="v2" />
 				<map value="PID-5, PID-9" />
@@ -601,6 +926,26 @@
 			<type>
 				<code value="ContactPoint" />
 			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="value.empty() or system.exists()" />
+				</extension>
+				<key value="cpt-2" />
+				<name value="cpt-2" />
+				<severity value="error" />
+				<human value="A system is required if a value is provided." />
+				<xpath value="not(exists(f:value)) or exists(f:system)" />
+			</constraint>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="v2" />
 				<map value="PID-13, PID-14" />
@@ -637,6 +982,16 @@
 			<type>
 				<code value="Address" />
 			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="v2" />
 				<map value="PID-11" />

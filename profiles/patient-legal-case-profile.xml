@@ -24,6 +24,16 @@
 			<type>
 				<code value="Extension" />
 			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
@@ -77,6 +87,16 @@
 				<code value="uri" />
 			</type>
 			<fixedUri value="http://example.com/fhir/StructureDefinition/patient-legal-case" />
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
@@ -95,6 +115,16 @@
 			<type>
 				<code value="boolean" />
 			</type>
+			<constraint>
+				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
+					<valueString value="children()" />
+				</extension>
+				<key value="ele-1" />
+				<name value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
