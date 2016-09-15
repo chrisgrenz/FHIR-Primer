@@ -2548,6 +2548,7 @@
 			<type>
 				<code value="code" />
 			</type>
+			<fixedCode value="phone" />
 			<constraint>
 				<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-expression">
 					<valueString value="children()" />
@@ -5926,6 +5927,12 @@
 			<short value="Phone numbers." />
 		</element>
 		<element>
+			<path value="Patient.telecom.system" />
+			<name value="phone.system" />
+			<min value="1" />
+			<fixedCode value="phone" />
+		</element>
+		<element>
 			<path value="Patient.telecom.use" />
 			<name value="phone/homePhone.use" />
 			<min value="1" />
@@ -5936,11 +5943,6 @@
 			<name value="phone/mobilePhone.use" />
 			<min value="1" />
 			<fixedCode value="mobile" />
-		</element>
-		<element>
-			<path value="Patient.telecom.system" />
-			<name value="phone.system" />
-			<min value="1" />
 		</element>
 		<element>
 			<path value="Patient.telecom" />
