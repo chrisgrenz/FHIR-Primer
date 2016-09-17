@@ -2,16 +2,29 @@
 	<url value="http://example.com/fhir/SD/patient-mrn-id" />
 	<name value="patient-mrn-id" />
 	<status value="draft" />
-	<publisher value="Analysts International" />
-	<date value="2016-05-02T15:00:00-06:00" />
 	<description value="An example type profile constraining the Identifier type. For use in slicing by profile examples." />
 	<fhirVersion value="1.0.2" />
+	<mapping>
+		<identity value="v2" />
+		<uri value="http://hl7.org/v2" />
+		<name value="HL7 v2" />
+	</mapping>
+	<mapping>
+		<identity value="rim" />
+		<uri value="http://hl7.org/v3" />
+		<name value="RIM" />
+	</mapping>
+	<mapping>
+		<identity value="servd" />
+		<uri value="http://www.omg.org/spec/ServD/1.0/" />
+		<name value="ServD" />
+	</mapping>
 	<kind value="datatype" />
 	<constrainedType value="Identifier" />
 	<abstract value="false" />
 	<base value="http://hl7.org/fhir/StructureDefinition/Identifier" />
 	<snapshot>
-		<element id="Identifier">
+		<element>
 			<path value="Identifier" />
 			<short value="A medical record number." />
 			<definition value="A technical identifier - identifies some entity uniquely and unambiguously." />
@@ -26,11 +39,13 @@
 				<code value="Identifier" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="CX / EI (occasionally, more often EI maps to a resource id or a URL)" />
@@ -43,8 +58,12 @@
 				<identity value="servd" />
 				<map value="Identifier" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="id">
+		<element>
 			<path value="Identifier.id" />
 			<representation value="xmlAttr" />
 			<short value="xml:id (or equivalent in JSON)" />
@@ -61,6 +80,12 @@
 				<code value="id" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -70,7 +95,7 @@
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="extension">
+		<element>
 			<path value="Identifier.extension" />
 			<short value="Additional Content defined by implementations" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
@@ -88,6 +113,12 @@
 				<code value="Extension" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -96,8 +127,12 @@
 				<identity value="rim" />
 				<map value="N/A" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="use">
+		<element>
 			<path value="Identifier.use" />
 			<short value="usual | official | temp | secondary (If known)" />
 			<definition value="The purpose of this identifier." />
@@ -114,6 +149,12 @@
 				<code value="code" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isModifier value="true" />
 			<isSummary value="true" />
 			<binding>
@@ -122,10 +163,6 @@
 				<valueSetUri value="http://hl7.org/fhir/ValueSet/identifier-use" />
 			</binding>
 			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
 				<identity value="v2" />
 				<map value="N/A" />
 			</mapping>
@@ -133,8 +170,12 @@
 				<identity value="rim" />
 				<map value="Role.code or implied by context" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="type">
+		<element>
 			<path value="Identifier.type" />
 			<short value="Description of identifier" />
 			<definition value="A coded type for the identifier that can be used to determine which identifier to use for a specific purpose." />
@@ -152,6 +193,12 @@
 				<code value="CodeableConcept" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<binding>
 				<strength value="extensible" />
@@ -159,8 +206,12 @@
 				<valueSetUri value="http://hl7.org/fhir/ValueSet/identifier-type" />
 			</binding>
 			<mapping>
+				<identity value="v2" />
+				<map value="CX.5" />
+			</mapping>
+			<mapping>
 				<identity value="rim" />
-				<map value="n/a" />
+				<map value="Role.code or implied by context" />
 			</mapping>
 			<mapping>
 				<identity value="v2" />
@@ -175,15 +226,11 @@
 				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
 			</mapping>
 			<mapping>
-				<identity value="v2" />
-				<map value="CX.5" />
-			</mapping>
-			<mapping>
 				<identity value="rim" />
-				<map value="Role.code or implied by context" />
+				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="system">
+		<element>
 			<path value="Identifier.system" />
 			<short value="The namespace for the identifier" />
 			<definition value="Establishes the namespace in which set of possible id values is unique." />
@@ -202,11 +249,13 @@
 			<fixedUri value="http://example.com/fhir/localsystems/PATIENT-ID-MRN" />
 			<exampleUri value="http://www.acme.com/identifiers/patient or urn:ietf:rfc:3986 if the Identifier.value itself is a full uri" />
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="CX.4 / EI-2-4" />
@@ -219,8 +268,12 @@
 				<identity value="servd" />
 				<map value="./IdentifierType" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="value">
+		<element>
 			<path value="Identifier.value" />
 			<short value="The value that is unique" />
 			<definition value="The portion of the identifier typically displayed to the user and which is unique within the context of the system." />
@@ -237,11 +290,13 @@
 			</type>
 			<exampleString value="123456" />
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="CX.1 / EI.1" />
@@ -254,8 +309,12 @@
 				<identity value="servd" />
 				<map value="./Value" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="period">
+		<element>
 			<path value="Identifier.period" />
 			<short value="Time period when id is/was valid for use" />
 			<definition value="Time period during which identifier is/was valid for use." />
@@ -271,19 +330,19 @@
 				<code value="Period" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="per-1" />
+				<severity value="error" />
+				<human value="If present, start SHALL have a lower value than end" />
+				<xpath value="not(exists(f:start)) or not(exists(f:end)) or (f:start/@value &lt;= f:end/@value)" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="v2" />
-				<map value="DR" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="IVL&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;] or URG&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]" />
-			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="CX.7 + CX.8" />
@@ -296,8 +355,20 @@
 				<identity value="servd" />
 				<map value="./StartDate and ./EndDate" />
 			</mapping>
+			<mapping>
+				<identity value="v2" />
+				<map value="DR" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="IVL&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;] or URG&lt;TS&gt;[lowClosed=&quot;true&quot; and highClosed=&quot;true&quot;]" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
-		<element id="assigner">
+		<element>
 			<path value="Identifier.assigner" />
 			<short value="Organization that issued id (may be just text)" />
 			<definition value="Organization that issued/manages the identifier." />
@@ -314,15 +385,19 @@
 				<profile value="http://hl7.org/fhir/StructureDefinition/Organization" />
 			</type>
 			<condition value="ele-1" />
+			<constraint>
+				<key value="ref-1" />
+				<severity value="error" />
+				<human value="SHALL have a local reference if the resource is provided inline" />
+				<xpath value="not(starts-with(f:reference/@value, &#39;#&#39;)) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-			</mapping>
 			<mapping>
 				<identity value="v2" />
 				<map value="CX.4 / (CX.4,CX.9,CX.10)" />
@@ -335,14 +410,22 @@
 				<identity value="servd" />
 				<map value="./IdentifierIssuingAuthority" />
 			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
 	</snapshot>
 	<differential>
-		<element id="Identifier">
+		<element>
 			<path value="Identifier" />
 			<short value="A medical record number." />
 		</element>
-		<element id="system">
+		<element>
 			<path value="Identifier.system" />
 			<min value="1" />
 			<fixedUri value="http://example.com/fhir/localsystems/PATIENT-ID-MRN" />
