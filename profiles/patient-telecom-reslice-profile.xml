@@ -624,6 +624,153 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
+		<element id="Patient.extension:doNotCall.id">
+			<path value="Patient.extension.id" />
+			<representation value="xmlAttr" />
+			<name value="doNotCall.id" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="string" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:doNotCall.extension">
+			<path value="Patient.extension.extension" />
+			<name value="doNotCall.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:doNotCall.url">
+			<path value="Patient.extension.url" />
+			<representation value="xmlAttr" />
+			<name value="doNotCall.url" />
+			<short value="identifies the meaning of the extension" />
+			<definition value="Source of the definition for the extension code - a logical name or a URL." />
+			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension." />
+			<min value="1" />
+			<max value="1" />
+			<base>
+				<path value="Extension.url" />
+				<min value="1" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="uri" />
+			</type>
+			<fixedUri value="http://example.com/fhir/StructureDefinition/patient-do-not-call" />
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:doNotCall.value[x]">
+			<path value="Patient.extension.value[x]" />
+			<name value="doNotCall.value[x]" />
+			<short value="Value of extension" />
+			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
+			<min value="1" />
+			<max value="1" />
+			<base>
+				<path value="Extension.value[x]" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="boolean" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
 		<element id="Patient.extension:legalCase">
 			<path value="Patient.extension" />
 			<name value="legalCase" />
@@ -1304,6 +1451,264 @@
 				<map value="n/a" />
 			</mapping>
 		</element>
+		<element id="Patient.extension:legalCase.valueBoolean.extension:leadCounsel.id">
+			<path value="Patient.extension.valueBoolean.extension.id" />
+			<representation value="xmlAttr" />
+			<name value="legalCase.valueBoolean.leadCounsel.id" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="string" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:legalCase.valueBoolean.extension:leadCounsel.extension">
+			<path value="Patient.extension.valueBoolean.extension.extension" />
+			<name value="legalCase.valueBoolean.leadCounsel.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:legalCase.valueBoolean.extension:leadCounsel.url">
+			<path value="Patient.extension.valueBoolean.extension.url" />
+			<representation value="xmlAttr" />
+			<name value="legalCase.valueBoolean.leadCounsel.url" />
+			<short value="identifies the meaning of the extension" />
+			<definition value="Source of the definition for the extension code - a logical name or a URL." />
+			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension." />
+			<min value="1" />
+			<max value="1" />
+			<base>
+				<path value="Extension.url" />
+				<min value="1" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="uri" />
+			</type>
+			<fixedUri value="http://example.com/fhir/StructureDefinition/patient-legal-case-lead-counsel" />
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:legalCase.valueBoolean.extension:leadCounsel.value[x]">
+			<path value="Patient.extension.valueBoolean.extension.value[x]" />
+			<name value="legalCase.valueBoolean.leadCounsel.value[x]" />
+			<short value="Value of extension" />
+			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
+			<min value="1" />
+			<max value="1" />
+			<base>
+				<path value="Extension.value[x]" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="boolean" />
+			</type>
+			<type>
+				<code value="integer" />
+			</type>
+			<type>
+				<code value="decimal" />
+			</type>
+			<type>
+				<code value="base64Binary" />
+			</type>
+			<type>
+				<code value="instant" />
+			</type>
+			<type>
+				<code value="string" />
+			</type>
+			<type>
+				<code value="uri" />
+			</type>
+			<type>
+				<code value="date" />
+			</type>
+			<type>
+				<code value="dateTime" />
+			</type>
+			<type>
+				<code value="time" />
+			</type>
+			<type>
+				<code value="code" />
+			</type>
+			<type>
+				<code value="oid" />
+			</type>
+			<type>
+				<code value="id" />
+			</type>
+			<type>
+				<code value="unsignedInt" />
+			</type>
+			<type>
+				<code value="positiveInt" />
+			</type>
+			<type>
+				<code value="markdown" />
+			</type>
+			<type>
+				<code value="Annotation" />
+			</type>
+			<type>
+				<code value="Attachment" />
+			</type>
+			<type>
+				<code value="Identifier" />
+			</type>
+			<type>
+				<code value="CodeableConcept" />
+			</type>
+			<type>
+				<code value="Coding" />
+			</type>
+			<type>
+				<code value="Quantity" />
+			</type>
+			<type>
+				<code value="Range" />
+			</type>
+			<type>
+				<code value="Period" />
+			</type>
+			<type>
+				<code value="Ratio" />
+			</type>
+			<type>
+				<code value="SampledData" />
+			</type>
+			<type>
+				<code value="Signature" />
+			</type>
+			<type>
+				<code value="Reference" />
+			</type>
+			<type>
+				<code value="HumanName" />
+			</type>
+			<type>
+				<code value="Address" />
+			</type>
+			<type>
+				<code value="ContactPoint" />
+			</type>
+			<type>
+				<code value="Timing" />
+			</type>
+			<type>
+				<code value="Meta" />
+			</type>
+			<type>
+				<code value="Age" />
+			</type>
+			<type>
+				<code value="Count" />
+			</type>
+			<type>
+				<code value="Distance" />
+			</type>
+			<type>
+				<code value="Duration" />
+			</type>
+			<type>
+				<code value="Money" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
 		<element id="Patient.extension:legalCase.valueBoolean.value">
 			<path value="Patient.extension.valueBoolean.value" />
 			<representation value="xmlAttr" />
@@ -1376,6 +1781,158 @@
 				<map value="N/A" />
 			</mapping>
 		</element>
+		<element id="Patient.extension:religion.id">
+			<path value="Patient.extension.id" />
+			<representation value="xmlAttr" />
+			<name value="religion.id" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="string" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:religion.extension">
+			<path value="Patient.extension.extension" />
+			<name value="religion.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:religion.url">
+			<path value="Patient.extension.url" />
+			<representation value="xmlAttr" />
+			<name value="religion.url" />
+			<short value="identifies the meaning of the extension" />
+			<definition value="Source of the definition for the extension code - a logical name or a URL." />
+			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension." />
+			<min value="1" />
+			<max value="1" />
+			<base>
+				<path value="Extension.url" />
+				<min value="1" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="uri" />
+			</type>
+			<fixedUri value="http://hl7.org/fhir/StructureDefinition/us-core-religion" />
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:religion.value[x]">
+			<path value="Patient.extension.value[x]" />
+			<name value="religion.value[x]" />
+			<short value="Value of extension" />
+			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
+			<min value="1" />
+			<max value="1" />
+			<base>
+				<path value="Extension.value[x]" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="CodeableConcept" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<binding>
+				<strength value="required" />
+				<description value="A code classifying a person&#39;s professed religion" />
+				<valueSetUri value="http://hl7.org/fhir/ValueSet/v3-ReligiousAffiliation" />
+			</binding>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
 		<element id="Patient.extension:researchAuth">
 			<path value="Patient.extension" />
 			<name value="researchAuth" />
@@ -1418,6 +1975,1314 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.id">
+			<path value="Patient.extension.id" />
+			<representation value="xmlAttr" />
+			<name value="researchAuth.id" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="string" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension">
+			<path value="Patient.extension.extension" />
+			<name value="researchAuth.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension.id">
+			<path value="Patient.extension.extension.id" />
+			<representation value="xmlAttr" />
+			<name value="researchAuth.extension.id" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="string" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension.extension">
+			<path value="Patient.extension.extension.extension" />
+			<name value="researchAuth.extension.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension.url">
+			<path value="Patient.extension.extension.url" />
+			<representation value="xmlAttr" />
+			<name value="researchAuth.extension.url" />
+			<short value="identifies the meaning of the extension" />
+			<definition value="Source of the definition for the extension code - a logical name or a URL." />
+			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension." />
+			<min value="1" />
+			<max value="1" />
+			<base>
+				<path value="Extension.url" />
+				<min value="1" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="uri" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension.value[x]">
+			<path value="Patient.extension.extension.value[x]" />
+			<name value="researchAuth.extension.value[x]" />
+			<short value="Value of extension" />
+			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Extension.value[x]" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="boolean" />
+			</type>
+			<type>
+				<code value="integer" />
+			</type>
+			<type>
+				<code value="decimal" />
+			</type>
+			<type>
+				<code value="base64Binary" />
+			</type>
+			<type>
+				<code value="instant" />
+			</type>
+			<type>
+				<code value="string" />
+			</type>
+			<type>
+				<code value="uri" />
+			</type>
+			<type>
+				<code value="date" />
+			</type>
+			<type>
+				<code value="dateTime" />
+			</type>
+			<type>
+				<code value="time" />
+			</type>
+			<type>
+				<code value="code" />
+			</type>
+			<type>
+				<code value="oid" />
+			</type>
+			<type>
+				<code value="id" />
+			</type>
+			<type>
+				<code value="unsignedInt" />
+			</type>
+			<type>
+				<code value="positiveInt" />
+			</type>
+			<type>
+				<code value="markdown" />
+			</type>
+			<type>
+				<code value="Annotation" />
+			</type>
+			<type>
+				<code value="Attachment" />
+			</type>
+			<type>
+				<code value="Identifier" />
+			</type>
+			<type>
+				<code value="CodeableConcept" />
+			</type>
+			<type>
+				<code value="Coding" />
+			</type>
+			<type>
+				<code value="Quantity" />
+			</type>
+			<type>
+				<code value="Range" />
+			</type>
+			<type>
+				<code value="Period" />
+			</type>
+			<type>
+				<code value="Ratio" />
+			</type>
+			<type>
+				<code value="SampledData" />
+			</type>
+			<type>
+				<code value="Signature" />
+			</type>
+			<type>
+				<code value="Reference" />
+			</type>
+			<type>
+				<code value="HumanName" />
+			</type>
+			<type>
+				<code value="Address" />
+			</type>
+			<type>
+				<code value="ContactPoint" />
+			</type>
+			<type>
+				<code value="Timing" />
+			</type>
+			<type>
+				<code value="Meta" />
+			</type>
+			<type>
+				<code value="Age" />
+			</type>
+			<type>
+				<code value="Count" />
+			</type>
+			<type>
+				<code value="Distance" />
+			</type>
+			<type>
+				<code value="Duration" />
+			</type>
+			<type>
+				<code value="Money" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension:type">
+			<path value="Patient.extension.extension" />
+			<name value="researchAuth.type" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<min value="1" />
+			<max value="1" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension:type.id">
+			<path value="Patient.extension.extension.id" />
+			<representation value="xmlAttr" />
+			<name value="researchAuth.type.id" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="string" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension:type.extension">
+			<path value="Patient.extension.extension.extension" />
+			<name value="researchAuth.type.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension:type.url">
+			<path value="Patient.extension.extension.url" />
+			<representation value="xmlAttr" />
+			<name value="researchAuth.type.url" />
+			<short value="identifies the meaning of the extension" />
+			<definition value="Source of the definition for the extension code - a logical name or a URL." />
+			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension." />
+			<min value="1" />
+			<max value="1" />
+			<base>
+				<path value="Extension.url" />
+				<min value="1" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="uri" />
+			</type>
+			<fixedUri value="type" />
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension:type.value[x]">
+			<path value="Patient.extension.extension.value[x]" />
+			<name value="researchAuth.type.value[x]" />
+			<short value="Value of extension" />
+			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
+			<min value="1" />
+			<max value="1" />
+			<base>
+				<path value="Extension.value[x]" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="code" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension:flag">
+			<path value="Patient.extension.extension" />
+			<name value="researchAuth.flag" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension:flag.id">
+			<path value="Patient.extension.extension.id" />
+			<representation value="xmlAttr" />
+			<name value="researchAuth.flag.id" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="string" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension:flag.extension">
+			<path value="Patient.extension.extension.extension" />
+			<name value="researchAuth.flag.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension:flag.url">
+			<path value="Patient.extension.extension.url" />
+			<representation value="xmlAttr" />
+			<name value="researchAuth.flag.url" />
+			<short value="identifies the meaning of the extension" />
+			<definition value="Source of the definition for the extension code - a logical name or a URL." />
+			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension." />
+			<min value="1" />
+			<max value="1" />
+			<base>
+				<path value="Extension.url" />
+				<min value="1" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="uri" />
+			</type>
+			<fixedUri value="flag" />
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension:flag.value[x]">
+			<path value="Patient.extension.extension.value[x]" />
+			<name value="researchAuth.flag.value[x]" />
+			<short value="Value of extension" />
+			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
+			<min value="1" />
+			<max value="1" />
+			<base>
+				<path value="Extension.value[x]" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="boolean" />
+			</type>
+			<type>
+				<code value="integer" />
+			</type>
+			<type>
+				<code value="decimal" />
+			</type>
+			<type>
+				<code value="base64Binary" />
+			</type>
+			<type>
+				<code value="instant" />
+			</type>
+			<type>
+				<code value="string" />
+			</type>
+			<type>
+				<code value="uri" />
+			</type>
+			<type>
+				<code value="date" />
+			</type>
+			<type>
+				<code value="dateTime" />
+			</type>
+			<type>
+				<code value="time" />
+			</type>
+			<type>
+				<code value="code" />
+			</type>
+			<type>
+				<code value="oid" />
+			</type>
+			<type>
+				<code value="id" />
+			</type>
+			<type>
+				<code value="unsignedInt" />
+			</type>
+			<type>
+				<code value="positiveInt" />
+			</type>
+			<type>
+				<code value="markdown" />
+			</type>
+			<type>
+				<code value="Annotation" />
+			</type>
+			<type>
+				<code value="Attachment" />
+			</type>
+			<type>
+				<code value="Identifier" />
+			</type>
+			<type>
+				<code value="CodeableConcept" />
+			</type>
+			<type>
+				<code value="Coding" />
+			</type>
+			<type>
+				<code value="Quantity" />
+			</type>
+			<type>
+				<code value="Range" />
+			</type>
+			<type>
+				<code value="Period" />
+			</type>
+			<type>
+				<code value="Ratio" />
+			</type>
+			<type>
+				<code value="SampledData" />
+			</type>
+			<type>
+				<code value="Signature" />
+			</type>
+			<type>
+				<code value="Reference" />
+			</type>
+			<type>
+				<code value="HumanName" />
+			</type>
+			<type>
+				<code value="Address" />
+			</type>
+			<type>
+				<code value="ContactPoint" />
+			</type>
+			<type>
+				<code value="Timing" />
+			</type>
+			<type>
+				<code value="Meta" />
+			</type>
+			<type>
+				<code value="Age" />
+			</type>
+			<type>
+				<code value="Count" />
+			</type>
+			<type>
+				<code value="Distance" />
+			</type>
+			<type>
+				<code value="Duration" />
+			</type>
+			<type>
+				<code value="Money" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension:date">
+			<path value="Patient.extension.extension" />
+			<name value="researchAuth.date" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension:date.id">
+			<path value="Patient.extension.extension.id" />
+			<representation value="xmlAttr" />
+			<name value="researchAuth.date.id" />
+			<short value="xml:id (or equivalent in JSON)" />
+			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Element.id" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="string" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension:date.extension">
+			<path value="Patient.extension.extension.extension" />
+			<name value="researchAuth.date.extension" />
+			<short value="Additional Content defined by implementations" />
+			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
+			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
+			<alias value="extensions" />
+			<alias value="user content" />
+			<min value="0" />
+			<max value="*" />
+			<base>
+				<path value="Element.extension" />
+				<min value="0" />
+				<max value="*" />
+			</base>
+			<type>
+				<code value="Extension" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ext-1" />
+				<severity value="error" />
+				<human value="Must have either extensions or value[x], not both" />
+				<expression value="extension.exists() != value.exists()" />
+				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension:date.url">
+			<path value="Patient.extension.extension.url" />
+			<representation value="xmlAttr" />
+			<name value="researchAuth.date.url" />
+			<short value="identifies the meaning of the extension" />
+			<definition value="Source of the definition for the extension code - a logical name or a URL." />
+			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension." />
+			<min value="1" />
+			<max value="1" />
+			<base>
+				<path value="Extension.url" />
+				<min value="1" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="uri" />
+			</type>
+			<fixedUri value="date" />
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.extension:date.value[x]">
+			<path value="Patient.extension.extension.value[x]" />
+			<name value="researchAuth.date.value[x]" />
+			<short value="Value of extension" />
+			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
+			<min value="1" />
+			<max value="1" />
+			<base>
+				<path value="Extension.value[x]" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="boolean" />
+			</type>
+			<type>
+				<code value="integer" />
+			</type>
+			<type>
+				<code value="decimal" />
+			</type>
+			<type>
+				<code value="base64Binary" />
+			</type>
+			<type>
+				<code value="instant" />
+			</type>
+			<type>
+				<code value="string" />
+			</type>
+			<type>
+				<code value="uri" />
+			</type>
+			<type>
+				<code value="date" />
+			</type>
+			<type>
+				<code value="dateTime" />
+			</type>
+			<type>
+				<code value="time" />
+			</type>
+			<type>
+				<code value="code" />
+			</type>
+			<type>
+				<code value="oid" />
+			</type>
+			<type>
+				<code value="id" />
+			</type>
+			<type>
+				<code value="unsignedInt" />
+			</type>
+			<type>
+				<code value="positiveInt" />
+			</type>
+			<type>
+				<code value="markdown" />
+			</type>
+			<type>
+				<code value="Annotation" />
+			</type>
+			<type>
+				<code value="Attachment" />
+			</type>
+			<type>
+				<code value="Identifier" />
+			</type>
+			<type>
+				<code value="CodeableConcept" />
+			</type>
+			<type>
+				<code value="Coding" />
+			</type>
+			<type>
+				<code value="Quantity" />
+			</type>
+			<type>
+				<code value="Range" />
+			</type>
+			<type>
+				<code value="Period" />
+			</type>
+			<type>
+				<code value="Ratio" />
+			</type>
+			<type>
+				<code value="SampledData" />
+			</type>
+			<type>
+				<code value="Signature" />
+			</type>
+			<type>
+				<code value="Reference" />
+			</type>
+			<type>
+				<code value="HumanName" />
+			</type>
+			<type>
+				<code value="Address" />
+			</type>
+			<type>
+				<code value="ContactPoint" />
+			</type>
+			<type>
+				<code value="Timing" />
+			</type>
+			<type>
+				<code value="Meta" />
+			</type>
+			<type>
+				<code value="Age" />
+			</type>
+			<type>
+				<code value="Count" />
+			</type>
+			<type>
+				<code value="Distance" />
+			</type>
+			<type>
+				<code value="Duration" />
+			</type>
+			<type>
+				<code value="Money" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.url">
+			<path value="Patient.extension.url" />
+			<representation value="xmlAttr" />
+			<name value="researchAuth.url" />
+			<short value="identifies the meaning of the extension" />
+			<definition value="Source of the definition for the extension code - a logical name or a URL." />
+			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension." />
+			<min value="1" />
+			<max value="1" />
+			<base>
+				<path value="Extension.url" />
+				<min value="1" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="uri" />
+			</type>
+			<fixedUri value="http://example.com/fhir/StructureDefinition/patient-research-authorization" />
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
+		</element>
+		<element id="Patient.extension:researchAuth.value[x]">
+			<path value="Patient.extension.value[x]" />
+			<name value="researchAuth.value[x]" />
+			<short value="Value of extension" />
+			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
+			<min value="0" />
+			<max value="1" />
+			<base>
+				<path value="Extension.value[x]" />
+				<min value="0" />
+				<max value="1" />
+			</base>
+			<type>
+				<code value="boolean" />
+			</type>
+			<type>
+				<code value="integer" />
+			</type>
+			<type>
+				<code value="decimal" />
+			</type>
+			<type>
+				<code value="base64Binary" />
+			</type>
+			<type>
+				<code value="instant" />
+			</type>
+			<type>
+				<code value="string" />
+			</type>
+			<type>
+				<code value="uri" />
+			</type>
+			<type>
+				<code value="date" />
+			</type>
+			<type>
+				<code value="dateTime" />
+			</type>
+			<type>
+				<code value="time" />
+			</type>
+			<type>
+				<code value="code" />
+			</type>
+			<type>
+				<code value="oid" />
+			</type>
+			<type>
+				<code value="id" />
+			</type>
+			<type>
+				<code value="unsignedInt" />
+			</type>
+			<type>
+				<code value="positiveInt" />
+			</type>
+			<type>
+				<code value="markdown" />
+			</type>
+			<type>
+				<code value="Annotation" />
+			</type>
+			<type>
+				<code value="Attachment" />
+			</type>
+			<type>
+				<code value="Identifier" />
+			</type>
+			<type>
+				<code value="CodeableConcept" />
+			</type>
+			<type>
+				<code value="Coding" />
+			</type>
+			<type>
+				<code value="Quantity" />
+			</type>
+			<type>
+				<code value="Range" />
+			</type>
+			<type>
+				<code value="Period" />
+			</type>
+			<type>
+				<code value="Ratio" />
+			</type>
+			<type>
+				<code value="SampledData" />
+			</type>
+			<type>
+				<code value="Signature" />
+			</type>
+			<type>
+				<code value="Reference" />
+			</type>
+			<type>
+				<code value="HumanName" />
+			</type>
+			<type>
+				<code value="Address" />
+			</type>
+			<type>
+				<code value="ContactPoint" />
+			</type>
+			<type>
+				<code value="Timing" />
+			</type>
+			<type>
+				<code value="Meta" />
+			</type>
+			<type>
+				<code value="Age" />
+			</type>
+			<type>
+				<code value="Count" />
+			</type>
+			<type>
+				<code value="Distance" />
+			</type>
+			<type>
+				<code value="Duration" />
+			</type>
+			<type>
+				<code value="Money" />
+			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="N/A" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element id="Patient.modifierExtension">
