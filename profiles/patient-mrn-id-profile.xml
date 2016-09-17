@@ -3,7 +3,7 @@
 	<name value="patient-mrn-id" />
 	<status value="draft" />
 	<description value="An example type profile constraining the Identifier type. For use in slicing by profile examples." />
-	<fhirVersion value="1.5.0" />
+	<fhirVersion value="1.7.0" />
 	<mapping>
 		<identity value="v2" />
 		<uri value="http://hl7.org/v2" />
@@ -63,16 +63,13 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Identifier.id">
 			<path value="Identifier.id" />
 			<representation value="xmlAttr" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -83,6 +80,18 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -107,18 +116,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -127,10 +136,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -153,6 +158,14 @@
 			<type>
 				<code value="code" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isModifier value="true" />
 			<isSummary value="true" />
 			<binding>
@@ -167,6 +180,10 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="Role.code or implied by context" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element id="Identifier.type">
@@ -219,10 +236,6 @@
 			<mapping>
 				<identity value="orim" />
 				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -370,10 +383,6 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Identifier.assigner">
 			<path value="Identifier.assigner" />
@@ -395,7 +404,7 @@
 			<constraint>
 				<key value="ref-1" />
 				<severity value="error" />
-				<human value="SHALL have a local reference if the resource is provided inline" />
+				<human value="SHALL have a contained resource if a local reference is provided" />
 				<expression value="reference.startsWith(&#39;#&#39;).not() or (reference.substring(1).trace(&#39;url&#39;) in %resource.contained.id.trace(&#39;ids&#39;))" />
 				<xpath value="not(starts-with(f:reference/@value, &#39;#&#39;)) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)])" />
 			</constraint>
@@ -422,10 +431,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />

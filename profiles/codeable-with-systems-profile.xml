@@ -3,7 +3,7 @@
 	<name value="codeable-with-systems" />
 	<status value="draft" />
 	<description value="An example of a type profile with named slices." />
-	<fhirVersion value="1.5.0" />
+	<fhirVersion value="1.7.0" />
 	<mapping>
 		<identity value="v2" />
 		<uri value="http://hl7.org/v2" />
@@ -64,16 +64,13 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="CodeableConcept.id">
 			<path value="CodeableConcept.id" />
 			<representation value="xmlAttr" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -84,6 +81,18 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -108,18 +117,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -128,10 +137,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -195,16 +200,13 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="CodeableConcept.coding.id">
 			<path value="CodeableConcept.coding.id" />
 			<representation value="xmlAttr" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -215,6 +217,18 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -239,18 +253,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -259,10 +273,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -356,6 +366,7 @@
 			<path value="CodeableConcept.coding.code" />
 			<short value="Symbol in syntax defined by the system" />
 			<definition value="A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<requirements value="Need to refer to a particular code in the system." />
 			<min value="0" />
 			<max value="1" />
@@ -367,6 +378,14 @@
 			<type>
 				<code value="code" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<mapping>
 				<identity value="v2" />
@@ -379,6 +398,10 @@
 			<mapping>
 				<identity value="orim" />
 				<map value="fhir:Coding.code rdfs:subPropertyOf dt:CDCoding.code" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element id="CodeableConcept.coding.display">
@@ -519,10 +542,6 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="CodeableConcept.coding:LOINC.id">
 			<path value="CodeableConcept.coding.id" />
@@ -530,6 +549,7 @@
 			<name value="LOINC.id" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -540,6 +560,18 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -565,18 +597,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -585,10 +617,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -686,6 +714,7 @@
 			<name value="LOINC.code" />
 			<short value="Symbol in syntax defined by the system" />
 			<definition value="A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<requirements value="Need to refer to a particular code in the system." />
 			<min value="0" />
 			<max value="1" />
@@ -697,6 +726,14 @@
 			<type>
 				<code value="code" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<mapping>
 				<identity value="v2" />
@@ -709,6 +746,10 @@
 			<mapping>
 				<identity value="orim" />
 				<map value="fhir:Coding.code rdfs:subPropertyOf dt:CDCoding.code" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element id="CodeableConcept.coding:LOINC.display">
@@ -851,10 +892,6 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="CodeableConcept.coding:SNOMED.id">
 			<path value="CodeableConcept.coding.id" />
@@ -862,6 +899,7 @@
 			<name value="SNOMED.id" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -872,6 +910,18 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -897,18 +947,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -917,10 +967,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -1018,6 +1064,7 @@
 			<name value="SNOMED.code" />
 			<short value="Symbol in syntax defined by the system" />
 			<definition value="A symbol in syntax defined by the system. The symbol may be a predefined code or an expression in a syntax defined by the coding system (e.g. post-coordination)." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<requirements value="Need to refer to a particular code in the system." />
 			<min value="0" />
 			<max value="1" />
@@ -1029,6 +1076,14 @@
 			<type>
 				<code value="code" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
 			<mapping>
 				<identity value="v2" />
@@ -1041,6 +1096,10 @@
 			<mapping>
 				<identity value="orim" />
 				<map value="fhir:Coding.code rdfs:subPropertyOf dt:CDCoding.code" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element id="CodeableConcept.coding:SNOMED.display">

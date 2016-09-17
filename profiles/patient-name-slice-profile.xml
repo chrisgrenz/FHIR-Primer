@@ -3,7 +3,7 @@
 	<name value="patient-name-slice" />
 	<status value="draft" />
 	<description value="Slice Patient.name by a single fixed value." />
-	<fhirVersion value="1.4.0" />
+	<fhirVersion value="1.7.0" />
 	<mapping>
 		<identity value="rim" />
 		<uri value="http://hl7.org/v3" />
@@ -31,7 +31,7 @@
 	</mapping>
 	<kind value="resource" />
 	<abstract value="false" />
-	<baseType value="Patient" />
+	<type value="Patient" />
 	<baseDefinition value="http://example.com/fhir/SD/patient-with-extensions" />
 	<derivation value="constraint" />
 	<snapshot>
@@ -71,7 +71,7 @@
 				<key value="dom-3" />
 				<severity value="error" />
 				<human value="If the resource is contained in another resource, it SHALL be referred to from elsewhere in the resource" />
-				<expression value="contained.where((&#39;#&#39;+id in %resource.descendents().reference).not()).empty()" />
+				<expression value="contained.where((&#39;#&#39;+id in %resource.descendants().reference).not()).empty()" />
 				<xpath value="not(exists(for $id in f:contained/*/@id return $id[not(ancestor::f:contained/parent::*/descendant::f:reference/@value=concat(&#39;#&#39;, $id))]))" />
 			</constraint>
 			<mapping>
@@ -85,10 +85,6 @@
 			<mapping>
 				<identity value="w5" />
 				<map value="administrative.individual" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="Entity. Role, or Act" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -114,7 +110,19 @@
 			<type>
 				<code value="id" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isSummary value="true" />
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
 		<element id="Patient.meta">
 			<path value="Patient.meta" />
@@ -139,10 +147,6 @@
 				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<isSummary value="true" />
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -193,11 +197,23 @@
 			<type>
 				<code value="code" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<binding>
 				<strength value="extensible" />
 				<description value="A human language." />
 				<valueSetUri value="http://hl7.org/fhir/ValueSet/languages" />
 			</binding>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 		</element>
 		<element id="Patient.text">
 			<path value="Patient.text" />
@@ -234,10 +250,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -288,19 +300,19 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
 			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
@@ -308,10 +320,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -323,6 +331,7 @@
 			<representation value="xmlAttr" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -333,6 +342,18 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -357,18 +378,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -377,10 +398,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -582,26 +599,22 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
 			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -631,26 +644,22 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
 			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -667,6 +676,7 @@
 			<name value="legalCase.id" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -677,6 +687,18 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -702,18 +724,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -722,10 +744,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -799,12 +817,13 @@
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="Patient.extension:legalCase.id">
-			<path value="Patient.extension.id" />
+		<element id="Patient.extension:legalCase.value[x].id">
+			<path value="Patient.extension.value[x].id" />
 			<representation value="xmlAttr" />
-			<name value="legalCase.id" />
+			<name value="legalCase.value[x].id" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -815,14 +834,26 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
 		</element>
-		<element id="Patient.extension:legalCase.extension">
-			<path value="Patient.extension.extension" />
-			<name value="legalCase.extension" />
+		<element id="Patient.extension:legalCase.value[x].extension">
+			<path value="Patient.extension.value[x].extension" />
+			<name value="legalCase.value[x].extension" />
 			<short value="Additional Content defined by implementations" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
@@ -840,18 +871,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -860,10 +891,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -908,6 +935,7 @@
 			<name value="legalCase.valueBoolean.id" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -918,6 +946,18 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -941,18 +981,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -966,17 +1006,14 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Patient.extension:legalCase.valueBoolean.extension.id">
 			<path value="Patient.extension.valueBoolean.extension.id" />
 			<representation value="xmlAttr" />
-			<name value="legalCase.valueBoolean.id" />
+			<name value="legalCase.valueBoolean.extension.id" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -987,6 +1024,18 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -994,7 +1043,7 @@
 		</element>
 		<element id="Patient.extension:legalCase.valueBoolean.extension.extension">
 			<path value="Patient.extension.valueBoolean.extension.extension" />
-			<name value="legalCase.valueBoolean.extension" />
+			<name value="legalCase.valueBoolean.extension.extension" />
 			<short value="Additional Content defined by implementations" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
@@ -1012,18 +1061,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -1037,15 +1086,11 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Patient.extension:legalCase.valueBoolean.extension.url">
 			<path value="Patient.extension.valueBoolean.extension.url" />
 			<representation value="xmlAttr" />
-			<name value="legalCase.valueBoolean.url" />
+			<name value="legalCase.valueBoolean.extension.url" />
 			<short value="identifies the meaning of the extension" />
 			<definition value="Source of the definition for the extension code - a logical name or a URL." />
 			<comments value="The definition may point directly to a computable or human-readable definition of the extensibility codes, or it may be a logical URI as declared in some other specification. The definition SHALL be a URI for the Structure Definition defining the extension." />
@@ -1078,7 +1123,7 @@
 		</element>
 		<element id="Patient.extension:legalCase.valueBoolean.extension.value[x]">
 			<path value="Patient.extension.valueBoolean.extension.value[x]" />
-			<name value="legalCase.valueBoolean.value[x]" />
+			<name value="legalCase.valueBoolean.extension.value[x]" />
 			<short value="Value of extension" />
 			<definition value="Value of extension - may be a resource or one of a constrained set of the data types (see Extensibility in the spec for list)." />
 			<min value="0" />
@@ -1238,26 +1283,22 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
 			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -1310,26 +1351,22 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
 			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -1358,26 +1395,22 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
 			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -1407,18 +1440,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<isModifier value="true" />
 			<mapping>
@@ -1428,10 +1461,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -1489,10 +1518,6 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="Identifier" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -1600,17 +1625,13 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Patient.name.id">
 			<path value="Patient.name.id" />
 			<representation value="xmlAttr" />
-			<name value="id" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -1621,6 +1642,18 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -1628,7 +1661,6 @@
 		</element>
 		<element id="Patient.name.extension">
 			<path value="Patient.name.extension" />
-			<name value="extension" />
 			<short value="Additional Content defined by implementations" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
@@ -1646,18 +1678,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -1666,10 +1698,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -1692,6 +1720,14 @@
 			<type>
 				<code value="code" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isModifier value="true" />
 			<isSummary value="true" />
 			<binding>
@@ -1710,6 +1746,10 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="./NamePurpose" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element id="Patient.name.text">
@@ -1969,10 +2009,6 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Patient.name:officialName">
 			<path value="Patient.name" />
@@ -2028,10 +2064,6 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Patient.name:officialName.id">
 			<path value="Patient.name.id" />
@@ -2039,6 +2071,7 @@
 			<name value="officialName.id" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -2049,6 +2082,18 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -2074,18 +2119,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -2094,10 +2139,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -2122,6 +2163,14 @@
 				<code value="code" />
 			</type>
 			<fixedCode value="official" />
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isModifier value="true" />
 			<isSummary value="true" />
 			<binding>
@@ -2140,6 +2189,10 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="./NamePurpose" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element id="Patient.name:officialName.text">
@@ -2402,10 +2455,6 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Patient.name:maidenName">
 			<path value="Patient.name" />
@@ -2461,10 +2510,6 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Patient.name:maidenName.id">
 			<path value="Patient.name.id" />
@@ -2472,6 +2517,7 @@
 			<name value="maidenName.id" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -2482,6 +2528,18 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -2507,18 +2565,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -2527,10 +2585,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -2555,6 +2609,14 @@
 				<code value="code" />
 			</type>
 			<fixedCode value="maiden" />
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
 			<isModifier value="true" />
 			<isSummary value="true" />
 			<binding>
@@ -2573,6 +2635,10 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="./NamePurpose" />
+			</mapping>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
 			</mapping>
 		</element>
 		<element id="Patient.name:maidenName.text">
@@ -2837,10 +2903,6 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Patient.telecom">
 			<path value="Patient.telecom" />
@@ -2897,10 +2959,6 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="ContactPoint" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -3099,10 +3157,6 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Patient.maritalStatus">
 			<path value="Patient.maritalStatus" />
@@ -3156,10 +3210,6 @@
 			<mapping>
 				<identity value="orim" />
 				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -3267,10 +3317,6 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Patient.contact">
 			<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name">
@@ -3326,9 +3372,9 @@
 		<element id="Patient.contact.id">
 			<path value="Patient.contact.id" />
 			<representation value="xmlAttr" />
-			<name value="id" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -3339,6 +3385,18 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -3346,7 +3404,6 @@
 		</element>
 		<element id="Patient.contact.extension">
 			<path value="Patient.contact.extension" />
-			<name value="extension" />
 			<short value="Additional Content defined by implementations" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
@@ -3364,18 +3421,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -3384,10 +3441,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -3414,18 +3467,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<isModifier value="true" />
 			<isSummary value="true" />
@@ -3436,10 +3489,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -3503,10 +3552,6 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Patient.contact.name">
 			<path value="Patient.contact.name" />
@@ -3555,10 +3600,6 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="ProviderName" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -3624,10 +3665,6 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Patient.contact.address">
 			<path value="Patient.contact.address" />
@@ -3676,10 +3713,6 @@
 			<mapping>
 				<identity value="servd" />
 				<map value="Address" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -3753,7 +3786,7 @@
 			<constraint>
 				<key value="ref-1" />
 				<severity value="error" />
-				<human value="SHALL have a local reference if the resource is provided inline" />
+				<human value="SHALL have a contained resource if a local reference is provided" />
 				<expression value="reference.startsWith(&#39;#&#39;).not() or (reference.substring(1).trace(&#39;url&#39;) in %resource.contained.id.trace(&#39;ids&#39;))" />
 				<xpath value="not(starts-with(f:reference/@value, &#39;#&#39;)) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)])" />
 			</constraint>
@@ -3779,10 +3812,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -3839,10 +3868,6 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Patient.animal">
 			<extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name">
@@ -3893,9 +3918,9 @@
 		<element id="Patient.animal.id">
 			<path value="Patient.animal.id" />
 			<representation value="xmlAttr" />
-			<name value="id" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -3906,6 +3931,18 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -3913,7 +3950,6 @@
 		</element>
 		<element id="Patient.animal.extension">
 			<path value="Patient.animal.extension" />
-			<name value="extension" />
 			<short value="Additional Content defined by implementations" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
@@ -3931,18 +3967,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -3951,10 +3987,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -3981,18 +4013,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<isModifier value="true" />
 			<isSummary value="true" />
@@ -4003,10 +4035,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -4071,10 +4099,6 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Patient.animal.breed">
 			<path value="Patient.animal.breed" />
@@ -4129,10 +4153,6 @@
 			<mapping>
 				<identity value="orim" />
 				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -4197,10 +4217,6 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Patient.communication">
 			<path value="Patient.communication" />
@@ -4246,9 +4262,9 @@
 		<element id="Patient.communication.id">
 			<path value="Patient.communication.id" />
 			<representation value="xmlAttr" />
-			<name value="id" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -4259,6 +4275,18 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -4266,7 +4294,6 @@
 		</element>
 		<element id="Patient.communication.extension">
 			<path value="Patient.communication.extension" />
-			<name value="extension" />
 			<short value="Additional Content defined by implementations" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
@@ -4284,18 +4311,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -4304,10 +4331,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -4334,18 +4357,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<isModifier value="true" />
 			<isSummary value="true" />
@@ -4356,10 +4379,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -4418,10 +4437,6 @@
 			<mapping>
 				<identity value="orim" />
 				<map value="fhir:CodeableConcept rdfs:subClassOf dt:CD" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -4490,7 +4505,7 @@
 			<constraint>
 				<key value="ref-1" />
 				<severity value="error" />
-				<human value="SHALL have a local reference if the resource is provided inline" />
+				<human value="SHALL have a contained resource if a local reference is provided" />
 				<expression value="reference.startsWith(&#39;#&#39;).not() or (reference.substring(1).trace(&#39;url&#39;) in %resource.contained.id.trace(&#39;ids&#39;))" />
 				<xpath value="not(starts-with(f:reference/@value, &#39;#&#39;)) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)])" />
 			</constraint>
@@ -4518,10 +4533,6 @@
 				<identity value="rim" />
 				<map value="n/a" />
 			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
-			</mapping>
 		</element>
 		<element id="Patient.link">
 			<path value="Patient.link" />
@@ -4529,7 +4540,7 @@
 			<definition value="Link to another patient resource that concerns the same actual patient." />
 			<comments value="There is no assumption that linked patient records have mutual links." />
 			<requirements value="There are multiple usecases: 
-      * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple servers." />
+      * Duplicate patient records due to the clerical errors associated with the difficulties of identifying humans consistently, and * Distribution of patient information across multiple server" />
 			<min value="0" />
 			<max value="*" />
 			<base>
@@ -4548,8 +4559,6 @@
 				<expression value="children().count() &gt; id.count()" />
 				<xpath value="@value|f:*|h:div" />
 			</constraint>
-			<isModifier value="true" />
-			<isSummary value="true" />
 			<mapping>
 				<identity value="rim" />
 				<map value="outboundLink" />
@@ -4570,9 +4579,9 @@
 		<element id="Patient.link.id">
 			<path value="Patient.link.id" />
 			<representation value="xmlAttr" />
-			<name value="id" />
 			<short value="xml:id (or equivalent in JSON)" />
 			<definition value="unique id for the element within a resource (for internal references). This may be any string value that does not contain spaces." />
+			<comments value="Note that FHIR strings may not exceed 1MB in size" />
 			<min value="0" />
 			<max value="1" />
 			<base>
@@ -4583,6 +4592,18 @@
 			<type>
 				<code value="string" />
 			</type>
+			<condition value="ele-1" />
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
+			</constraint>
+			<mapping>
+				<identity value="rim" />
+				<map value="n/a" />
+			</mapping>
 			<mapping>
 				<identity value="rim" />
 				<map value="n/a" />
@@ -4590,7 +4611,6 @@
 		</element>
 		<element id="Patient.link.extension">
 			<path value="Patient.link.extension" />
-			<name value="extension" />
 			<short value="Additional Content defined by implementations" />
 			<definition value="May be used to represent additional information that is not part of the basic definition of the element. In order to make the use of extensions safe and manageable, there is a strict set of governance  applied to the definition and use of extensions. Though any implementer is allowed to define an extension, there is a set of requirements that SHALL be met as part of the definition of the extension." />
 			<comments value="There can be no stigma associated with the use of extensions by any application, project, or standard - regardless of the institution or jurisdiction that uses or defines the extensions.  The use of extensions is what allows the FHIR specification to retain a core level of simplicity for everyone." />
@@ -4608,18 +4628,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<mapping>
 				<identity value="rim" />
@@ -4628,10 +4648,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -4658,18 +4674,18 @@
 			</type>
 			<condition value="ele-1" />
 			<constraint>
-				<key value="ele-1" />
-				<severity value="error" />
-				<human value="All FHIR elements must have a @value or children" />
-				<expression value="children().count() &gt; id.count()" />
-				<xpath value="@value|f:*|h:div" />
-			</constraint>
-			<constraint>
 				<key value="ext-1" />
 				<severity value="error" />
 				<human value="Must have either extensions or value[x], not both" />
 				<expression value="extension.exists() != value.exists()" />
 				<xpath value="exists(f:extension)!=exists(f:*[starts-with(local-name(.), &#39;value&#39;)])" />
+			</constraint>
+			<constraint>
+				<key value="ele-1" />
+				<severity value="error" />
+				<human value="All FHIR elements must have a @value or children" />
+				<expression value="children().count() &gt; id.count()" />
+				<xpath value="@value|f:*|h:div" />
 			</constraint>
 			<isModifier value="true" />
 			<isSummary value="true" />
@@ -4680,10 +4696,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="N/A" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -4714,7 +4726,7 @@
 			<constraint>
 				<key value="ref-1" />
 				<severity value="error" />
-				<human value="SHALL have a local reference if the resource is provided inline" />
+				<human value="SHALL have a contained resource if a local reference is provided" />
 				<expression value="reference.startsWith(&#39;#&#39;).not() or (reference.substring(1).trace(&#39;url&#39;) in %resource.contained.id.trace(&#39;ids&#39;))" />
 				<xpath value="not(starts-with(f:reference/@value, &#39;#&#39;)) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)])" />
 			</constraint>
@@ -4742,10 +4754,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
@@ -4821,7 +4829,7 @@
 			<constraint>
 				<key value="ref-1" />
 				<severity value="error" />
-				<human value="SHALL have a local reference if the resource is provided inline" />
+				<human value="SHALL have a contained resource if a local reference is provided" />
 				<expression value="reference.startsWith(&#39;#&#39;).not() or (reference.substring(1).trace(&#39;url&#39;) in %resource.contained.id.trace(&#39;ids&#39;))" />
 				<xpath value="not(starts-with(f:reference/@value, &#39;#&#39;)) or exists(ancestor::*[self::f:entry or self::f:parameter]/f:resource/f:*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)]|/*/f:contained/f:*[f:id/@value=substring-after(current()/f:reference/@value, &#39;#&#39;)])" />
 			</constraint>
@@ -4847,10 +4855,6 @@
 			<mapping>
 				<identity value="rim" />
 				<map value="The target of a resource reference is a RIM entry point (Act, Role, or Entity)" />
-			</mapping>
-			<mapping>
-				<identity value="rim" />
-				<map value="n/a" />
 			</mapping>
 			<mapping>
 				<identity value="rim" />
